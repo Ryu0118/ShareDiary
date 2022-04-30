@@ -88,32 +88,6 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
 
-  #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
-  struct storyboard {
-    /// Storyboard `LaunchScreen`.
-    static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
-    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    #endif
-
-    fileprivate init() {}
-  }
-  #endif
-
   /// This `R.color` struct is generated, and contains static references to 1 colors.
   struct color {
     /// Color `AccentColor`.
@@ -139,9 +113,15 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.entitlements` struct is generated, and contains static references to 2 properties.
+  /// This `R.entitlements` struct is generated, and contains static references to 3 properties.
   struct entitlements {
     static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "development"
+
+    struct comAppleDeveloperApplesignin {
+      static let `default` = infoPlistString(path: ["com.apple.developer.applesignin"], key: "Default") ?? "Default"
+
+      fileprivate init() {}
+    }
 
     struct comAppleDeveloperAssociatedDomains {
       static let applinksSharediaryPageLink = infoPlistString(path: ["com.apple.developer.associated-domains"], key: "applinks:sharediary.page.link") ?? "applinks:sharediary.page.link"
@@ -174,12 +154,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 18 images.
   struct image {
-    /// Image `add_selected`.
-    static let add_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "add_selected")
-    /// Image `add`.
-    static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "add")
+    /// Image `LaunchImage`.
+    static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
+    /// Image `apple`.
+    static let apple = Rswift.ImageResource(bundle: R.hostingBundle, name: "apple")
+    /// Image `atmark`.
+    static let atmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "atmark")
+    /// Image `diary`.
+    static let diary = Rswift.ImageResource(bundle: R.hostingBundle, name: "diary")
+    /// Image `google`.
+    static let google = Rswift.ImageResource(bundle: R.hostingBundle, name: "google")
     /// Image `heart_selected`.
     static let heart_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "heart_selected")
     /// Image `heart`.
@@ -200,22 +186,45 @@ struct R: Rswift.Validatable {
     static let settings_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings_selected")
     /// Image `settings`.
     static let settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings")
+    /// Image `twitter`.
+    static let twitter = Rswift.ImageResource(bundle: R.hostingBundle, name: "twitter")
     /// Image `user_selected`.
     static let user_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_selected")
     /// Image `user`.
     static let user = Rswift.ImageResource(bundle: R.hostingBundle, name: "user")
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "add", bundle: ..., traitCollection: ...)`
-    static func add(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.add, compatibleWith: traitCollection)
+    /// `UIImage(named: "LaunchImage", bundle: ..., traitCollection: ...)`
+    static func launchImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.launchImage, compatibleWith: traitCollection)
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "add_selected", bundle: ..., traitCollection: ...)`
-    static func add_selected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.add_selected, compatibleWith: traitCollection)
+    /// `UIImage(named: "apple", bundle: ..., traitCollection: ...)`
+    static func apple(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.apple, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "atmark", bundle: ..., traitCollection: ...)`
+    static func atmark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.atmark, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "diary", bundle: ..., traitCollection: ...)`
+    static func diary(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.diary, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "google", bundle: ..., traitCollection: ...)`
+    static func google(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.google, compatibleWith: traitCollection)
     }
     #endif
 
@@ -290,6 +299,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "twitter", bundle: ..., traitCollection: ...)`
+    static func twitter(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.twitter, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "user", bundle: ..., traitCollection: ...)`
     static func user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.user, compatibleWith: traitCollection)
@@ -320,7 +336,6 @@ struct R: Rswift.Validatable {
             static let _key = "Default Configuration"
             static let uiSceneConfigurationName = infoPlistString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication", "Default Configuration"], key: "UISceneConfigurationName") ?? "Default Configuration"
             static let uiSceneDelegateClassName = infoPlistString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication", "Default Configuration"], key: "UISceneDelegateClassName") ?? "$(PRODUCT_MODULE_NAME).SceneDelegate"
-            static let uiSceneStoryboardFile = infoPlistString(path: ["UIApplicationSceneManifest", "UISceneConfigurations", "UIWindowSceneSessionRoleApplication", "Default Configuration"], key: "UISceneStoryboardFile") ?? "Main"
 
             fileprivate init() {}
           }
@@ -339,7 +354,7 @@ struct R: Rswift.Validatable {
 
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
-      try _R.validate()
+      // There are no resources to validate
     }
 
     fileprivate init() {}
@@ -350,59 +365,6 @@ struct R: Rswift.Validatable {
   fileprivate init() {}
 }
 
-struct _R: Rswift.Validatable {
-  static func validate() throws {
-    #if os(iOS) || os(tvOS)
-    try storyboard.validate()
-    #endif
-  }
-
-  #if os(iOS) || os(tvOS)
-  struct storyboard: Rswift.Validatable {
-    static func validate() throws {
-      #if os(iOS) || os(tvOS)
-      try launchScreen.validate()
-      #endif
-      #if os(iOS) || os(tvOS)
-      try main.validate()
-      #endif
-    }
-
-    #if os(iOS) || os(tvOS)
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UIViewController
-
-      let bundle = R.hostingBundle
-      let name = "LaunchScreen"
-
-      static func validate() throws {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = MainViewController
-
-      let bundle = R.hostingBundle
-      let name = "Main"
-
-      static func validate() throws {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-    #endif
-
-    fileprivate init() {}
-  }
-  #endif
-
+struct _R {
   fileprivate init() {}
 }
