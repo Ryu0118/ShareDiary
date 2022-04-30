@@ -17,6 +17,8 @@ class RegistrationViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
+    private let viewModel = RegistrationViewModel()
+
     private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -41,8 +43,8 @@ class RegistrationViewController: UIViewController {
     }()
 
     private let descriptionLabel: WorldLifeLabel = {
-        let label = WorldLifeLabel(size: 18)
-        label.text = NSLocalizedString("ようこそ！WorldLifeへ", comment: "")
+        let label = WorldLifeLabel(size: 15)
+        label.text = NSLocalizedString("ようこそ! WorldLifeへ\nサインアップして日々の出来事を日記に記そう", comment: "")
         label.textColor = ThemeManager.Color.textGray
         return label
     }()
@@ -62,7 +64,7 @@ class RegistrationViewController: UIViewController {
         return field
     }()
 
-    private let signInButton: InteractiveButton = {
+    private let signUpButton: InteractiveButton = {
         let button = InteractiveButton(frame: .zero)
         button.setTitle(NSLocalizedString("新規登録", comment: ""), for: .normal)
         button.backgroundColor = ThemeManager.Color.appThemeColor
@@ -82,19 +84,19 @@ class RegistrationViewController: UIViewController {
 
     private let appleButton: OAuthButton = {
         let button = OAuthButton(image: R.image.apple())
-        button.setTitle(NSLocalizedString("Appleでログインする", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("Appleで新規登録する", comment: ""), for: .normal)
         return button
     }()
 
     private let googleButton: OAuthButton = {
         let button = OAuthButton(image: R.image.google())
-        button.setTitle(NSLocalizedString("Googleでログインする", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("Googleで新規登録する", comment: ""), for: .normal)
         return button
     }()
 
     private let twitterButton: OAuthButton = {
         let button = OAuthButton(image: R.image.twitter())
-        button.setTitle(NSLocalizedString("Twitterでログインする", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("Twitterで新規登録する", comment: ""), for: .normal)
         return button
     }()
 
@@ -102,6 +104,7 @@ class RegistrationViewController: UIViewController {
         let label = WorldLifeLabel(size: 14)
         label.text = NSLocalizedString("アカウントをお持ちの方はこちら", comment: "")
         label.textColor = ThemeManager.Color.textGray
+        label.numberOfLines = 1
         return label
     }()
 
@@ -128,7 +131,7 @@ class RegistrationViewController: UIViewController {
             descriptionLabel,
             mailAddressField,
             passwordField,
-            signInButton,
+            signUpButton,
             orLabel,
             appleButton,
             googleButton,
@@ -160,7 +163,7 @@ class RegistrationViewController: UIViewController {
 
     private func setConstraints() {
 
-        let sameLayoutArray = [mailAddressField, passwordField, signInButton, appleButton, googleButton, twitterButton ]
+        let sameLayoutArray = [mailAddressField, passwordField, signUpButton, appleButton, googleButton, twitterButton ]
 
         stackView.snp.makeConstraints {
             // $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -204,6 +207,30 @@ class RegistrationViewController: UIViewController {
                 loginVC.modalPresentationStyle = .fullScreen
                 self?.present(loginVC, animated: true, completion: nil)
             }
+            .disposed(by: disposeBag)
+
+        mailAddressField.text.orEmpty
+            .asDriver()
+            .drive(viewModel.inputs.emailObserver)
+            .disposed(by: disposeBag)
+
+        passwordField.text.orEmpty
+            .asDriver()
+            .drive(viewModel.inputs.passwordObserver)
+            .disposed(by: disposeBag)
+
+        signUpButton.rx.tap
+            .withLatestFrom(viewModel.outputs.shouldLogin)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { errors in
+                if errors.isEmpty {
+                    print("問題なし")
+                } else {
+                    let error = errors.joined(separator: "\n")
+                    print(error)
+                }
+            })
+
             .disposed(by: disposeBag)
 
         let tapGesture = UITapGestureRecognizer()

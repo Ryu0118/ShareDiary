@@ -15,7 +15,10 @@ import SwiftUI
 
 class LoginViewController: UIViewController {
 
+    // MARK: Properties
+
     private let disposeBag = DisposeBag()
+    private let viewModel = LoginViewModel()
 
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -41,8 +44,8 @@ class LoginViewController: UIViewController {
     }()
 
     private let descriptionLabel: WorldLifeLabel = {
-        let label = WorldLifeLabel(size: 18)
-        label.text = NSLocalizedString("ようこそ！WorldLifeへ", comment: "")
+        let label = WorldLifeLabel(size: 15)
+        label.text = NSLocalizedString("ようこそ! WorldLifeへ\nログインして日々の出来事を日記に記そう", comment: "")
         label.textColor = ThemeManager.Color.textGray
         return label
     }()
@@ -102,6 +105,7 @@ class LoginViewController: UIViewController {
         let label = WorldLifeLabel(size: 14)
         label.text = NSLocalizedString("アカウントをお持ちでない方はこちら", comment: "")
         label.textColor = ThemeManager.Color.textGray
+        label.numberOfLines = 1
         return label
     }()
 
@@ -113,6 +117,8 @@ class LoginViewController: UIViewController {
         return button
     }()
 
+    // MARK: Functions
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ThemeManager.Color.appBackgroundColor
@@ -120,6 +126,7 @@ class LoginViewController: UIViewController {
         bind()
     }
 
+    // MARK: setupView
     private func setupView() {
         view.addSubview(stackView)
 
@@ -158,6 +165,7 @@ class LoginViewController: UIViewController {
         }
     }
 
+    // MARK: setConstraints
     private func setConstraints() {
 
         let sameLayoutArray = [mailAddressField, passwordField, signInButton, appleButton, googleButton, twitterButton ]
@@ -195,6 +203,7 @@ class LoginViewController: UIViewController {
 
     }
 
+    // MARK: bind
     private func bind() {
 
         newRegistrationButton.rx.tap.asDriver()
@@ -204,6 +213,29 @@ class LoginViewController: UIViewController {
                 registrationVC.modalPresentationStyle = .fullScreen
                 self?.present(registrationVC, animated: true, completion: nil)
             }
+            .disposed(by: disposeBag)
+
+        mailAddressField.text.orEmpty
+            .asDriver()
+            .drive(viewModel.inputs.emailObserver)
+            .disposed(by: disposeBag)
+
+        passwordField.text.orEmpty
+            .asDriver()
+            .drive(viewModel.inputs.passwordObserver)
+            .disposed(by: disposeBag)
+
+        signInButton.rx.tap
+            .withLatestFrom(viewModel.outputs.shouldLogin)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { errors in
+                if errors.isEmpty {
+                    print("問題なし")
+                } else {
+                    let error = errors.joined(separator: "\n")
+                    print(error)
+                }
+            })
             .disposed(by: disposeBag)
 
         let tapGesture = UITapGestureRecognizer()
@@ -220,8 +252,7 @@ class LoginViewController: UIViewController {
 
 }
 
-extension String: LocalizedError {}
-
+// MARK: PreviewProvider
 struct ViewControllerWrapper: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> LoginViewController {

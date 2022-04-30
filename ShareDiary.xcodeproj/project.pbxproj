@@ -39,7 +39,6 @@
 		23630906281BF62000F3F905 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630905281BF62000F3F905 /* FirebaseOAuthUI */; };
 		23630908281BF62000F3F905 /* FirebasePhoneAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630907281BF62000F3F905 /* FirebasePhoneAuthUI */; };
 		2363090A281BF62000F3F905 /* FirebaseStorageUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630909281BF62000F3F905 /* FirebaseStorageUI */; };
-		2363090D281BFCF800F3F905 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 2363090C281BFCF800F3F905 /* SnapshotTesting */; };
 		23630910281BFD6200F3F905 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 2363090F281BFD6200F3F905 /* SnapshotTesting */; };
 		23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630914281C3BCB00F3F905 /* LoginViewController.swift */; };
 		23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630916281C3BFD00F3F905 /* RegistrationViewController.swift */; };
@@ -63,6 +62,8 @@
 		2363094A281D581F00F3F905 /* UIStackView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630949281D581F00F3F905 /* UIStackView+extensions.swift */; };
 		2363094D281D902200F3F905 /* OAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363094C281D902200F3F905 /* OAuthButton.swift */; };
 		2363094F281DA4C200F3F905 /* LoginWithAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */; };
+		23630952281DB26800F3F905 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630951281DB26800F3F905 /* Regex.swift */; };
+		23630954281DBEB600F3F905 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630953281DBEB600F3F905 /* String+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		23630949281D581F00F3F905 /* UIStackView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+extensions.swift"; sourceTree = "<group>"; };
 		2363094C281D902200F3F905 /* OAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthButton.swift; sourceTree = "<group>"; };
 		2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleHelper.swift; sourceTree = "<group>"; };
+		23630951281DB26800F3F905 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		23630953281DBEB600F3F905 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +159,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2363090D281BFCF800F3F905 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +284,7 @@
 				2363092A281C600300F3F905 /* UIImage+extensions.swift */,
 				23630936281D2BDF00F3F905 /* UIColor+extensions.swift */,
 				23630949281D581F00F3F905 /* UIStackView+extensions.swift */,
+				23630953281DBEB600F3F905 /* String+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			children = (
 				23630939281D2C3800F3F905 /* ThemeManager.swift */,
 				2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */,
+				23630951281DB26800F3F905 /* Regex.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -379,7 +383,6 @@
 			);
 			name = ShareDiaryTests;
 			packageProductDependencies = (
-				2363090C281BFCF800F3F905 /* SnapshotTesting */,
 			);
 			productName = ShareDiaryTests;
 			productReference = 236308A9281BCF7F00F3F905 /* ShareDiaryTests.xctest */;
@@ -444,7 +447,6 @@
 				236308DE281BDEF500F3F905 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				236308EB281BE36100F3F905 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
-				2363090B281BFCF800F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				2363090E281BFD6200F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				23630920281C456600F3F905 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2363092F281C63DA00F3F905 /* XCRemoteSwiftPackageReference "R.swift" */,
@@ -536,6 +538,7 @@
 				23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */,
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
+				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
 				2363089B281BCF7C00F3F905 /* MainViewController.swift in Sources */,
 				23630937281D2BDF00F3F905 /* UIColor+extensions.swift in Sources */,
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
@@ -553,6 +556,7 @@
 				23630919281C3C0A00F3F905 /* MainViewModel.swift in Sources */,
 				2363091B281C3C1B00F3F905 /* LoginViewModel.swift in Sources */,
 				2363093A281D2C3800F3F905 /* ThemeManager.swift in Sources */,
+				23630952281DB26800F3F905 /* Regex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,14 +925,6 @@
 				kind = branch;
 			};
 		};
-		2363090B281BFCF800F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		2363090E281BFD6200F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
@@ -1080,11 +1076,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
 			productName = FirebaseStorageUI;
-		};
-		2363090C281BFCF800F3F905 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2363090B281BFCF800F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
 		};
 		2363090F281BFD6200F3F905 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
