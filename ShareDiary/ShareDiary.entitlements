@@ -11,6 +11,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:sharediary.page.link</string>
+		<string>applinks:sharediary.com</string>
 	</array>
 </dict>
 </plist>

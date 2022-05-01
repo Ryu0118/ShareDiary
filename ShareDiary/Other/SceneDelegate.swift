@@ -7,11 +7,15 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import ProgressHUD
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var firebaseToken: String?
+
+    var currentViewController: UIViewController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // login check
         if let currentUser = Auth.auth().currentUser {
             let main = MainViewController()
+            currentViewController = main
             window.rootViewController = main
             window.makeKeyAndVisible()
             currentUser.getIDToken {[weak self] idToken, _ in
@@ -31,8 +36,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         } else {
             let login = LoginViewController()
+            currentViewController = login
             window.rootViewController = login
             window.makeKeyAndVisible()
+        }
+    }
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let url = userActivity.webpageURL else { return }
+        DynamicLinks.dynamicLinks().handleUniversalLink(url) { [weak self] link, _ in
+            guard let linkURL = link?.url else { return }
+            self?.handlePasswordlessSignIn(withURL: linkURL)
+        }
+    }
+
+    func handlePasswordlessSignIn(withURL url: URL) {
+        let link = url.absoluteString
+        let (email, password) = (Persisted.auth.email, Persisted.auth.password)
+        if Auth.auth().isSignIn(withEmailLink: link) && !email.isEmpty && !password.isEmpty {
+            let setProfileVC = SetProfileViewController()
+            setProfileVC.modalPresentationStyle = .fullScreen
+            setProfileVC.modalTransitionStyle = .coverVertical
+            window?.rootViewController = setProfileVC
+            window?.makeKeyAndVisible()
+        } else {
+
         }
     }
 

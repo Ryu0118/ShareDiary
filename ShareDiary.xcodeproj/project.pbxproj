@@ -61,9 +61,18 @@
 		23630948281D561C00F3F905 /* InteractiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630947281D561C00F3F905 /* InteractiveButton.swift */; };
 		2363094A281D581F00F3F905 /* UIStackView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630949281D581F00F3F905 /* UIStackView+extensions.swift */; };
 		2363094D281D902200F3F905 /* OAuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363094C281D902200F3F905 /* OAuthButton.swift */; };
-		2363094F281DA4C200F3F905 /* LoginWithAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */; };
 		23630952281DB26800F3F905 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630951281DB26800F3F905 /* Regex.swift */; };
 		23630954281DBEB600F3F905 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630953281DBEB600F3F905 /* String+extensions.swift */; };
+		23630957281E60E900F3F905 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 23630956281E60E900F3F905 /* ProgressHUD */; };
+		23630959281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630958281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift */; };
+		2363095B281E728900F3F905 /* SignInWithMailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363095A281E728900F3F905 /* SignInWithMailHelper.swift */; };
+		2363095D281E759E00F3F905 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363095C281E759E00F3F905 /* Save.swift */; };
+		2363095F281E80C900F3F905 /* Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363095E281E80C900F3F905 /* Persisted.swift */; };
+		23630962281E91CF00F3F905 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630961281E91CE00F3F905 /* Authorization.swift */; };
+		23630964281E996500F3F905 /* DatabaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630963281E996400F3F905 /* DatabaseUtil.swift */; };
+		23630966281E998200F3F905 /* StorageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630965281E998100F3F905 /* StorageUtil.swift */; };
+		23630968281EC74600F3F905 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630967281EC74600F3F905 /* SetProfileViewController.swift */; };
+		2363096A281EE26C00F3F905 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630969281EE26C00F3F905 /* InputTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,9 +124,17 @@
 		23630947281D561C00F3F905 /* InteractiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveButton.swift; sourceTree = "<group>"; };
 		23630949281D581F00F3F905 /* UIStackView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+extensions.swift"; sourceTree = "<group>"; };
 		2363094C281D902200F3F905 /* OAuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthButton.swift; sourceTree = "<group>"; };
-		2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithAppleHelper.swift; sourceTree = "<group>"; };
 		23630951281DB26800F3F905 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		23630953281DBEB600F3F905 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
+		23630958281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationViewController+OAuth.swift"; sourceTree = "<group>"; };
+		2363095A281E728900F3F905 /* SignInWithMailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithMailHelper.swift; sourceTree = "<group>"; };
+		2363095C281E759E00F3F905 /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
+		2363095E281E80C900F3F905 /* Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persisted.swift; sourceTree = "<group>"; };
+		23630961281E91CE00F3F905 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
+		23630963281E996400F3F905 /* DatabaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtil.swift; sourceTree = "<group>"; };
+		23630965281E998100F3F905 /* StorageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUtil.swift; sourceTree = "<group>"; };
+		23630967281EC74600F3F905 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
+		23630969281EE26C00F3F905 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				236308D8281BDE1200F3F905 /* FirebaseMessaging in Frameworks */,
+				23630957281E60E900F3F905 /* ProgressHUD in Frameworks */,
 				236308CE281BDE1200F3F905 /* FirebaseCrashlytics in Frameworks */,
 				236308E0281BDEF600F3F905 /* RxCocoa in Frameworks */,
 				236308DA281BDE1200F3F905 /* FirebaseStorage in Frameworks */,
@@ -254,6 +272,8 @@
 		23630911281C020600F3F905 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				23630960281E919F00F3F905 /* FirebaseUtils */,
+				2363095A281E728900F3F905 /* SignInWithMailHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +294,7 @@
 				2363094B281D900F00F3F905 /* Buttons */,
 				2363093B281D331F00F3F905 /* InputTextField.swift */,
 				2363093D281D387300F3F905 /* WorldLifeLabel.swift */,
+				23630969281EE26C00F3F905 /* InputTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,8 +314,9 @@
 			isa = PBXGroup;
 			children = (
 				23630939281D2C3800F3F905 /* Theme.swift */,
-				2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */,
 				23630951281DB26800F3F905 /* Regex.swift */,
+				2363095C281E759E00F3F905 /* Save.swift */,
+				2363095E281E80C900F3F905 /* Persisted.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -313,8 +335,20 @@
 			children = (
 				23630914281C3BCB00F3F905 /* LoginViewController.swift */,
 				23630916281C3BFD00F3F905 /* RegistrationViewController.swift */,
+				23630958281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift */,
+				23630967281EC74600F3F905 /* SetProfileViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		23630960281E919F00F3F905 /* FirebaseUtils */ = {
+			isa = PBXGroup;
+			children = (
+				23630961281E91CE00F3F905 /* Authorization.swift */,
+				23630963281E996400F3F905 /* DatabaseUtil.swift */,
+				23630965281E998100F3F905 /* StorageUtil.swift */,
+			);
+			path = FirebaseUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +397,7 @@
 				23630909281BF62000F3F905 /* FirebaseStorageUI */,
 				23630921281C456600F3F905 /* FirebaseDynamicLinks */,
 				23630930281C63DA00F3F905 /* Rswift */,
+				23630956281E60E900F3F905 /* ProgressHUD */,
 			);
 			productName = ShareDiary;
 			productReference = 23630893281BCF7C00F3F905 /* ShareDiary.app */;
@@ -450,6 +485,7 @@
 				2363090E281BFD6200F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				23630920281C456600F3F905 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2363092F281C63DA00F3F905 /* XCRemoteSwiftPackageReference "R.swift" */,
+				23630955281E60E800F3F905 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 23630894281BCF7C00F3F905 /* Products */;
 			projectDirPath = "";
@@ -534,7 +570,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23630964281E996500F3F905 /* DatabaseUtil.swift in Sources */,
+				23630968281EC74600F3F905 /* SetProfileViewController.swift in Sources */,
 				23630948281D561C00F3F905 /* InteractiveButton.swift in Sources */,
+				2363095F281E80C900F3F905 /* Persisted.swift in Sources */,
 				23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */,
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
@@ -544,17 +583,22 @@
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
 				23630897281BCF7C00F3F905 /* AppDelegate.swift in Sources */,
 				23630899281BCF7C00F3F905 /* SceneDelegate.swift in Sources */,
-				2363094F281DA4C200F3F905 /* LoginWithAppleHelper.swift in Sources */,
 				2363093E281D387300F3F905 /* WorldLifeLabel.swift in Sources */,
 				23630935281C687C00F3F905 /* ProfileViewController.swift in Sources */,
 				23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */,
+				23630966281E998200F3F905 /* StorageUtil.swift in Sources */,
+				23630959281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift in Sources */,
 				23630933281C685500F3F905 /* HomeViewController.swift in Sources */,
 				2363094D281D902200F3F905 /* OAuthButton.swift in Sources */,
 				2363093C281D331F00F3F905 /* InputTextField.swift in Sources */,
+				2363095D281E759E00F3F905 /* Save.swift in Sources */,
 				2363094A281D581F00F3F905 /* UIStackView+extensions.swift in Sources */,
+				2363096A281EE26C00F3F905 /* InputTextView.swift in Sources */,
 				2363091D281C3C2A00F3F905 /* RegistrationViewModel.swift in Sources */,
 				23630919281C3C0A00F3F905 /* MainViewModel.swift in Sources */,
+				2363095B281E728900F3F905 /* SignInWithMailHelper.swift in Sources */,
 				2363091B281C3C1B00F3F905 /* LoginViewModel.swift in Sources */,
+				23630962281E91CF00F3F905 /* Authorization.swift in Sources */,
 				2363093A281D2C3800F3F905 /* Theme.swift in Sources */,
 				23630952281DB26800F3F905 /* Regex.swift in Sources */,
 			);
@@ -949,6 +993,14 @@
 				kind = branch;
 			};
 		};
+		23630955281E60E800F3F905 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1091,6 +1143,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2363092F281C63DA00F3F905 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
+		};
+		23630956281E60E900F3F905 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23630955281E60E800F3F905 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

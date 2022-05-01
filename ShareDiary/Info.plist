@@ -2,17 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>CFBundleIcons</key>
 	<dict/>
-    <key>CFBundleIcons~ipad</key>
-    <dict/>
-    <key>UILaunchScreen</key>
-    <dict>
-        <key>UIImageName</key>
-        <string>diary</string>
-    </dict>
-    <key>UIApplicationSceneManifest</key>
-    <dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>diary</string>
+	</dict>
+    <key>FirebaseDynamicLinksCustomDomains</key>
+    <array>
+      <string>https://sharediary.com/sign_in</string>
+    </array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>

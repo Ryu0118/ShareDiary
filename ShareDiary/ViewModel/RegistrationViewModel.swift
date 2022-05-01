@@ -13,6 +13,8 @@ import FirebaseAuthUI
 protocol RegistrationViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }
     var passwordObserver: AnyObserver<String> { get }
+    func registerWithGoogle()
+    func registerWithTwitter()
 }
 
 protocol RegistrationViewModelOutputs: AnyObject {
@@ -59,6 +61,21 @@ class RegistrationViewModel: RegistrationViewModelInputs, RegistrationViewModelO
             }
             return response
         }
+
+    }
+
+    func registerWithEmail(email: String, password: String) -> Observable<String> {
+        let helper = SignInWithMailHelper()
+        Persisted.auth = AuthorizationInfo(email: email, password: password)
+        print("password", Persisted.auth)
+        return helper.signUpWithMail(emailAddress: email)
+    }
+
+    func registerWithGoogle() {
+
+    }
+
+    func registerWithTwitter() {
 
     }
 

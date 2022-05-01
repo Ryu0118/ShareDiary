@@ -1,28 +1,19 @@
 //
-//  LoginWithAppleHelper.swift
+//  RegistrationViewController+OAuth.swift
 //  ShareDiary
 //
 //  Created by Ryu on 2022/05/01.
 //
 
 import Foundation
-import FirebaseAuth
+import CryptoKit
+import AuthenticationServices
 import RxSwift
 import RxCocoa
-import AuthenticationServices
-import CryptoKit
+import FirebaseAuth
 
-class LoginWithAppleHelper: NSObject {
-
-    var currentNonce: String?
-    private var currentController: UIViewController?
-
-    var authenticationResponse = PublishRelay<String>()
-
-    init(_ currentController: UIViewController) {
-        self.currentController = currentController
-    }
-
+// Cannot write to ViewModel Because UIViewController can only be Authentication Delegate
+extension RegistrationViewController {
     func requestSignInAppleFlow() {
         let nonce = randomNonceString()
         currentNonce = nonce
@@ -80,9 +71,10 @@ class LoginWithAppleHelper: NSObject {
     }
 }
 
-extension LoginWithAppleHelper: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
+// Cannot write to ViewModel Because UIViewController can only be Authentication Delegate
+extension RegistrationViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        currentController?.view.window ?? UIWindow()
+        view.window ?? UIWindow()
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -90,36 +82,29 @@ extension LoginWithAppleHelper: ASAuthorizationControllerPresentationContextProv
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        authenticationResponse.accept("認証に失敗しました。再度ログインしてください。")
+        authenticationResponse.accept(NSLocalizedString("認証がキャンセルされました。再度ログインしてください。", comment: ""))
     }
 
     func handle(_ credential: ASAuthorizationCredential) {
-        // 認証完了後ASAuthorizationCredentialから必要な情報を取り出す
-        // エラー時のハンドリングはアプリごとに違うので省略
         guard let appleIDCredential = credential as? ASAuthorizationAppleIDCredential else {
-            // キャスト失敗。ASPasswordCredential（パスワードは今回要求していないので起きないはず）だと失敗する
             authenticationResponse.accept(NSLocalizedString("エラーが発生しました。再度ログインしてください。", comment: ""))
             return
         }
         guard let nonce = self.currentNonce else {
-            // ログインリクエスト失敗
             authenticationResponse.accept("リクエストの送信に失敗しました。再度ログインしてください。")
             return
         }
 
         guard let appleIDToken = appleIDCredential.identityToken else {
-            // ユーザーに関する情報をアプリに伝えるためのJSON Web Tokenの取得に失敗
             authenticationResponse.accept("Json Web Tokenの取得に失敗しました")
             return
         }
 
         guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-            // JWTからトークン(文字列)へのシリアライズに失敗
             authenticationResponse.accept("シリアライズに失敗しました。")
             return
         }
 
-        // Sign In With Appleの認証情報を元にFirebase Authenticationの認証
         let oAuthCredential = OAuthProvider.credential(
             withProviderID: "apple.com",
             idToken: idTokenString,
@@ -131,11 +116,10 @@ extension LoginWithAppleHelper: ASAuthorizationControllerPresentationContextProv
                 self.authenticationResponse.accept(error.localizedDescription)
             } else {
                 self.authenticationResponse.accept("")
-                self.currentController?.navigationController?.popViewController(animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
 
         }
 
     }
-
 }

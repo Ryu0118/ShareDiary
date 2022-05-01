@@ -81,7 +81,7 @@ class InputTextField: UIView {
 }
 
 class InputTextFieldCore: UITextField, UITextFieldDelegate {
-    
+
     override var placeholder: String? {
         get {
             super.placeholder
@@ -92,7 +92,7 @@ class InputTextFieldCore: UITextField, UITextFieldDelegate {
             super.placeholder = newValue
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear

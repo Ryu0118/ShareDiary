@@ -124,6 +124,7 @@ struct R: Rswift.Validatable {
     }
 
     struct comAppleDeveloperAssociatedDomains {
+      static let applinksSharediaryCom = infoPlistString(path: ["com.apple.developer.associated-domains"], key: "applinks:sharediary.com") ?? "applinks:sharediary.com"
       static let applinksSharediaryPageLink = infoPlistString(path: ["com.apple.developer.associated-domains"], key: "applinks:sharediary.page.link") ?? "applinks:sharediary.page.link"
 
       fileprivate init() {}
@@ -154,7 +155,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 18 images.
+  /// This `R.image` struct is generated, and contains static references to 19 images.
   struct image {
     /// Image `LaunchImage`.
     static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
@@ -174,6 +175,8 @@ struct R: Rswift.Validatable {
     static let home_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_selected")
     /// Image `home`.
     static let home = Rswift.ImageResource(bundle: R.hostingBundle, name: "home")
+    /// Image `nouser`.
+    static let nouser = Rswift.ImageResource(bundle: R.hostingBundle, name: "nouser")
     /// Image `pencil_selected`.
     static let pencil_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "pencil_selected")
     /// Image `pencil`.
@@ -253,6 +256,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "home_selected", bundle: ..., traitCollection: ...)`
     static func home_selected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.home_selected, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nouser", bundle: ..., traitCollection: ...)`
+    static func nouser(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nouser, compatibleWith: traitCollection)
     }
     #endif
 

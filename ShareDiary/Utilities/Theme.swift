@@ -63,6 +63,10 @@ struct Theme {
             }
         }
 
+        static func getAppBoldFont(size: CGFloat) -> UIFont {
+            .boldSystemFont(ofSize: size)
+        }
+
     }
 
     enum Theme {

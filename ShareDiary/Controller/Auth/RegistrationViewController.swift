@@ -12,12 +12,17 @@ import Rswift
 import RxCocoa
 import FirebaseAuth
 import SwiftUI
+import ProgressHUD
 
 class RegistrationViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
     private let viewModel = RegistrationViewModel()
+
+    // Require with apple signing
+    var currentNonce: String?
+    var authenticationResponse = PublishRelay<String>()
 
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -222,15 +227,50 @@ class RegistrationViewController: UIViewController {
         signUpButton.rx.tap
             .withLatestFrom(viewModel.outputs.shouldLogin)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { errors in
-                if errors.isEmpty {
-                    print("問題なし")
-                } else {
+            .withUnretained(self)
+            .do { _, errors in
+                if !errors.isEmpty {
                     let error = errors.joined(separator: "\n")
-                    print(error)
+                    ProgressHUD.showFailed(error)
+                } else {
+                    ProgressHUD.show()
+                }
+            }
+            .filter { $1.isEmpty }
+            .flatMap { strongSelf, _ in
+                return strongSelf.viewModel.registerWithEmail(
+                    email: strongSelf.mailAddressField.textField.text ?? "",
+                    password: strongSelf.passwordField.textField.text ?? ""
+                )
+            }
+            .subscribe(onNext: { error in
+                if error.isEmpty {
+                    ProgressHUD.showSuccess(NSLocalizedString("メールを送信しました。", comment: ""))
+                } else {
+                    ProgressHUD.showFailed(error)
                 }
             })
+            .disposed(by: disposeBag)
 
+        appleButton.rx.tap
+            .withUnretained(self)
+            .do { strongSelf, _ in
+                strongSelf.appleButton.isEnabled = false
+                ProgressHUD.show()
+            }
+            .flatMap { strongSelf, _ -> Observable<String> in
+                strongSelf.requestSignInAppleFlow()
+                return strongSelf.authenticationResponse.asObservable()
+            }
+            .asDriver(onErrorJustReturn: "エラーが発生しました。再度ログインを実行してください")
+            .drive {[unowned self] response in
+                appleButton.isEnabled = true
+                if response.isEmpty { // successed!!
+                    ProgressHUD.showSuccess(NSLocalizedString("ログインに成功しました", comment: ""))
+                } else {
+                    ProgressHUD.showError(response, interaction: true)
+                }
+            }
             .disposed(by: disposeBag)
 
         let tapGesture = UITapGestureRecognizer()
