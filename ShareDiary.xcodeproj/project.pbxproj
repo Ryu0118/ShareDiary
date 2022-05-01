@@ -53,7 +53,7 @@
 		23630933281C685500F3F905 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630932281C685500F3F905 /* HomeViewController.swift */; };
 		23630935281C687C00F3F905 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630934281C687C00F3F905 /* ProfileViewController.swift */; };
 		23630937281D2BDF00F3F905 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630936281D2BDF00F3F905 /* UIColor+extensions.swift */; };
-		2363093A281D2C3800F3F905 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630939281D2C3800F3F905 /* ThemeManager.swift */; };
+		2363093A281D2C3800F3F905 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630939281D2C3800F3F905 /* Theme.swift */; };
 		2363093C281D331F00F3F905 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363093B281D331F00F3F905 /* InputTextField.swift */; };
 		2363093E281D387300F3F905 /* WorldLifeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363093D281D387300F3F905 /* WorldLifeLabel.swift */; };
 		23630944281D44AE00F3F905 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 23630943281D44AE00F3F905 /* Makefile */; };
@@ -107,7 +107,7 @@
 		23630932281C685500F3F905 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23630934281C687C00F3F905 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		23630936281D2BDF00F3F905 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
-		23630939281D2C3800F3F905 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		23630939281D2C3800F3F905 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2363093B281D331F00F3F905 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		2363093D281D387300F3F905 /* WorldLifeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldLifeLabel.swift; sourceTree = "<group>"; };
 		23630943281D44AE00F3F905 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 		23630938281D2C2400F3F905 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				23630939281D2C3800F3F905 /* ThemeManager.swift */,
+				23630939281D2C3800F3F905 /* Theme.swift */,
 				2363094E281DA4C200F3F905 /* LoginWithAppleHelper.swift */,
 				23630951281DB26800F3F905 /* Regex.swift */,
 			);
@@ -555,7 +555,7 @@
 				2363091D281C3C2A00F3F905 /* RegistrationViewModel.swift in Sources */,
 				23630919281C3C0A00F3F905 /* MainViewModel.swift in Sources */,
 				2363091B281C3C1B00F3F905 /* LoginViewModel.swift in Sources */,
-				2363093A281D2C3800F3F905 /* ThemeManager.swift in Sources */,
+				2363093A281D2C3800F3F905 /* Theme.swift in Sources */,
 				23630952281DB26800F3F905 /* Regex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,7 @@ class InteractiveButton: UIButton {
 
         self.layer.cornerRadius = 10
         self.setTitleColor(.white, for: .normal)
-        self.titleLabel?.font = ThemeManager.Font.getAppFont(size: 16)
+        self.titleLabel?.font = Theme.Font.getAppFont(size: 16)
 
         bind()
     }

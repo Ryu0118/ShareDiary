@@ -11,13 +11,13 @@ class WorldLifeLabel: UILabel {
 
     init(size: CGFloat) {
         super.init(frame: .zero)
-        self.font = ThemeManager.Font.getAppFont(size: size)
+        self.font = Theme.Font.getAppFont(size: size)
         setup()
     }
 
-    init(fontSize: ThemeManager.FontSize) {
+    init(fontSize: Theme.FontSize) {
         super.init(frame: .zero)
-        self.font = ThemeManager.Font.getAppFont(size: fontSize.rawValue)
+        self.font = Theme.Font.getAppFont(size: fontSize.rawValue)
         setup()
     }
 

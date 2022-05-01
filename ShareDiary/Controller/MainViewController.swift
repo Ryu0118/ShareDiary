@@ -20,8 +20,8 @@ class MainViewController: UITabBarController {
         homeVC.tabBarItem = UITabBarItem(title: NSLocalizedString("ホーム", comment: ""), image: R.image.home()?.iconSize, tag: 0)
         let profileVC = ProfileViewController()
         profileVC.tabBarItem = UITabBarItem(title: NSLocalizedString("プロフィール", comment: ""), image: R.image.user()?.iconSize, tag: 0)
-        UITabBar.appearance().tintColor = ThemeManager.Color.appThemeDeepColor
-        UITabBar.appearance().backgroundColor = ThemeManager.Color.appBackgroundColor
+        UITabBar.appearance().tintColor = Theme.Color.appThemeDeepColor
+        UITabBar.appearance().backgroundColor = Theme.Color.appBackgroundColor
 
         viewControllers = [homeVC, profileVC]
     }

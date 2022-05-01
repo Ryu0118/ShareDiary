@@ -50,7 +50,7 @@ class InputTextField: UIView {
 
     private func selected() {
         self.layer.borderWidth = 2
-        self.layer.borderColor = ThemeManager.Color.appThemeDeepColor.cgColor
+        self.layer.borderColor = Theme.Color.appThemeDeepColor.cgColor
     }
 
     private func unselected() {
@@ -81,10 +81,22 @@ class InputTextField: UIView {
 }
 
 class InputTextFieldCore: UITextField, UITextFieldDelegate {
+    
+    override var placeholder: String? {
+        get {
+            super.placeholder
+        }
+        set {
+            let attributed = NSAttributedString(string: "placeholder text", attributes: [NSAttributedString.Key.foregroundColor: Theme.Color.textGray])
+            self.attributedPlaceholder = attributed
+            super.placeholder = newValue
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
-        self.font = ThemeManager.Font.getAppFont(size: 15)
+        self.font = Theme.Font.getAppFont(size: 15)
         self.delegate = self
     }
 

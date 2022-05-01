@@ -39,13 +39,14 @@ class RegistrationViewController: UIViewController {
     private let loginLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 30)
         label.text = NSLocalizedString("サインアップ", comment: "")
+        label.textColor = .black
         return label
     }()
 
     private let descriptionLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 15)
         label.text = NSLocalizedString("ようこそ! WorldLifeへ\nサインアップして日々の出来事を日記に記そう", comment: "")
-        label.textColor = ThemeManager.Color.textGray
+        label.textColor = Theme.Color.textGray
         return label
     }()
 
@@ -67,7 +68,7 @@ class RegistrationViewController: UIViewController {
     private let signUpButton: InteractiveButton = {
         let button = InteractiveButton(frame: .zero)
         button.setTitle(NSLocalizedString("新規登録", comment: ""), for: .normal)
-        button.backgroundColor = ThemeManager.Color.appThemeColor
+        button.backgroundColor = Theme.Color.appThemeColor
         button.layoutBlock = {
             button.layer.cornerRadius = button.frame.height / 2
         }
@@ -77,7 +78,7 @@ class RegistrationViewController: UIViewController {
     private let orLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 14)
         label.text = NSLocalizedString("または", comment: "")
-        label.textColor = ThemeManager.Color.textGray
+        label.textColor = Theme.Color.textGray
         label.textAlignment = .center
         return label
     }()
@@ -103,7 +104,7 @@ class RegistrationViewController: UIViewController {
     private let noAccountLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 14)
         label.text = NSLocalizedString("アカウントをお持ちの方はこちら", comment: "")
-        label.textColor = ThemeManager.Color.textGray
+        label.textColor = Theme.Color.textGray
         label.numberOfLines = 1
         return label
     }()
@@ -112,13 +113,13 @@ class RegistrationViewController: UIViewController {
         let button = UIButton()
         button.setTitle(NSLocalizedString("ログイン", comment: ""), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = ThemeManager.Font.getAppFont(size: 13)
+        button.titleLabel?.font = Theme.Font.getAppFont(size: 13)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = ThemeManager.Color.appBackgroundColor
+        view.backgroundColor = Theme.Color.appBackgroundColor
         setupView()
         bind()
     }

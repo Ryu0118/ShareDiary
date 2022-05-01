@@ -8,11 +8,16 @@
 import UIKit
 import Rswift
 
-class ThemeManager {
+struct Theme {
 
     // static let shared = ThemeManager()
 
     struct Color {
+        struct Dynamic {
+            static var appTextColor: UIColor = .dynamicColor(light: .black, dark: .white)
+            static var appTextColorInvert: UIColor = .dynamicColor(light: .white, dark: .black)
+            static var appBackgroundColor: UIColor = .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black)
+        }
         static var appThemeColor: UIColor = .rgba(red: 141, green: 164, blue: 165, alpha: 1)
         static var appThemeDeepColor: UIColor = .rgba(red: 74, green: 164, blue: 156, alpha: 1)
         static var appBackgroundColor: UIColor = .rgba(red: 248, green: 247, blue: 252, alpha: 1)
@@ -63,8 +68,6 @@ class ThemeManager {
     enum Theme {
 
     }
-
-    private init() {}
 
     func changeTheme(with theme: Theme) {
 
