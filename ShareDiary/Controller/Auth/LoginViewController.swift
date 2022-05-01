@@ -187,7 +187,6 @@ class LoginViewController: UIViewController {
 
         orLabel.snp.makeConstraints {
             $0.height.equalTo(15)
-            $0.width.equalTo(60)
         }
 
         noAccountLabel.snp.makeConstraints {
