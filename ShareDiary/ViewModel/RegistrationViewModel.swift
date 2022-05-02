@@ -8,7 +8,6 @@
 import RxSwift
 import RxCocoa
 import FirebaseAuth
-import FirebaseAuthUI
 
 protocol RegistrationViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }
@@ -46,7 +45,18 @@ class RegistrationViewModel: RegistrationViewModelInputs, RegistrationViewModelO
 
     init() {
         isValidEmail = emailSubject
-            .map { Regex.isValidEmail($0) ? "" : "正しいメールアドレスを入力してください" }
+            .map { Regex.isValidEmail($0) ? ("", $0) : ("正しいメールアドレスを入力してください", $0) }
+            .flatMap { error, email -> Observable<String> in
+                if !error.isEmpty {
+                    return error.asObservable()
+                } else {
+
+                    return Authorization.shared.isAlreadyUsedEmail(email: email)
+                        .map { isAlreadyUsed in
+                            return isAlreadyUsed ? NSLocalizedString("このメールアドレスは既に使われています", comment: "") : ""
+                        }
+                }
+            }
 
         isValidPassword = passwordSubject
             .map { Regex.isValidPassword($0) ? "" : "8文字以上24文字以内の英数字で入力してください" }

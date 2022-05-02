@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import ProgressHUD
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,6 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var firebaseToken: String?
 
     var currentViewController: UIViewController?
+
+    private let disposeBag = DisposeBag()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -53,15 +56,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func handlePasswordlessSignIn(withURL url: URL) {
         let link = url.absoluteString
         let (email, password) = (Persisted.auth.email, Persisted.auth.password)
-        if Auth.auth().isSignIn(withEmailLink: link) && !email.isEmpty && !password.isEmpty {
-            let setProfileVC = SetProfileViewController()
-            setProfileVC.modalPresentationStyle = .fullScreen
-            setProfileVC.modalTransitionStyle = .coverVertical
-            window?.rootViewController = setProfileVC
-            window?.makeKeyAndVisible()
-        } else {
+        Authorization.shared.isAlreadyUsedEmail(email: email)
+            .withUnretained(self)
+            .subscribe(onNext: { strongSelf, isAlreadyUsed in
+                guard !isAlreadyUsed else {
+                    ProgressHUD.showFailed(NSLocalizedString("無効なリンク", comment: ""))
+                    return
+                }
+                if Auth.auth().isSignIn(withEmailLink: link) && !email.isEmpty && !password.isEmpty {
+                    let setProfileVC = SetProfileViewController(authType: .email, viewModel: SetProfileViewModel(authType: .email))
+                    setProfileVC.modalPresentationStyle = .fullScreen
+                    setProfileVC.modalTransitionStyle = .coverVertical
+                    strongSelf.window?.rootViewController = setProfileVC
+                    strongSelf.window?.makeKeyAndVisible()
+                } else {
 
-        }
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

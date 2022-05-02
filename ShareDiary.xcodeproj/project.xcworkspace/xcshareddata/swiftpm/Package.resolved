@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "appauth-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/openid/AppAuth-iOS.git",
-      "state" : {
-        "revision" : "33660c271c961f8ce1084cc13f2ea8195e864f7d",
-        "version" : "1.5.0"
-      }
-    },
-    {
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -28,30 +19,12 @@
       }
     },
     {
-      "identity" : "facebook-ios-sdk",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/facebook/facebook-ios-sdk.git",
-      "state" : {
-        "revision" : "e14f349945ba3f9516e3292107f42be19fe9fbe5",
-        "version" : "12.3.2"
-      }
-    },
-    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "revision" : "111d8d6ad1a1afd6c8e9561d26e55ab1e74fcb42",
         "version" : "8.15.0"
-      }
-    },
-    {
-      "identity" : "firebaseui-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/FirebaseUI-iOS.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "6c2993a144ac768ce9118c7feb3416960c36f194"
       }
     },
     {
@@ -70,15 +43,6 @@
       "state" : {
         "revision" : "15ccdfd25ac55b9239b82809531ff26605e7556e",
         "version" : "9.1.2"
-      }
-    },
-    {
-      "identity" : "googlesignin-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GoogleSignIn-iOS",
-      "state" : {
-        "revision" : "60ca2bfd218ccb194a746a79b41d9d50eb7e3af0",
-        "version" : "6.1.0"
       }
     },
     {
@@ -106,15 +70,6 @@
       "state" : {
         "revision" : "4e9bbf2808b8fee444e84a48f5f3c12641987d3e",
         "version" : "1.7.2"
-      }
-    },
-    {
-      "identity" : "gtmappauth",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GTMAppAuth.git",
-      "state" : {
-        "revision" : "e803d09da0147fbf1bbb30e126c47ff43254e057",
-        "version" : "1.2.3"
       }
     },
     {
@@ -181,15 +136,6 @@
       }
     },
     {
-      "identity" : "sdwebimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
-      "state" : {
-        "revision" : "2e63d0061da449ad0ed130768d05dceb1496de44",
-        "version" : "5.12.5"
-      }
-    },
-    {
       "identity" : "snapkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit",
@@ -214,6 +160,15 @@
       "state" : {
         "revision" : "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
         "version" : "1.9.0"
+      }
+    },
+    {
+      "identity" : "tocropviewcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TimOliver/TOCropViewController.git",
+      "state" : {
+        "revision" : "d0470491f56e734731bbf77991944c0dfdee3e0e",
+        "version" : "2.6.1"
       }
     }
   ],

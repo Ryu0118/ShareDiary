@@ -10,8 +10,12 @@ import Rswift
 import RxSwift
 import RxCocoa
 import SnapKit
+import ProgressHUD
 
 class SetProfileViewController: UIViewController {
+
+    let authType: AuthType
+    let viewModel: SetProfileViewModel
 
     private let imageSize: CGFloat = 150
     private let disposeBag = DisposeBag()
@@ -36,8 +40,8 @@ class SetProfileViewController: UIViewController {
         return label
     }()
 
-    private let imageView: UIImageView = {
-        let imageView = UIImageView(image: R.image.nouser())
+    private let imageView: EditImageView = {
+        let imageView = EditImageView(image: R.image.nouser())
         return imageView
     }()
 
@@ -82,7 +86,7 @@ class SetProfileViewController: UIViewController {
     private let introduction: InputTextView = {
         let field = InputTextView(frame: .zero)
         field.font = Theme.Font.getAppFont(size: 14)
-        field.placeHolder = NSLocalizedString("100文字以内で入力してください", comment: "")
+        field.placeHolder = NSLocalizedString("100文字以内で入力してください (任意)", comment: "")
         field.text = "自己紹介"
         field.text = ""
         field.layoutBlock = {
@@ -102,6 +106,15 @@ class SetProfileViewController: UIViewController {
         }
         return button
     }()
+
+    // MARK: Initializer
+    required init(authType: AuthType, viewModel: SetProfileViewModel) {
+        self.authType = authType
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,6 +216,36 @@ extension SetProfileViewController {
 
     }
 
+    private func showMainViewController() {
+        let main = MainViewController()
+        main.modalPresentationStyle = .fullScreen
+
+        let window = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window
+        window?.rootViewController = main
+        window?.makeKeyAndVisible()
+    }
+
+    private func showRegistrationViewController() {
+        let registrationVC = RegistrationViewController()
+        registrationVC.modalPresentationStyle = .fullScreen
+        self.present(registrationVC, animated: true)
+    }
+
+    private func allDisabled() {
+        [imageView, nameField, userNameField, registerButton, introduction]
+            .forEach { component in
+                component.isUserInteractionEnabled = false
+            }
+    }
+
+    private func allEnabled() {
+        [imageView, nameField, userNameField, registerButton, introduction]
+            .forEach { component in
+                component.isUserInteractionEnabled = true
+            }
+    }
+
+    // MARK: bind
     private func bind() {
 
         let tapGesture = UITapGestureRecognizer()
@@ -215,6 +258,66 @@ extension SetProfileViewController {
             .disposed(by: disposeBag)
         view.addGestureRecognizer(tapGesture)
 
+        imageView.croppedImage
+            .asObservable()
+            .observe(on: MainScheduler.instance)
+            .withUnretained(imageView)
+            .subscribe(onNext: { imageView, image in
+                imageView.image = image
+            })
+            .disposed(by: disposeBag)
+
+        nameField.text.orEmpty
+            .asDriver()
+            .drive(viewModel.inputs.nameObserver)
+            .disposed(by: disposeBag)
+
+        userNameField.text.orEmpty
+            .asDriver()
+            .drive(viewModel.inputs.userNameObserver)
+            .disposed(by: disposeBag)
+
+        registerButton.rx.tap
+            .withLatestFrom(viewModel.outputs.isValidUserInfo)
+            .do(onNext: {[weak self] errors in
+                if !errors.isEmpty {
+                    ProgressHUD.showError(errors.joined(separator: "\n"))
+                } else {
+                    ProgressHUD.show()
+                    self?.allDisabled()
+                }
+            })
+            .filter { $0.isEmpty }
+            .withLatestFrom(
+                Observable.combineLatest(
+                    imageView.croppedImage.asObservable(),
+                    nameField.text.orEmpty.asObservable(),
+                    userNameField.text.orEmpty.asObservable(),
+                    introduction.rx.text.orEmpty.asObservable()
+                )
+            )
+            .observe(on: MainScheduler.instance)
+            .map { UserInfo(name: $1, userID: $2, image: $0, discription: $3) }
+            .bind(to: viewModel.inputs.userInfo)
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.isAuthorizationSuccessed
+            .do(onNext: {[weak self] _ in
+                ProgressHUD.dismiss()
+                self?.allEnabled()
+            })
+            .drive {[weak self] response in
+                guard let self = self else { return }
+                if response.isEmpty {
+                    self.showMainViewController()
+                    Persisted.removeAuthInfo()
+                } else {
+                    ProgressHUD.showError(response)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        // keyboard will hide
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
             .map { notification -> CGFloat in
                 (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
@@ -228,6 +331,7 @@ extension SetProfileViewController {
             }
             .disposed(by: disposeBag)
 
+        // keyboard will show
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
             .map { notification -> CGFloat in
                 (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0

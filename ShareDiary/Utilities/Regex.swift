@@ -16,6 +16,7 @@ class Regex {
 }
 
 extension Regex {
+
     static func isValidEmail(_ text: String) -> Bool {
         evaluate(text, pattern: "^[a-zA-Z0-9_+-]+(.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*.)+[a-zA-Z]{2,}$")
     }
@@ -23,4 +24,14 @@ extension Regex {
     static func isValidPassword(_ text: String) -> Bool {
         evaluate(text, pattern: "^[a-zA-Z0-9]{8,24}$")
     }
+
+    static func isValidUserName(_ text: String) -> Bool {
+        evaluate(text, pattern: "[a-zA-Z0-9]{1,20}")
+    }
+
+    // not regular expression
+    static func isValidText(_ text: String, limit: Int) -> Bool {
+        text.count <= limit && !text.isEmpty
+    }
+
 }

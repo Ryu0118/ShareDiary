@@ -11,6 +11,7 @@ import AuthenticationServices
 import RxSwift
 import RxCocoa
 import FirebaseAuth
+import ProgressHUD
 
 // Cannot write to ViewModel Because UIViewController can only be Authentication Delegate
 extension RegistrationViewController {
@@ -110,16 +111,13 @@ extension RegistrationViewController: ASAuthorizationControllerDelegate, ASAutho
             idToken: idTokenString,
             rawNonce: nonce)
 
-        Auth.auth().signIn(with: oAuthCredential) {[weak self] _, error in
-            guard let self = self else { return }
-            if let error = error {
-                self.authenticationResponse.accept(error.localizedDescription)
-            } else {
-                self.authenticationResponse.accept("")
-                self.navigationController?.popViewController(animated: true)
-            }
+        self.navigationController?.popViewController(animated: true)
 
-        }
+        let authType: AuthType = .apple(oAuthCredential)
 
+        let setProfileVC = SetProfileViewController(authType: authType, viewModel: SetProfileViewModel(authType: authType))
+        setProfileVC.modalPresentationStyle = .fullScreen
+
+        self.present(setProfileVC, animated: true)
     }
 }

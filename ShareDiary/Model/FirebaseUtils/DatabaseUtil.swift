@@ -16,6 +16,21 @@ class DatabaseUtil {
 
     private let database = Database.database().reference()
 
+    func contains(_ collection: String, path: String) -> Observable<Bool> {
+        Observable<Bool>.create { observer -> Disposable in
+            self.database.child(collection).child(path).getData(completion: { error, snapshot in
+                if let error = error {
+                    observer.onError(error)
+                } else if let value = snapshot.value, !(value is NSNull) {
+                    observer.onNext(true)
+                } else {
+                    observer.onNext(false)
+                }
+            })
+            return Disposables.create()
+        }
+    }
+
     func getData(_ collection: String, path: String) -> Observable<Any> {
         Observable<Any>.create { observer -> Disposable in
             self.database.child(collection).child(path).getData { error, snapshot in

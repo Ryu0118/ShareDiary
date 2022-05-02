@@ -7,16 +7,15 @@
 
 import Foundation
 
-struct AuthorizationInfo: Codable {
-    let email: String
-    let password: String
-}
-
 class Persisted {
     static let shared = Persisted()
     private init() {}
 
     @Save<AuthorizationInfo>("Authorization", register: AuthorizationInfo(email: "", password: ""))
     static var auth: AuthorizationInfo
+
+    static func removeAuthInfo() {
+        auth = AuthorizationInfo(email: "", password: "")
+    }
 
 }

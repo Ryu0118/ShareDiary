@@ -8,7 +8,6 @@
 import RxSwift
 import RxCocoa
 import FirebaseAuth
-import FirebaseAuthUI
 
 protocol LoginViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }

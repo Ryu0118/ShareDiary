@@ -29,16 +29,6 @@
 		236308ED281BE36100F3F905 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 236308EC281BE36100F3F905 /* Differentiator */; };
 		236308EF281BE36100F3F905 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 236308EE281BE36100F3F905 /* RxDataSources */; };
 		236308F5281BEF0D00F3F905 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 236308F4281BEF0D00F3F905 /* .swiftlint.yml */; };
-		236308F8281BF62000F3F905 /* FirebaseAnonymousAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 236308F7281BF62000F3F905 /* FirebaseAnonymousAuthUI */; };
-		236308FA281BF62000F3F905 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 236308F9281BF62000F3F905 /* FirebaseAuthUI */; };
-		236308FC281BF62000F3F905 /* FirebaseDatabaseUI in Frameworks */ = {isa = PBXBuildFile; productRef = 236308FB281BF62000F3F905 /* FirebaseDatabaseUI */; };
-		236308FE281BF62000F3F905 /* FirebaseEmailAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 236308FD281BF62000F3F905 /* FirebaseEmailAuthUI */; };
-		23630900281BF62000F3F905 /* FirebaseFacebookAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 236308FF281BF62000F3F905 /* FirebaseFacebookAuthUI */; };
-		23630902281BF62000F3F905 /* FirebaseFirestoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630901281BF62000F3F905 /* FirebaseFirestoreUI */; };
-		23630904281BF62000F3F905 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630903281BF62000F3F905 /* FirebaseGoogleAuthUI */; };
-		23630906281BF62000F3F905 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630905281BF62000F3F905 /* FirebaseOAuthUI */; };
-		23630908281BF62000F3F905 /* FirebasePhoneAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630907281BF62000F3F905 /* FirebasePhoneAuthUI */; };
-		2363090A281BF62000F3F905 /* FirebaseStorageUI in Frameworks */ = {isa = PBXBuildFile; productRef = 23630909281BF62000F3F905 /* FirebaseStorageUI */; };
 		23630910281BFD6200F3F905 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 2363090F281BFD6200F3F905 /* SnapshotTesting */; };
 		23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630914281C3BCB00F3F905 /* LoginViewController.swift */; };
 		23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630916281C3BFD00F3F905 /* RegistrationViewController.swift */; };
@@ -73,6 +63,13 @@
 		23630966281E998200F3F905 /* StorageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630965281E998100F3F905 /* StorageUtil.swift */; };
 		23630968281EC74600F3F905 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630967281EC74600F3F905 /* SetProfileViewController.swift */; };
 		2363096A281EE26C00F3F905 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630969281EE26C00F3F905 /* InputTextView.swift */; };
+		2363096C281F09DF00F3F905 /* EditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363096B281F09DF00F3F905 /* EditImageView.swift */; };
+		2363096F281FE33600F3F905 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 2363096E281FE33600F3F905 /* CropViewController */; };
+		23630971281FE33600F3F905 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 23630970281FE33600F3F905 /* TOCropViewController */; };
+		23630973281FF0F700F3F905 /* SetProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630972281FF0F600F3F905 /* SetProfileViewModel.swift */; };
+		236309752820447E00F3F905 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309742820447D00F3F905 /* UserInfo.swift */; };
+		23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630976282044AA00F3F905 /* AuthorizationInfo.swift */; };
+		236309792820450600F3F905 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309782820450600F3F905 /* AuthType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +132,11 @@
 		23630965281E998100F3F905 /* StorageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUtil.swift; sourceTree = "<group>"; };
 		23630967281EC74600F3F905 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
 		23630969281EE26C00F3F905 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		2363096B281F09DF00F3F905 /* EditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageView.swift; sourceTree = "<group>"; };
+		23630972281FF0F600F3F905 /* SetProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewModel.swift; sourceTree = "<group>"; };
+		236309742820447D00F3F905 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		23630976282044AA00F3F905 /* AuthorizationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInfo.swift; sourceTree = "<group>"; };
+		236309782820450600F3F905 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +149,6 @@
 				236308CE281BDE1200F3F905 /* FirebaseCrashlytics in Frameworks */,
 				236308E0281BDEF600F3F905 /* RxCocoa in Frameworks */,
 				236308DA281BDE1200F3F905 /* FirebaseStorage in Frameworks */,
-				23630908281BF62000F3F905 /* FirebasePhoneAuthUI in Frameworks */,
-				2363090A281BF62000F3F905 /* FirebaseStorageUI in Frameworks */,
 				236308ED281BE36100F3F905 /* Differentiator in Frameworks */,
 				236308D6281BDE1200F3F905 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				236308CA281BDE1200F3F905 /* FirebaseAnalytics in Frameworks */,
@@ -158,17 +158,11 @@
 				236308D4281BDE1200F3F905 /* FirebaseFunctions in Frameworks */,
 				236308EF281BE36100F3F905 /* RxDataSources in Frameworks */,
 				236308D2281BDE1200F3F905 /* FirebaseFirestore in Frameworks */,
-				23630902281BF62000F3F905 /* FirebaseFirestoreUI in Frameworks */,
-				23630904281BF62000F3F905 /* FirebaseGoogleAuthUI in Frameworks */,
-				236308FC281BF62000F3F905 /* FirebaseDatabaseUI in Frameworks */,
+				23630971281FE33600F3F905 /* TOCropViewController in Frameworks */,
+				2363096F281FE33600F3F905 /* CropViewController in Frameworks */,
 				236308CC281BDE1200F3F905 /* FirebaseAuth in Frameworks */,
-				236308FE281BF62000F3F905 /* FirebaseEmailAuthUI in Frameworks */,
 				236308DD281BDE8000F3F905 /* SnapKit in Frameworks */,
-				23630900281BF62000F3F905 /* FirebaseFacebookAuthUI in Frameworks */,
-				23630906281BF62000F3F905 /* FirebaseOAuthUI in Frameworks */,
-				236308F8281BF62000F3F905 /* FirebaseAnonymousAuthUI in Frameworks */,
 				23630931281C63DA00F3F905 /* Rswift in Frameworks */,
-				236308FA281BF62000F3F905 /* FirebaseAuthUI in Frameworks */,
 				23630922281C456600F3F905 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +278,7 @@
 				23630918281C3C0A00F3F905 /* MainViewModel.swift */,
 				2363091A281C3C1B00F3F905 /* LoginViewModel.swift */,
 				2363091C281C3C2A00F3F905 /* RegistrationViewModel.swift */,
+				23630972281FF0F600F3F905 /* SetProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -295,6 +290,7 @@
 				2363093B281D331F00F3F905 /* InputTextField.swift */,
 				2363093D281D387300F3F905 /* WorldLifeLabel.swift */,
 				23630969281EE26C00F3F905 /* InputTextView.swift */,
+				2363096B281F09DF00F3F905 /* EditImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +343,9 @@
 				23630961281E91CE00F3F905 /* Authorization.swift */,
 				23630963281E996400F3F905 /* DatabaseUtil.swift */,
 				23630965281E998100F3F905 /* StorageUtil.swift */,
+				236309742820447D00F3F905 /* UserInfo.swift */,
+				23630976282044AA00F3F905 /* AuthorizationInfo.swift */,
+				236309782820450600F3F905 /* AuthType.swift */,
 			);
 			path = FirebaseUtils;
 			sourceTree = "<group>";
@@ -385,19 +384,11 @@
 				236308E3281BDEF600F3F905 /* RxSwift */,
 				236308EC281BE36100F3F905 /* Differentiator */,
 				236308EE281BE36100F3F905 /* RxDataSources */,
-				236308F7281BF62000F3F905 /* FirebaseAnonymousAuthUI */,
-				236308F9281BF62000F3F905 /* FirebaseAuthUI */,
-				236308FB281BF62000F3F905 /* FirebaseDatabaseUI */,
-				236308FD281BF62000F3F905 /* FirebaseEmailAuthUI */,
-				236308FF281BF62000F3F905 /* FirebaseFacebookAuthUI */,
-				23630901281BF62000F3F905 /* FirebaseFirestoreUI */,
-				23630903281BF62000F3F905 /* FirebaseGoogleAuthUI */,
-				23630905281BF62000F3F905 /* FirebaseOAuthUI */,
-				23630907281BF62000F3F905 /* FirebasePhoneAuthUI */,
-				23630909281BF62000F3F905 /* FirebaseStorageUI */,
 				23630921281C456600F3F905 /* FirebaseDynamicLinks */,
 				23630930281C63DA00F3F905 /* Rswift */,
 				23630956281E60E900F3F905 /* ProgressHUD */,
+				2363096E281FE33600F3F905 /* CropViewController */,
+				23630970281FE33600F3F905 /* TOCropViewController */,
 			);
 			productName = ShareDiary;
 			productReference = 23630893281BCF7C00F3F905 /* ShareDiary.app */;
@@ -481,11 +472,11 @@
 				236308DB281BDE8000F3F905 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				236308DE281BDEF500F3F905 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				236308EB281BE36100F3F905 /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
 				2363090E281BFD6200F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				23630920281C456600F3F905 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2363092F281C63DA00F3F905 /* XCRemoteSwiftPackageReference "R.swift" */,
 				23630955281E60E800F3F905 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				2363096D281FE33500F3F905 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 23630894281BCF7C00F3F905 /* Products */;
 			projectDirPath = "";
@@ -570,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */,
 				23630964281E996500F3F905 /* DatabaseUtil.swift in Sources */,
 				23630968281EC74600F3F905 /* SetProfileViewController.swift in Sources */,
 				23630948281D561C00F3F905 /* InteractiveButton.swift in Sources */,
@@ -577,6 +569,7 @@
 				23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */,
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
+				23630973281FF0F700F3F905 /* SetProfileViewModel.swift in Sources */,
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
 				2363089B281BCF7C00F3F905 /* MainViewController.swift in Sources */,
 				23630937281D2BDF00F3F905 /* UIColor+extensions.swift in Sources */,
@@ -588,8 +581,10 @@
 				23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */,
 				23630966281E998200F3F905 /* StorageUtil.swift in Sources */,
 				23630959281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift in Sources */,
+				2363096C281F09DF00F3F905 /* EditImageView.swift in Sources */,
 				23630933281C685500F3F905 /* HomeViewController.swift in Sources */,
 				2363094D281D902200F3F905 /* OAuthButton.swift in Sources */,
+				236309752820447E00F3F905 /* UserInfo.swift in Sources */,
 				2363093C281D331F00F3F905 /* InputTextField.swift in Sources */,
 				2363095D281E759E00F3F905 /* Save.swift in Sources */,
 				2363094A281D581F00F3F905 /* UIStackView+extensions.swift in Sources */,
@@ -599,6 +594,7 @@
 				2363095B281E728900F3F905 /* SignInWithMailHelper.swift in Sources */,
 				2363091B281C3C1B00F3F905 /* LoginViewModel.swift in Sources */,
 				23630962281E91CF00F3F905 /* Authorization.swift in Sources */,
+				236309792820450600F3F905 /* AuthType.swift in Sources */,
 				2363093A281D2C3800F3F905 /* Theme.swift in Sources */,
 				23630952281DB26800F3F905 /* Regex.swift in Sources */,
 			);
@@ -961,14 +957,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/FirebaseUI-iOS.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		2363090E281BFD6200F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
@@ -999,6 +987,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 13.0.0;
+			};
+		};
+		2363096D281FE33500F3F905 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1079,56 +1075,6 @@
 			package = 236308EB281BE36100F3F905 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
 		};
-		236308F7281BF62000F3F905 /* FirebaseAnonymousAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseAnonymousAuthUI;
-		};
-		236308F9281BF62000F3F905 /* FirebaseAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseAuthUI;
-		};
-		236308FB281BF62000F3F905 /* FirebaseDatabaseUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseDatabaseUI;
-		};
-		236308FD281BF62000F3F905 /* FirebaseEmailAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseEmailAuthUI;
-		};
-		236308FF281BF62000F3F905 /* FirebaseFacebookAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseFacebookAuthUI;
-		};
-		23630901281BF62000F3F905 /* FirebaseFirestoreUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseFirestoreUI;
-		};
-		23630903281BF62000F3F905 /* FirebaseGoogleAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseGoogleAuthUI;
-		};
-		23630905281BF62000F3F905 /* FirebaseOAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseOAuthUI;
-		};
-		23630907281BF62000F3F905 /* FirebasePhoneAuthUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebasePhoneAuthUI;
-		};
-		23630909281BF62000F3F905 /* FirebaseStorageUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 236308F6281BF62000F3F905 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
-			productName = FirebaseStorageUI;
-		};
 		2363090F281BFD6200F3F905 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2363090E281BFD6200F3F905 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
@@ -1148,6 +1094,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 23630955281E60E800F3F905 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
 			productName = ProgressHUD;
+		};
+		2363096E281FE33600F3F905 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2363096D281FE33500F3F905 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		23630970281FE33600F3F905 /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2363096D281FE33500F3F905 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

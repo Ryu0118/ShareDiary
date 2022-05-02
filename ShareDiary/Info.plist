@@ -5,11 +5,15 @@
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>CFBundleIcons</key>
-	<dict/>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
-	<key>UILaunchScreen</key>
-	<dict>
+    <dict/>
+    <key>CFBundleIcons~ipad</key>
+    <dict/>
+    <key>NSCameraUsageDescription</key>
+    <string>Need camera access for uploading Images</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>NeedLibrary access for uploading Images</string>
+    <key>UILaunchScreen</key>
+    <dict>
 		<key>UIImageName</key>
 		<string>diary</string>
 	</dict>

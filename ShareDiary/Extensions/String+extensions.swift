@@ -6,5 +6,12 @@
 //
 
 import Foundation
+import RxSwift
 
-extension String: LocalizedError {}
+extension String: LocalizedError {
+
+    func asObservable() -> Observable<String> {
+        Observable<String>.just(self)
+    }
+
+}

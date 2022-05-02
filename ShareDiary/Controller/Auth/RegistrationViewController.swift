@@ -254,22 +254,9 @@ class RegistrationViewController: UIViewController {
 
         appleButton.rx.tap
             .withUnretained(self)
-            .do { strongSelf, _ in
+            .subscribe { strongSelf, _ in
                 strongSelf.appleButton.isEnabled = false
-                ProgressHUD.show()
-            }
-            .flatMap { strongSelf, _ -> Observable<String> in
                 strongSelf.requestSignInAppleFlow()
-                return strongSelf.authenticationResponse.asObservable()
-            }
-            .asDriver(onErrorJustReturn: "エラーが発生しました。再度ログインを実行してください")
-            .drive {[unowned self] response in
-                appleButton.isEnabled = true
-                if response.isEmpty { // successed!!
-                    ProgressHUD.showSuccess(NSLocalizedString("ログインに成功しました", comment: ""))
-                } else {
-                    ProgressHUD.showError(response, interaction: true)
-                }
             }
             .disposed(by: disposeBag)
 
