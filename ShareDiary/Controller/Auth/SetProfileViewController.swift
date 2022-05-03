@@ -12,10 +12,12 @@ import RxCocoa
 import SnapKit
 import ProgressHUD
 
-class SetProfileViewController: UIViewController {
+class SetProfileViewController: UIViewController, LoginComponents {
 
     let authType: AuthType
     let viewModel: SetProfileViewModel
+
+    var isUserCreateRequired: Bool
 
     private let imageSize: CGFloat = 150
     private let disposeBag = DisposeBag()
@@ -108,7 +110,8 @@ class SetProfileViewController: UIViewController {
     }()
 
     // MARK: Initializer
-    required init(authType: AuthType, viewModel: SetProfileViewModel) {
+    required init(authType: AuthType, viewModel: SetProfileViewModel, isUserCreateRequired: Bool = true) {
+        self.isUserCreateRequired = true
         self.authType = authType
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -214,15 +217,6 @@ extension SetProfileViewController {
             $0.height.equalTo(50)
         }
 
-    }
-
-    private func showMainViewController() {
-        let main = MainViewController()
-        main.modalPresentationStyle = .fullScreen
-
-        let window = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window
-        window?.rootViewController = main
-        window?.makeKeyAndVisible()
     }
 
     private func showRegistrationViewController() {

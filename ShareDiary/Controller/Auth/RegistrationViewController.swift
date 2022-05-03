@@ -16,7 +16,7 @@ import ProgressHUD
 
 class RegistrationViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
 
     private let viewModel = RegistrationViewModel()
 
@@ -258,6 +258,30 @@ class RegistrationViewController: UIViewController {
                 strongSelf.appleButton.isEnabled = false
                 strongSelf.requestSignInAppleFlow()
             }
+            .disposed(by: disposeBag)
+
+        googleButton.rx.tap
+            .withUnretained(self)
+            .do { strongSelf, _ in
+                strongSelf.googleButton.isEnabled = false
+            }
+            .flatMap { strongSelf, _ -> Observable<String> in
+                strongSelf.viewModel.inputs.registerWithGoogle()
+            }
+            .subscribe(onNext: {error in
+                if !error.isEmpty {
+                    ProgressHUD.showFailed(error, interaction: true)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        authenticationResponse.asObservable()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {error in
+                if !error.isEmpty {
+                    ProgressHUD.showFailed(error, interaction: true)
+                }
+            })
             .disposed(by: disposeBag)
 
         let tapGesture = UITapGestureRecognizer()

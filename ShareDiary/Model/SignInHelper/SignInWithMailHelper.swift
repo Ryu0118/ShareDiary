@@ -32,8 +32,8 @@ class SignInWithMailHelper {
         }
     }
 
-    func signInWithMail() {
-
+    func signInWithMail(email: String, password: String) -> Observable<String> {
+        Authorization.shared.signIn(email: email, password: password)
     }
 
 }

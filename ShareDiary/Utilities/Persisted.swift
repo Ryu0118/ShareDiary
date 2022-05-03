@@ -14,6 +14,9 @@ class Persisted {
     @Save<AuthorizationInfo>("Authorization", register: AuthorizationInfo(email: "", password: ""))
     static var auth: AuthorizationInfo
 
+    @Save<String>("AppleIDEmail", register: "")
+    static var appleID: String
+
     static func removeAuthInfo() {
         auth = AuthorizationInfo(email: "", password: "")
     }

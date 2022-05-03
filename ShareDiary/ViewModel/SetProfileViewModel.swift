@@ -6,6 +6,7 @@
 //
 import Foundation
 import RxSwift
+import FirebaseAuth
 import RxCocoa
 
 protocol SetProfileViewModelInputs: AnyObject {
@@ -25,6 +26,7 @@ class SetProfileViewModel: SetProfileViewModelInputs, SetProfileViewModelOutputs
     var outputs: SetProfileViewModelOutputs { self }
 
     let authType: AuthType
+    var isUserCreateRequired = true
 
     // inputs
     private let userInfoSubject = PublishSubject<UserInfo>()
@@ -44,12 +46,23 @@ class SetProfileViewModel: SetProfileViewModelInputs, SetProfileViewModelOutputs
     var isAuthorizationSuccessed: Driver<String>
     var isValidUserInfo: Driver<[String]>
 
-    init(authType: AuthType) {
-
+    init(authType: AuthType, isUserCreateRequired: Bool = true) {
         self.authType = authType
+        self.isUserCreateRequired = isUserCreateRequired
 
         isAuthorizationSuccessed = userInfoSubject
-            .flatMap { Authorization.shared.createUser(info: $0, authType: authType) }
+            .flatMap { userInfo -> Observable<String> in
+                if isUserCreateRequired {
+                    return Authorization.shared.createUser(info: userInfo, authType: authType)
+                } else {
+                    if let user = Auth.auth().currentUser {
+                        Authorization.shared.setUserInfoData(userInfo: userInfo, user: user)
+                        return "".asObservable()
+                    } else {
+                        fatalError("Current User not found")
+                    }
+                }
+            }
             .asDriver(onErrorJustReturn: NSLocalizedString("ユーザーを作成できませんでした。最初からやり直してください", comment: ""))
 
         isValidUserInfo = Observable.combineLatest(nameSubject, userNameSubject)

@@ -12,6 +12,6 @@ import AuthenticationServices
 enum AuthType {
     case email
     case apple(OAuthCredential)
-    case google
+    case google(AuthCredential)
     case twitter
 }

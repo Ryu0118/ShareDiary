@@ -1,8 +1,8 @@
 //
-//  RegistrationViewController+OAuth.swift
+//  LoginViewController+OAuth.swift
 //  ShareDiary
 //
-//  Created by Ryu on 2022/05/01.
+//  Created by Ryu on 2022/05/04.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ import FirebaseAuth
 import ProgressHUD
 
 // Cannot write to ViewModel Because UIViewController can only be Authentication Delegate
-extension RegistrationViewController: LoginComponents {
+extension LoginViewController: LoginComponents {
 
     func requestSignInAppleFlow() {
         let nonce = CryptUtil.randomNonceString()
@@ -27,11 +27,10 @@ extension RegistrationViewController: LoginComponents {
         controller.presentationContextProvider = self
         controller.performRequests()
     }
-
 }
 
 // Cannot write to ViewModel Because UIViewController can only be Authentication Delegate
-extension RegistrationViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         view.window ?? UIWindow()
     }

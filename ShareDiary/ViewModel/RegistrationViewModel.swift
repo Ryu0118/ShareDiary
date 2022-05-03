@@ -8,11 +8,12 @@
 import RxSwift
 import RxCocoa
 import FirebaseAuth
+import GoogleSignIn
 
 protocol RegistrationViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }
     var passwordObserver: AnyObserver<String> { get }
-    func registerWithGoogle()
+    func registerWithGoogle() -> Observable<String>
     func registerWithTwitter()
 }
 
@@ -81,8 +82,8 @@ class RegistrationViewModel: RegistrationViewModelInputs, RegistrationViewModelO
         return helper.signUpWithMail(emailAddress: email)
     }
 
-    func registerWithGoogle() {
-
+    func registerWithGoogle() -> Observable<String> {
+        SignInWithGoogleHelper().signInWithGoogle()
     }
 
     func registerWithTwitter() {

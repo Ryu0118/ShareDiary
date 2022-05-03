@@ -2,25 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.947698645091-9tsgsag0kvngg0ndhjev5dq9f9ok4oo4</string>
+			</array>
+		</dict>
+	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
-	<key>CFBundleIcons</key>
-    <dict/>
-    <key>CFBundleIcons~ipad</key>
-    <dict/>
-    <key>NSCameraUsageDescription</key>
-    <string>Need camera access for uploading Images</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>NeedLibrary access for uploading Images</string>
-    <key>UILaunchScreen</key>
-    <dict>
-		<key>UIImageName</key>
-		<string>diary</string>
-	</dict>
-    <key>FirebaseDynamicLinksCustomDomains</key>
-    <array>
-      <string>https://sharediary.com/sign_in</string>
-    </array>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://sharediary.com/sign_in</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -37,6 +39,11 @@
 				</dict>
 			</array>
 		</dict>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>diary</string>
 	</dict>
 </dict>
 </plist>

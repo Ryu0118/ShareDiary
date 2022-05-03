@@ -12,13 +12,19 @@ import Rswift
 import RxCocoa
 import FirebaseAuth
 import SwiftUI
+import ProgressHUD
 
 class LoginViewController: UIViewController {
 
     // MARK: Properties
 
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     private let viewModel = LoginViewModel()
+
+    // required Apple OAuth
+
+    var currentNonce: String?
+    var authenticationResponse = PublishRelay<String>()
 
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -225,15 +231,49 @@ class LoginViewController: UIViewController {
             .drive(viewModel.inputs.passwordObserver)
             .disposed(by: disposeBag)
 
+        appleButton.rx.tap
+            .asDriver()
+            .drive {[weak self] _ in
+                self?.requestSignInAppleFlow()
+            }
+            .disposed(by: disposeBag)
+
+        authenticationResponse.asObservable()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {error in
+                if !error.isEmpty {
+                    ProgressHUD.showFailed(error, interaction: true)
+                } else {
+                    print("成功しました。")
+                }
+            })
+            .disposed(by: disposeBag)
+
         signInButton.rx.tap
             .withLatestFrom(viewModel.outputs.shouldLogin)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { errors in
-                if errors.isEmpty {
-                    print("問題なし")
-                } else {
+            .do(onNext: { errors in
+                if !errors.isEmpty {
                     let error = errors.joined(separator: "\n")
-                    print(error)
+                    ProgressHUD.showFailed(error, interaction: true)
+                }
+            })
+            .filter { $0.isEmpty }
+            .withLatestFrom(
+                Observable.combineLatest(
+                    mailAddressField.text.orEmpty.asObservable(),
+                    passwordField.text.orEmpty.asObservable()
+                )
+            )
+            .flatMap {[weak self] email, password -> Observable<String> in
+                self?.viewModel.inputs.loginWithEmail(email: email, password: password) ?? NSLocalizedString("ログインに失敗しました", comment: "").asObservable()
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] error in
+                if error.isEmpty {
+                    self?.showMainViewController()
+                } else {
+                    ProgressHUD.showFailed(error, interaction: true)
                 }
             })
             .disposed(by: disposeBag)

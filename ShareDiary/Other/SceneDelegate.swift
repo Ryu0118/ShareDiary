@@ -64,7 +64,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     return
                 }
                 if Auth.auth().isSignIn(withEmailLink: link) && !email.isEmpty && !password.isEmpty {
-                    let setProfileVC = SetProfileViewController(authType: .email, viewModel: SetProfileViewModel(authType: .email))
+                    let setProfileVC =
+                        SetProfileViewController(authType: .email, viewModel: SetProfileViewModel(authType: .email))
                     setProfileVC.modalPresentationStyle = .fullScreen
                     setProfileVC.modalTransitionStyle = .coverVertical
                     strongSelf.window?.rootViewController = setProfileVC

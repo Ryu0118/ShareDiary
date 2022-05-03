@@ -8,6 +8,7 @@
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import GoogleSignIn
 import RxSwift
 import RxCocoa
 import UIKit
@@ -39,12 +40,30 @@ class Authorization {
         }
     }
 
-    private func setUserInfoData(userInfo: UserInfo, user: User) {
+    func signIn(with appleIDCredential: OAuthCredential) -> Observable<String> {
+        Observable<String>.create { observer -> Disposable in
+            Auth.auth().signIn(with: appleIDCredential) {result, error in
+                if let error = error {
+                    observer.onNext(error.localizedDescription)
+                } else if let _ = result?.user {
+                    observer.onNext("")
+                } else {
+                    observer.onNext(NSLocalizedString("ログインに失敗しました", comment: ""))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+
+    func setUserInfoData(userInfo: UserInfo, user: User) {
         DatabaseUtil.shared.setData("users", path: userInfo.userID, data: [
             "uid": user.uid,
             "name": userInfo.name,
             "userID": userInfo.userID,
             "discription": userInfo.discription
+        ])
+        DatabaseUtil.shared.setData("users_uid", path: user.uid, data: [
+            "userID": userInfo.userID
         ])
     }
 
@@ -57,6 +76,8 @@ class Authorization {
             } else if let user = result?.user {
                 self.setUserInfoData(userInfo: userInfo, user: user)
                 observer.onNext("")
+            } else {
+                observer.onNext(NSLocalizedString("認証に失敗しました", comment: ""))
             }
         }
     }
@@ -69,8 +90,38 @@ class Authorization {
             } else if let user = result?.user {
                 self.setUserInfoData(userInfo: userInfo, user: user)
                 observer.onNext("")
+            } else {
+                observer.onNext(NSLocalizedString("認証に失敗しました", comment: ""))
             }
+        }
+    }
 
+    private func createWithGoogle(credential: AuthCredential, userInfo: UserInfo, observer: AnyObserver<String>) {
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                observer.onNext(error.localizedDescription)
+            } else if let user = authResult?.user {
+                self.setUserInfoData(userInfo: userInfo, user: user)
+                observer.onNext("")
+            } else {
+                observer.onNext(NSLocalizedString("認証に失敗しました", comment: ""))
+            }
+        }
+
+    }
+
+    func signIn(email: String, password: String) -> Observable<String> {
+        Observable<String>.create { observer -> Disposable in
+            Auth.auth().signIn(withEmail: email, password: password) {result, error in
+                if let error = error {
+                    observer.onNext(error.localizedDescription)
+                } else if let _ = result {
+                    observer.onNext("")
+                } else {
+                    observer.onNext(NSLocalizedString("ログインに失敗しました。", comment: ""))
+                }
+            }
+            return Disposables.create()
         }
     }
 
@@ -87,8 +138,8 @@ class Authorization {
                         self.createWithEmail(userInfo: info, observer: observer)
                     case .apple(let credential):
                         self.createWithApple(credential: credential, userInfo: info, observer: observer)
-                    case .google:
-                        fatalError()
+                    case .google(let credential):
+                        self.createWithGoogle(credential: credential, userInfo: info, observer: observer)
                     case .twitter:
                         fatalError()
                     }
@@ -97,4 +148,8 @@ class Authorization {
 
             }
     }
+}
+
+extension UIAlertController {
+
 }

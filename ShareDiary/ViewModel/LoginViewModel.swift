@@ -12,6 +12,7 @@ import FirebaseAuth
 protocol LoginViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }
     var passwordObserver: AnyObserver<String> { get }
+    func loginWithEmail(email: String, password: String) -> Observable<String>
 }
 
 protocol LoginViewModelOutputs: AnyObject {
@@ -59,6 +60,10 @@ class LoginViewModel: LoginViewModelInputs, LoginViewModelOutputs {
             return response
         }
 
+    }
+
+    func loginWithEmail(email: String, password: String) -> Observable<String> {
+        SignInWithMailHelper().signInWithMail(email: email, password: password)
     }
 
 }
