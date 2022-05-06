@@ -14,7 +14,7 @@ protocol RegistrationViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }
     var passwordObserver: AnyObserver<String> { get }
     func registerWithGoogle() -> Observable<String>
-    func registerWithTwitter()
+    func registerWithTwitter(provider: OAuthProvider) -> Observable<String>
 }
 
 protocol RegistrationViewModelOutputs: AnyObject {
@@ -86,8 +86,8 @@ class RegistrationViewModel: RegistrationViewModelInputs, RegistrationViewModelO
         SignInWithGoogleHelper().signInWithGoogle()
     }
 
-    func registerWithTwitter() {
-
+    func registerWithTwitter(provider: OAuthProvider) -> Observable<String> {
+        SignInWithTwitterHelper().signInWithTwitter(provider: provider)
     }
 
 }

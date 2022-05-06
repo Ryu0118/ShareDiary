@@ -40,7 +40,7 @@ class Authorization {
         }
     }
 
-    func signIn(with appleIDCredential: OAuthCredential) -> Observable<String> {
+    func signIn(with appleIDCredential: AuthCredential) -> Observable<String> {
         Observable<String>.create { observer -> Disposable in
             Auth.auth().signIn(with: appleIDCredential) {result, error in
                 if let error = error {
@@ -65,6 +65,19 @@ class Authorization {
         DatabaseUtil.shared.setData("users_uid", path: user.uid, data: [
             "userID": userInfo.userID
         ])
+    }
+
+    func setUserInfoWithImage(userInfo: UserInfo, user: User) -> Observable<String> {
+        StorageUtil.shared.saveImage(path: "users/\(userInfo.userID).jpg", image: userInfo.image)
+            .flatMap { storageError -> Observable<String> in
+                if storageError.isEmpty {
+                    self.setUserInfoData(userInfo: userInfo, user: user)
+                    return "".asObservable()
+                } else {
+                    return storageError.asObservable()
+                }
+            }
+
     }
 
     private func createWithEmail(userInfo: UserInfo, observer: AnyObserver<String>) {

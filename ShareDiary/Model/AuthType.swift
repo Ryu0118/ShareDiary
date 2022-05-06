@@ -13,5 +13,5 @@ enum AuthType {
     case email
     case apple(OAuthCredential)
     case google(AuthCredential)
-    case twitter
+    case twitter(AuthCredential)
 }

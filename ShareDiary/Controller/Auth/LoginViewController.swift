@@ -21,10 +21,12 @@ class LoginViewController: UIViewController {
     let disposeBag = DisposeBag()
     private let viewModel = LoginViewModel()
 
-    // required Apple OAuth
-
+    // required for Apple OAuth
     var currentNonce: String?
     var authenticationResponse = PublishRelay<String>()
+
+    // required for Twitter OAuth
+    var provider = OAuthProvider(providerID: "twitter.com")
 
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -131,6 +133,8 @@ class LoginViewController: UIViewController {
         view.backgroundColor = Theme.Color.appBackgroundColor
         setupView()
         bind()
+        // If a login flow using OAuth is interrupted in the middle of a login flow, the user must sign out to avoid problems.
+        try? Auth.auth().signOut()
     }
 
     // MARK: setupView
@@ -244,7 +248,41 @@ class LoginViewController: UIViewController {
                 if !error.isEmpty {
                     ProgressHUD.showFailed(error, interaction: true)
                 } else {
-                    print("成功しました。")
+                    print("成功しました")
+                }
+            })
+            .disposed(by: disposeBag)
+
+        googleButton.rx.tap
+            .withUnretained(self)
+            .do { strongSelf, _ in
+                strongSelf.googleButton.isEnabled = false
+            }
+            .flatMap { strongSelf, _ -> Observable<String> in
+                strongSelf.viewModel.inputs.loginWithGoogle()
+            }
+            .withUnretained(self)
+            .subscribe(onNext: {strongSelf, error in
+                strongSelf.googleButton.isEnabled = true
+                if !error.isEmpty {
+                    ProgressHUD.showFailed(error, interaction: true)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        twitterButton.rx.tap
+            .withUnretained(self)
+            .do { strongSelf, _ in
+                strongSelf.twitterButton.isEnabled = false
+            }
+            .flatMap { strongSelf, _ -> Observable<String> in
+                strongSelf.viewModel.inputs.loginWithTwitter(provider: strongSelf.provider)
+            }
+            .withUnretained(self)
+            .subscribe(onNext: {strongSelf, error in
+                strongSelf.twitterButton.isEnabled = true
+                if !error.isEmpty {
+                    ProgressHUD.showFailed(error)
                 }
             })
             .disposed(by: disposeBag)

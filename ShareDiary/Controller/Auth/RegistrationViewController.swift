@@ -20,9 +20,12 @@ class RegistrationViewController: UIViewController {
 
     private let viewModel = RegistrationViewModel()
 
-    // Require with apple signing
+    // Required for apple authentication
     var currentNonce: String?
     var authenticationResponse = PublishRelay<String>()
+
+    // Required for twitter authentication
+    var provider = OAuthProvider(providerID: "twitter.com")
 
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -127,6 +130,8 @@ class RegistrationViewController: UIViewController {
         view.backgroundColor = Theme.Color.appBackgroundColor
         setupView()
         bind()
+        // If a login flow using OAuth is interrupted in the middle of a login flow, the user must sign out to avoid problems.
+        try? Auth.auth().signOut()
     }
 
     private func setupView() {
@@ -255,7 +260,6 @@ class RegistrationViewController: UIViewController {
         appleButton.rx.tap
             .withUnretained(self)
             .subscribe { strongSelf, _ in
-                strongSelf.appleButton.isEnabled = false
                 strongSelf.requestSignInAppleFlow()
             }
             .disposed(by: disposeBag)
@@ -268,7 +272,26 @@ class RegistrationViewController: UIViewController {
             .flatMap { strongSelf, _ -> Observable<String> in
                 strongSelf.viewModel.inputs.registerWithGoogle()
             }
-            .subscribe(onNext: {error in
+            .withUnretained(self)
+            .subscribe(onNext: {strongSelf, error in
+                strongSelf.googleButton.isEnabled = true
+                if !error.isEmpty {
+                    ProgressHUD.showFailed(error, interaction: true)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        twitterButton.rx.tap
+            .withUnretained(self)
+            .do { strongSelf, _ in
+                strongSelf.twitterButton.isEnabled = false
+            }
+            .flatMap { strongSelf, _ -> Observable<String> in
+                strongSelf.viewModel.inputs.registerWithTwitter(provider: strongSelf.provider)
+            }
+            .withUnretained(self)
+            .subscribe(onNext: {strongSelf, error in
+                strongSelf.twitterButton.isEnabled = true
                 if !error.isEmpty {
                     ProgressHUD.showFailed(error, interaction: true)
                 }

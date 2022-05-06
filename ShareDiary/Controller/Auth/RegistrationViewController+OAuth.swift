@@ -86,6 +86,7 @@ extension RegistrationViewController: ASAuthorizationControllerDelegate, ASAutho
             showSetProfileVC()
         } else { // After the second Login Request
             Authorization.shared.signIn(with: oAuthCredential)
+                .do { _ in ProgressHUD.show() }
                 .subscribe(onNext: {[weak self] error in
                     guard let self = self else { return }
                     // if error does not exist, if uid is nil
@@ -96,6 +97,7 @@ extension RegistrationViewController: ASAuthorizationControllerDelegate, ASAutho
                             .catch { _ -> Observable<Bool> in
                                 return Observable<Bool>.just(false)
                             }
+                            .do { _ in ProgressHUD.dismiss() }
                             .subscribe(onNext: { isContains in
                                 if isContains {
                                     self.showMainViewController()
@@ -108,6 +110,7 @@ extension RegistrationViewController: ASAuthorizationControllerDelegate, ASAutho
 
                     } else {
                         // When Sign in fails
+                        ProgressHUD.dismiss()
                         self.authenticationResponse.accept(error)
                     }
                 })

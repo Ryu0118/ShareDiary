@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 import Rswift
 import RxSwift
 import RxCocoa
 import SnapKit
 import ProgressHUD
+import SDWebImage
 
 class SetProfileViewController: UIViewController, LoginComponents {
 
@@ -123,6 +125,7 @@ class SetProfileViewController: UIViewController, LoginComponents {
         super.viewDidLoad()
         view.backgroundColor = Theme.Color.appBackgroundColor
         setup()
+        setDefaultValue()
         bind()
     }
 
@@ -130,6 +133,17 @@ class SetProfileViewController: UIViewController, LoginComponents {
 
 // MARK: Methods
 extension SetProfileViewController {
+
+    private func setDefaultValue() {
+        if let user = Auth.auth().currentUser {
+            if let photoURL = user.photoURL {
+                imageView.sd_setImage(with: photoURL, placeholderImage: R.image.nouser())
+            }
+            if let displayName = user.displayName {
+                nameField.textField.text = displayName
+            }
+        }
+    }
 
     private func setup() {
         view.addSubview(stackView)

@@ -56,8 +56,7 @@ class SetProfileViewModel: SetProfileViewModelInputs, SetProfileViewModelOutputs
                     return Authorization.shared.createUser(info: userInfo, authType: authType)
                 } else {
                     if let user = Auth.auth().currentUser {
-                        Authorization.shared.setUserInfoData(userInfo: userInfo, user: user)
-                        return "".asObservable()
+                        return Authorization.shared.setUserInfoWithImage(userInfo: userInfo, user: user)
                     } else {
                         fatalError("Current User not found")
                     }

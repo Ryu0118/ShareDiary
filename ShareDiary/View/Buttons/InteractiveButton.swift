@@ -17,8 +17,6 @@ class InteractiveButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        self.layer.cornerRadius = 10
         self.setTitleColor(.white, for: .normal)
         self.titleLabel?.font = Theme.Font.getAppFont(size: 16)
 

@@ -13,6 +13,8 @@ protocol LoginViewModelInputs: AnyObject {
     var emailObserver: AnyObserver<String> { get }
     var passwordObserver: AnyObserver<String> { get }
     func loginWithEmail(email: String, password: String) -> Observable<String>
+    func loginWithGoogle() -> Observable<String>
+    func loginWithTwitter(provider: OAuthProvider) -> Observable<String>
 }
 
 protocol LoginViewModelOutputs: AnyObject {
@@ -64,6 +66,14 @@ class LoginViewModel: LoginViewModelInputs, LoginViewModelOutputs {
 
     func loginWithEmail(email: String, password: String) -> Observable<String> {
         SignInWithMailHelper().signInWithMail(email: email, password: password)
+    }
+
+    func loginWithGoogle() -> Observable<String> {
+        SignInWithGoogleHelper().signInWithGoogle()
+    }
+
+    func loginWithTwitter(provider: OAuthProvider) -> Observable<String> {
+        SignInWithTwitterHelper().signInWithTwitter(provider: provider)
     }
 
 }

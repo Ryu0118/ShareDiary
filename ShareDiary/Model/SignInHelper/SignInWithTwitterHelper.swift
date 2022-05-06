@@ -1,18 +1,17 @@
 //
-//  SignInWithGoogleHelper.swift
+//  SignInWithTwitterHelper.swift
 //  ShareDiary
 //
-//  Created by Ryu on 2022/05/03.
+//  Created by Ryu on 2022/05/05.
 //
 
-import GoogleSignIn
+import UIKit
 import Firebase
 import RxSwift
 import RxCocoa
-import Foundation
 import ProgressHUD
 
-class SignInWithGoogleHelper: LoginComponents {
+class SignInWithTwitterHelper: LoginComponents {
 
     private func showSetProfileVC(isUserCreateRequired: Bool = true, authType: AuthType) {
         let setProfileVC = SetProfileViewController(authType: authType, viewModel: SetProfileViewModel(authType: authType, isUserCreateRequired: isUserCreateRequired), isUserCreateRequired: isUserCreateRequired)
@@ -21,33 +20,16 @@ class SignInWithGoogleHelper: LoginComponents {
         UIApplication.topViewController()?.present(setProfileVC, animated: true)
     }
 
-    func signInWithGoogle() -> Observable<String> {
+    func signInWithTwitter(provider: OAuthProvider) -> Observable<String> {
         Observable<(String, AuthCredential?)>.create { observer -> Disposable in
-            guard let clientID = FirebaseApp.app()?.options.clientID, let topViewController = UIApplication.topViewController() else {
-                observer.onNext((NSLocalizedString("clientIDが見つかりませんでした。", comment: ""), nil))
-                return Disposables.create()
-            }
-            let config = GIDConfiguration(clientID: clientID)
-
-            // Start the sign in flow!
-            GIDSignIn.sharedInstance.signIn(with: config, presenting: topViewController) {user, error in
+            provider.getCredentialWith(nil) { credential, error in
                 if let error = error {
                     observer.onNext((error.localizedDescription, nil))
-                    return
+                } else if let credential = credential {
+                    observer.onNext(("", credential))
+                } else {
+                    observer.onNext((NSLocalizedString("Twitter認証に失敗しました", comment: ""), nil))
                 }
-
-                guard
-                    let authentication = user?.authentication,
-                    let idToken = authentication.idToken
-                else {
-                    observer.onNext((NSLocalizedString("認証に失敗しました", comment: ""), nil))
-                    return
-                }
-
-                let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-
-                observer.onNext(("", credential))
-
             }
             return Disposables.create()
         }
@@ -67,7 +49,7 @@ class SignInWithGoogleHelper: LoginComponents {
                                     if isContains {
                                         self.showMainViewController()
                                     } else {
-                                        self.showSetProfileVC(isUserCreateRequired: false, authType: .google(credential))
+                                        self.showSetProfileVC(isUserCreateRequired: false, authType: .twitter(credential))
                                     }
                                 }
                                 // ログインに成功しているのでNon Errorを流す

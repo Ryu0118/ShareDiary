@@ -77,7 +77,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             let setProfileVC = SetProfileViewController(authType: authType, viewModel: SetProfileViewModel(authType: authType, isUserCreateRequired: isUserCreateRequired), isUserCreateRequired: isUserCreateRequired)
             setProfileVC.modalPresentationStyle = .fullScreen
 
-            self.present(setProfileVC, animated: true)
+            UIApplication.topViewController()?.present(setProfileVC, animated: true)
         }
 
         if let _ = appleIDCredential.email {
@@ -85,6 +85,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             showSetProfileVC()
         } else { // After the second Login Request
             Authorization.shared.signIn(with: oAuthCredential)
+                .do { _ in ProgressHUD.show() }
                 .subscribe(onNext: {[weak self] error in
                     guard let self = self else { return }
                     // if error does not exist, if uid is nil
@@ -95,6 +96,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                             .catch { _ -> Observable<Bool> in
                                 return Observable<Bool>.just(false)
                             }
+                            .do { _ in ProgressHUD.dismiss() }
                             .subscribe(onNext: { isContains in
                                 if isContains {
                                     self.showMainViewController()
@@ -107,6 +109,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
 
                     } else {
                         // When Sign in fails
+                        ProgressHUD.dismiss()
                         self.authenticationResponse.accept(error)
                     }
                 })
