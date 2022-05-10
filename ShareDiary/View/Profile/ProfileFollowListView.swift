@@ -20,7 +20,7 @@ class ProfileFollowListView: UIView, InputAppliable {
         let stack = UIStackView(arrangedSubviews: [followButton, followerButton, postCountButton])
         stack.axis = .horizontal
         stack.distribution = .equalSpacing
-        stack.alignment = .bottom
+        stack.alignment = .center
         return stack
     }()
 
@@ -34,7 +34,7 @@ class ProfileFollowListView: UIView, InputAppliable {
 
         addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(ConstraintInsets(top: 0, left: 4, bottom: 0, right: 4))
         }
     }
 

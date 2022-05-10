@@ -305,7 +305,7 @@ extension SetProfileViewController {
                 )
             )
             .observe(on: MainScheduler.instance)
-            .map { UserInfo(name: $1, userID: $2, image: $0, discription: $3) }
+            .map { UserInfo(name: $1, userID: $2, image: $0, discription: $3, postCount: 0) }
             .bind(to: viewModel.inputs.userInfo)
             .disposed(by: disposeBag)
 

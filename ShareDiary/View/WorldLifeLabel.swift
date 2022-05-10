@@ -21,6 +21,11 @@ class WorldLifeLabel: UILabel {
         setup()
     }
 
+    init() {
+        super.init(frame: .zero)
+        setup()
+    }
+
     private func setup() {
         self.lineBreakMode = .byTruncatingTail
         self.numberOfLines = 0

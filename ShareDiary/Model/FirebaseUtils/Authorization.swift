@@ -60,7 +60,13 @@ class Authorization {
             "uid": user.uid,
             "name": userInfo.name,
             "userID": userInfo.userID,
-            "discription": userInfo.discription
+            "discription": userInfo.discription,
+            "postCount": userInfo.postCount,
+            "followCount": userInfo.followCount,
+            "followerCount": userInfo.followerCount,
+            "followList": userInfo.followList,
+            "followerList": userInfo.followerList,
+            "imageURL": userInfo.imageURL
         ])
         DatabaseUtil.shared.setData("users_uid", path: user.uid, data: [
             "userID": userInfo.userID
@@ -69,12 +75,14 @@ class Authorization {
 
     func setUserInfoWithImage(userInfo: UserInfo, user: User) -> Observable<String> {
         StorageUtil.shared.saveImage(path: "users/\(userInfo.userID).jpg", image: userInfo.image)
-            .flatMap { storageError -> Observable<String> in
-                if storageError.isEmpty {
+            .flatMap { storageError, url -> Observable<String> in
+                if storageError == nil, let url = url, !url.isEmpty {
+                    var userInfo = userInfo
+                    userInfo.imageURL = url
                     self.setUserInfoData(userInfo: userInfo, user: user)
                     return "".asObservable()
                 } else {
-                    return storageError.asObservable()
+                    return (storageError?.localizedDescription ?? "エラーが発生しました").asObservable()
                 }
             }
 
@@ -140,11 +148,15 @@ class Authorization {
 
     func createUser(info: UserInfo, authType: AuthType) -> Observable<String> {
         // save user image
+        var info = info
         return StorageUtil.shared.saveImage(path: "users/\(info.userID).jpg", image: info.image)
-            .flatMap { storageError -> Observable<String> in
-                if !storageError.isEmpty {
-                    return storageError.asObservable()
+            .flatMap { storageError, url -> Observable<String> in
+                if let error = storageError {
+                    return error.localizedDescription.asObservable()
                 }
+                guard let url = url else { return "画像の取得に失敗しました".asObservable() }
+
+                info.imageURL = url
                 return Observable<String>.create { observer -> Disposable in
                     switch authType {
                     case .email:

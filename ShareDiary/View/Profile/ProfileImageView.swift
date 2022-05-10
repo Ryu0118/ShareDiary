@@ -16,16 +16,17 @@ class ProfileImageView: InteractiveImageView {
     func apply(input: Input) {
         switch input {
         case .setImageDiameter(let diameter):
+            self.removeConstraints(self.constraints)
             self.snp.makeConstraints {
                 $0.width.height.equalTo(diameter)
             }
-            self.layoutIfNeeded()
         }
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
     }
 
 }

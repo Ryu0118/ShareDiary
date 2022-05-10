@@ -18,11 +18,11 @@ class StorageUtil {
 
     private init() {}
 
-    func saveImage(path: String, image: UIImage) -> Observable<String> {
+    func saveImage(path: String, image: UIImage) -> Observable<(Error?, String?)> {
 
-        Observable<String>.create {observer -> Disposable in
+        Observable<(Error?, String?)>.create {observer -> Disposable in
             guard let jpegData = image.jpegData(compressionQuality: 0.1) else {
-                observer.onNext(NSLocalizedString("写真が破損しています", comment: ""))
+                observer.onNext((NSLocalizedString("写真が破損しています", comment: ""), nil))
                 return Disposables.create()
             }
 
@@ -33,14 +33,22 @@ class StorageUtil {
 
             ref.putData(jpegData, metadata: metadata) { metadata, error in
                 guard let _ = metadata else {
-                    observer.onNext(NSLocalizedString("写真が破損しています", comment: ""))
+                    observer.onNext((NSLocalizedString("写真が破損しています", comment: ""), nil))
                     return
                 }
                 if let error = error {
-                    observer.onNext(error.localizedDescription)
+                    observer.onNext((error, nil))
                     return
                 }
-                observer.onNext("")
+                ref.downloadURL { url, error in
+                    if let url = url {
+                        observer.onNext((nil, url.absoluteString))
+                    } else if let error = error {
+                        observer.onNext((error, nil))
+                    } else {
+                        observer.onNext((NSLocalizedString("写真の取得に失敗しました", comment: ""), nil))
+                    }
+                }
             }
             return Disposables.create()
         }

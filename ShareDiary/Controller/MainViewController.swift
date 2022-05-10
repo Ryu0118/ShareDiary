@@ -5,6 +5,7 @@
 //  Created by Ryu on 2022/04/29.
 //
 import UIKit
+import FirebaseAuth
 
 class MainViewController: UITabBarController {
 
@@ -16,7 +17,7 @@ class MainViewController: UITabBarController {
     }
 
     func setupTab() {
-        let homeVC = HomeViewController()
+        let homeVC = ProfileHeaderViewController(userInfo: UserInfoMock.createMock())
         homeVC.tabBarItem = UITabBarItem(title: NSLocalizedString("ホーム", comment: ""), image: R.image.home()?.iconSize, tag: 0)
         let profileVC = ProfileViewController()
         profileVC.tabBarItem = UITabBarItem(title: NSLocalizedString("プロフィール", comment: ""), image: R.image.user()?.iconSize, tag: 0)

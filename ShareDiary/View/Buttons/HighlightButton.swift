@@ -83,6 +83,7 @@ extension HighlightButton {
             $0.centerX.centerY.equalToSuperview()
         }
         detailTextLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        textLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 
 }
