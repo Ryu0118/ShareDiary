@@ -67,15 +67,13 @@ class ProfileHeaderViewController: UIViewController {
         followEditViewController.didMove(toParent: self)
 
         stackView.snp.makeConstraints {
-            $0.left.top.right.equalTo(view.safeAreaLayoutGuide)
-            // $0.height.greaterThanOrEqualTo(150)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         stackView.setContentCompressionResistancePriority(.required, for: .vertical)
 
         userInfoViewController.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            // $0.height.greaterThanOrEqualTo(90)
         }
 
         followListViewController.view.snp.makeConstraints {
@@ -124,7 +122,7 @@ class ProfileHeaderViewController: UIViewController {
 struct ProfileHeaderViewControllerWrapper: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> ProfileHeaderViewController {
-        let mock = UserInfo(name: "澁谷りゅうのすけ", userID: "shibuya0118", image: R.image.nouser() ?? UIImage(), discription: "大学一年生, 電気電子工学科大学一年生", postCount: 365, imageURL: "https://firebasestorage.googleapis.com/v0/b/sharediary-da22f.appspot.com/o/users%2Fryu.jpg?alt=media&token=899fc9bc-c26a-4e3d-a28b-40ab6d3fc537", followCount: 133, followerCount: 1234, followList: ["shibuya", "ryunosuke"], followerList: ["shibuya", "ryunosuke"], uid: Auth.auth().currentUser?.uid ?? "abcdefzrd")
+        let mock = UserInfo(name: "澁谷りゅうのすけ", userID: "shibuya0118", image: R.image.nouser() ?? UIImage(), discription: "大学一年生, 電気電子工学科大学一年生", postCount: 365, imageURL: "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://ryu-techblog.com&size=256", followCount: 133, followerCount: 1234, followList: ["shibuya", "ryunosuke"], followerList: ["shibuya", "ryunosuke"], uid: Auth.auth().currentUser?.uid ?? "abcdefzrd")
         let vc = ProfileHeaderViewController(userInfo: mock)
         return vc
     }
