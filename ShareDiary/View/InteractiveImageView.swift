@@ -15,7 +15,7 @@ class InteractiveImageView: UIImageView, InputAppliable {
 
     init() {
         super.init(frame: .zero)
-        bind()
+        self.isUserInteractionEnabled = true
     }
 
     required init?(coder: NSCoder) {
@@ -31,27 +31,19 @@ class InteractiveImageView: UIImageView, InputAppliable {
         }
     }
 
-    func bind() {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
 
-        let tap = UITapGestureRecognizer()
-        tap.rx.event
-            .asDriver()
-            .drive {[weak self] event in
-                self?.handler?()
-                switch event.state {
-                case .began:
-                    UIView.animate(withDuration: 0.1) {
-                        self?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                    }
-                case .ended:
-                    UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [.overrideInheritedCurve], animations: {
-                        self?.transform = .identity
-                    })
-                default: break
-                }
-            }
-            .disposed(by: disposeBag)
-
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        handler?()
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [.overrideInheritedCurve], animations: {
+            self.transform = .identity
+        })
     }
 
 }

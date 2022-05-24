@@ -79,6 +79,11 @@
 		236309752820447E00F3F905 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309742820447D00F3F905 /* UserInfo.swift */; };
 		23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630976282044AA00F3F905 /* AuthorizationInfo.swift */; };
 		236309792820450600F3F905 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309782820450600F3F905 /* AuthType.swift */; };
+		239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 239DFE7D283D44AB009BFF49 /* Parchment */; };
+		239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE80283D4567009BFF49 /* StatusViewController.swift */; };
+		239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */; };
+		239DFE85283D45CD009BFF49 /* GoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE84283D45CD009BFF49 /* GoodViewController.swift */; };
+		239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE86283D4815009BFF49 /* Array+safe.swift */; };
 		23C7DE072822635300EB1A32 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 23C7DE062822635300EB1A32 /* SDWebImage */; };
 		23C7DE0C282288C800EB1A32 /* ProfileHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7DE0B282288C800EB1A32 /* ProfileHeaderViewController.swift */; };
 		23C7DE0E2822890900EB1A32 /* ProfileUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7DE0D2822890900EB1A32 /* ProfileUserInfoViewController.swift */; };
@@ -168,6 +173,10 @@
 		236309742820447D00F3F905 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		23630976282044AA00F3F905 /* AuthorizationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInfo.swift; sourceTree = "<group>"; };
 		236309782820450600F3F905 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
+		239DFE80283D4567009BFF49 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryViewController.swift; sourceTree = "<group>"; };
+		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
+		239DFE86283D4815009BFF49 /* Array+safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+safe.swift"; sourceTree = "<group>"; };
 		23C7DE0B282288C800EB1A32 /* ProfileHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewController.swift; sourceTree = "<group>"; };
 		23C7DE0D2822890900EB1A32 /* ProfileUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoViewController.swift; sourceTree = "<group>"; };
 		23C7DE0F282289D400EB1A32 /* ProfileFollowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowListViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +204,7 @@
 				231C7F6C2820549F007D8CFF /* FirebaseFirestore in Frameworks */,
 				236308EF281BE36100F3F905 /* RxDataSources in Frameworks */,
 				231C7F622820549F007D8CFF /* FirebaseAnalytics in Frameworks */,
+				239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */,
 				231C7F642820549F007D8CFF /* FirebaseAuth in Frameworks */,
 				231C7F6E2820549F007D8CFF /* FirebaseMessaging in Frameworks */,
 				23630971281FE33600F3F905 /* TOCropViewController in Frameworks */,
@@ -369,6 +379,7 @@
 				23630936281D2BDF00F3F905 /* UIColor+extensions.swift */,
 				23630949281D581F00F3F905 /* UIStackView+extensions.swift */,
 				23630953281DBEB600F3F905 /* String+extensions.swift */,
+				239DFE86283D4815009BFF49 /* Array+safe.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -420,9 +431,20 @@
 			path = FirebaseUtils;
 			sourceTree = "<group>";
 		};
+		239DFE7F283D4547009BFF49 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				239DFE80283D4567009BFF49 /* StatusViewController.swift */,
+				239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */,
+				239DFE84283D45CD009BFF49 /* GoodViewController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		23C7DE0A282288A100EB1A32 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				239DFE7F283D4547009BFF49 /* Tab */,
 				233B4DEA282A698100274482 /* ProfileEditViewController.swift */,
 				23630934281C687C00F3F905 /* ProfileViewController.swift */,
 				23C7DE1328228A5600EB1A32 /* Containers */,
@@ -509,6 +531,7 @@
 				231C7F6F2820549F007D8CFF /* FirebaseStorage */,
 				231C7F722821564F007D8CFF /* GoogleSignIn */,
 				23C7DE062822635300EB1A32 /* SDWebImage */,
+				239DFE7D283D44AB009BFF49 /* Parchment */,
 			);
 			productName = ShareDiary;
 			productReference = 23630893281BCF7C00F3F905 /* ShareDiary.app */;
@@ -599,6 +622,7 @@
 				231C7F602820549F007D8CFF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				231C7F712821564F007D8CFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				23C7DE052822635300EB1A32 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				239DFE7C283D44AA009BFF49 /* XCRemoteSwiftPackageReference "Parchment" */,
 			);
 			productRefGroup = 23630894281BCF7C00F3F905 /* Products */;
 			projectDirPath = "";
@@ -684,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */,
+				239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */,
 				23630964281E996500F3F905 /* DatabaseUtil.swift in Sources */,
 				23630968281EC74600F3F905 /* SetProfileViewController.swift in Sources */,
 				2359A8532823CFB9001037D0 /* ProfileUserInfoView.swift in Sources */,
@@ -695,6 +720,7 @@
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
 				23630973281FF0F700F3F905 /* SetProfileViewModel.swift in Sources */,
+				239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */,
 				23CD4CC428259598001A7DB4 /* ProfileFolowListView.swift in Sources */,
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
 				231C7F7C28217E06007D8CFF /* CryptUtil.swift in Sources */,
@@ -705,6 +731,7 @@
 				23C7DE0E2822890900EB1A32 /* ProfileUserInfoViewController.swift in Sources */,
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
 				231C7F7828217B18007D8CFF /* Login.swift in Sources */,
+				239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */,
 				2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */,
 				23630897281BCF7C00F3F905 /* AppDelegate.swift in Sources */,
 				23630899281BCF7C00F3F905 /* SceneDelegate.swift in Sources */,
@@ -716,6 +743,7 @@
 				23C7DE1828228DA000EB1A32 /* ProfileFollowListView.swift in Sources */,
 				23630959281E6FDF00F3F905 /* RegistrationViewController+OAuth.swift in Sources */,
 				2363096C281F09DF00F3F905 /* EditImageView.swift in Sources */,
+				239DFE85283D45CD009BFF49 /* GoodViewController.swift in Sources */,
 				23630933281C685500F3F905 /* HomeViewController.swift in Sources */,
 				2363094D281D902200F3F905 /* OAuthButton.swift in Sources */,
 				23C7DE0C282288C800EB1A32 /* ProfileHeaderViewController.swift in Sources */,
@@ -779,6 +807,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -840,6 +869,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -897,6 +927,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -915,6 +946,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryu.ShareDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -929,6 +961,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -947,6 +980,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryu.ShareDiary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1145,6 +1179,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		239DFE7C283D44AA009BFF49 /* XCRemoteSwiftPackageReference "Parchment" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rechsteiner/Parchment";
+			requirement = {
+				kind = exactVersion;
+				version = 3.1.0;
+			};
+		};
 		23C7DE052822635300EB1A32 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -1255,6 +1297,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2363096D281FE33500F3F905 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
 			productName = TOCropViewController;
+		};
+		239DFE7D283D44AB009BFF49 /* Parchment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 239DFE7C283D44AA009BFF49 /* XCRemoteSwiftPackageReference "Parchment" */;
+			productName = Parchment;
 		};
 		23C7DE062822635300EB1A32 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

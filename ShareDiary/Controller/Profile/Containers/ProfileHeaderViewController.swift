@@ -48,6 +48,11 @@ class ProfileHeaderViewController: UIViewController {
         apply()
     }
 
+    override func loadView() {
+        super.loadView()
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+    }
+
     private func setup() {
 
         view.addSubview(stackView)

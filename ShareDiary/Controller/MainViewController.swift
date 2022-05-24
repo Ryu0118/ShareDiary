@@ -17,9 +17,9 @@ class MainViewController: UITabBarController {
     }
 
     func setupTab() {
-        let homeVC = ProfileHeaderViewController(userInfo: UserInfoMock.createMock())
+        let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: NSLocalizedString("ホーム", comment: ""), image: R.image.home()?.iconSize, tag: 0)
-        let profileVC = ProfileViewController()
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
         profileVC.tabBarItem = UITabBarItem(title: NSLocalizedString("プロフィール", comment: ""), image: R.image.user()?.iconSize, tag: 0)
         UITabBar.appearance().tintColor = Theme.Color.appThemeDeepColor
         UITabBar.appearance().backgroundColor = Theme.Color.appBackgroundColor
