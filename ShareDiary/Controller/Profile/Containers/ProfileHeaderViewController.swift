@@ -80,12 +80,10 @@ class ProfileHeaderViewController: UIViewController {
 
         followListViewController.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            // $0.height.greaterThanOrEqualTo(30)
         }
 
         followEditViewController.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            // $0.height.greaterThanOrEqualTo(30)
         }
 
     }

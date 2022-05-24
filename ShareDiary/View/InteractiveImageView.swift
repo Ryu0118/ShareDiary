@@ -15,6 +15,7 @@ class InteractiveImageView: UIImageView, InputAppliable {
 
     init() {
         super.init(frame: .zero)
+        bind()
     }
 
     required init?(coder: NSCoder) {
@@ -35,8 +36,19 @@ class InteractiveImageView: UIImageView, InputAppliable {
         let tap = UITapGestureRecognizer()
         tap.rx.event
             .asDriver()
-            .drive {[weak self] _ in
+            .drive {[weak self] event in
                 self?.handler?()
+                switch event.state {
+                case .began:
+                    UIView.animate(withDuration: 0.1) {
+                        self?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                    }
+                case .ended:
+                    UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [.overrideInheritedCurve], animations: {
+                        self?.transform = .identity
+                    })
+                default: break
+                }
             }
             .disposed(by: disposeBag)
 

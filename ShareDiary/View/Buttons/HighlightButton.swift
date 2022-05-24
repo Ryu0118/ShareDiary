@@ -33,6 +33,7 @@ class HighlightButton: InteractiveButton {
         stack.alignment = .center
         stack.distribution = .fillProportionally
         stack.spacing = 3
+        stack.isUserInteractionEnabled = false
         return stack
     }()
 
