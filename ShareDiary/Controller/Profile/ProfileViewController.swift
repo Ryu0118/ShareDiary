@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import SnapKit
 import Parchment
 
 class ProfileViewController: UIViewController {
 
     // MARK: ContainerView
-    private let profileHeaderViewController = ProfileHeaderViewController(userInfo: UserInfoMock.createMock())
+    private lazy var profileHeaderViewController = ProfileHeaderViewController(userInfo: userInfo)
     private let titles: [String] = [
         NSLocalizedString("ステータス", comment: ""),
         NSLocalizedString("投稿", comment: ""),
@@ -37,36 +39,39 @@ class ProfileViewController: UIViewController {
         return pagingVC
     }()
     private var statusViewController: StatusViewController? {
-        tabController.children[safe: 0] as? StatusViewController
+        viewControllers[safe: 0] as? StatusViewController
     }
     private var postHistoryViewController: PostHistoryViewController? {
-        tabController.children[safe: 1] as? PostHistoryViewController
+        viewControllers[safe: 1] as? PostHistoryViewController
     }
     private var goodViewController: GoodViewController? {
-        tabController.children[safe: 2] as? GoodViewController
+        viewControllers[safe: 2] as? GoodViewController
     }
 
     // MARK: Layout Guide
 
     private lazy var guideStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [tabBarGuideView, pageGuideView])
+        let stack = UIStackView(arrangedSubviews: [headerGuideView, tabBarGuideView, pageGuideView])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
         tabBarGuideView.snp.makeConstraints {
             $0.height.equalTo(tabController.menuItemSize.height)
         }
+        headerGuideView.snp.makeConstraints {
+            $0.height.equalTo(50)
+        }
         return stack
     }()
 
     private lazy var tabBarGuideView = UIView()
-
+    private lazy var headerGuideView = UIView()
+    private lazy var headerMockView = UIView()
     private lazy var pageGuideView = UIView()
 
     // MARK: MainViews
     private var mainStackView: UIStackView = {
         let stack = UIStackView()
-        // profileHeaderViewController, tab, scrollView
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
@@ -76,31 +81,64 @@ class ProfileViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.delegate = self
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
+
+    private lazy var titleLabel: UILabel = {
+        let label = WorldLifeLabel()
+        label.font = Theme.Font.getAppBoldFont(size: 16.5)
+        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.text = userInfo.name
+        return label
+    }()
+
+    private let headerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Theme.Color.Dynamic.appThemeColor
+        view.clipsToBounds = true
+        return view
+    }()
+
+    let userInfo: UserInfo
+    private let disposeBag = DisposeBag()
+
+    init(userInfo: UserInfo) {
+        self.userInfo = userInfo
+        super.init(nibName: nil, bundle: nil)
+
+        statusViewController?.setScrollEnabled(false)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setupConstraints()
+        bind()
     }
 
     // MARK: Views setup
 
     private func setupViews() {
-        view.addSubviews([guideStackView, scrollView])
-        scrollView.addSubview(mainStackView)
+        statusViewController?.delegate = self
+        view.addSubviews([guideStackView, scrollView, headerView])
+        headerView.addSubview(titleLabel)
+        scrollView.addSubviews([mainStackView])
 
         self.addChild(tabController)
         self.addChild(profileHeaderViewController)
         mainStackView.addArrangedSubviews([
+            headerMockView,
             profileHeaderViewController.view,
             tabController.view
         ])
         tabController.didMove(toParent: self)
         profileHeaderViewController.didMove(toParent: self)
-
     }
 
     private func setupConstraints() {
@@ -132,12 +170,56 @@ class ProfileViewController: UIViewController {
             $0.width.equalTo(scrollView.frameLayoutGuide)
         }
 
+        headerView.snp.makeConstraints {
+            $0.left.top.right.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(headerGuideView)
+        }
+
+        headerMockView.snp.makeConstraints {
+            $0.height.equalTo(headerGuideView)
+        }
+
+        titleLabel.snp.makeConstraints {
+            $0.centerY.greaterThanOrEqualTo(headerView.snp.centerY).priority(.required)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(profileHeaderViewController.userInfoViewController.userInfoView.nameLabel.snp.bottom).priority(.high)
+        }
+
     }
 
 }
 
 // MARK: Methods
 extension ProfileViewController: UIScrollViewDelegate {
+
+    private func bind() {
+
+        scrollView.rx.didScroll
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe {[weak self] _ in
+                guard let self = self else { return }
+                if self.scrollView.contentOffset.y + self.scrollView.frame.size.height >= self.scrollView.contentSize.height && self.scrollView.isDragging {
+                    self.scrollView.contentOffset.y = self.scrollView.contentSize.height - self.scrollView.frame.size.height
+                    self.statusViewController?.setScrollEnabled(true)
+                } else {
+                    self.statusViewController?.setScrollEnabled(false)
+                }
+            }
+            .disposed(by: disposeBag)
+
+    }
+
+}
+
+extension ProfileViewController: StatusViewControllerDelegate {
+
+    func statusViewController(_ viewController: UIViewController, didExcessScrollRange heightTranslation: CGFloat) {
+        //        if scrollView.contentOffset.y > 0 {
+        //            scrollView.contentOffset.y -= heightTranslation
+        //        } else {
+        //            scrollView.contentOffset.y = 0
+        //        }
+    }
 
 }
 

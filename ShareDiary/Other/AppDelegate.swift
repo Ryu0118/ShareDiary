@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         // try? Auth.auth().signOut()
+        Persisted.appleID = "shibuya0118"
+        print("shibuya0118", Persisted.appleID)
         return true
     }
 

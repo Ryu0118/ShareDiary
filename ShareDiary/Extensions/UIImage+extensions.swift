@@ -24,6 +24,10 @@ extension UIImage {
         return resizedImage
     }
 
+    func resize(scale: CGFloat) -> UIImage? {
+        self.resize(size: CGSize(width: self.size.width * scale, height: self.size.height * scale))
+    }
+
     func changeResolution(rate: CGFloat) -> UIImage? {
         let originSize = self.size
         let height = originSize.height * rate

@@ -18,7 +18,7 @@ class ProfileUserInfoView: UIView, InputAppliable {
 
     let imageView = ProfileImageView()
 
-    private lazy var nameLabel: WorldLifeLabel = {
+    lazy var nameLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 16.5)
         label.textColor = Theme.Color.Dynamic.appTextColor

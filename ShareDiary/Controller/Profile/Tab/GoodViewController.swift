@@ -13,5 +13,6 @@ import SnapKit
 class GoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .yellow
     }
 }

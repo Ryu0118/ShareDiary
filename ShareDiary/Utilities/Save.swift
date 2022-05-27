@@ -34,7 +34,7 @@ struct Save<T: Codable> {
                 return data.withUnsafeBytes { $0.load( as: T.self ) }
             }
         } else {
-            return saved
+            return userDefaults.object(forKey: forKey) as? T ?? saved
         }
     }
     // UserDefaultsに新しい値をセットする
