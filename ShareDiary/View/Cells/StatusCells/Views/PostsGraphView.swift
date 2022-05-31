@@ -58,10 +58,14 @@ class PostsGraphView: UIView, InputAppliable {
     private func createBarChartView() -> BarChartView {
         barChartView.data = createBarChartData(postsData: postsData)
         barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.labelPosition = .bottom
         barChartView.rightAxis.enabled = false
+        barChartView.leftAxis.drawGridLinesEnabled = false
         barChartView.legend.enabled = false
         barChartView.pinchZoomEnabled = false
         barChartView.doubleTapToZoomEnabled = false
+        barChartView.xAxis.valueFormatter = PostsGraphIAxisValueFormatter()
+        barChartView.xAxis.labelCount = 12
         return barChartView
     }
 
@@ -71,7 +75,36 @@ class PostsGraphView: UIView, InputAppliable {
             return BarChartDataEntry(x: Double(i), y: Double(postsCount))
         }
         let barChartDataSet = BarChartDataSet(entries: entries, label: "")
+        barChartDataSet.colors = entries.map { _ in UIColor.systemBlue }
+        barChartDataSet.drawValuesEnabled = false
         return BarChartData(dataSet: barChartDataSet)
+    }
+
+}
+
+class PostsGraphIAxisValueFormatter: NSObject, IAxisValueFormatter {
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        Months.getMonths()[Int(value)]
+    }
+}
+
+private class Months {
+
+    static func getMonths() -> [String] {
+        [
+            NSLocalizedString("1月", comment: ""),
+            NSLocalizedString("2月", comment: ""),
+            NSLocalizedString("3月", comment: ""),
+            NSLocalizedString("4月", comment: ""),
+            NSLocalizedString("5月", comment: ""),
+            NSLocalizedString("6月", comment: ""),
+            NSLocalizedString("7月", comment: ""),
+            NSLocalizedString("8月", comment: ""),
+            NSLocalizedString("9月", comment: ""),
+            NSLocalizedString("10月", comment: ""),
+            NSLocalizedString("11月", comment: ""),
+            NSLocalizedString("12月", comment: "")
+        ]
     }
 
 }

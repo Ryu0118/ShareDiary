@@ -14,6 +14,7 @@
 		23081D3D2842888C002DA592 /* PostsDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D3C2842888C002DA592 /* PostsDataMock.swift */; };
 		23081D4228428A32002DA592 /* PostsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4128428A32002DA592 /* PostsGraphView.swift */; };
 		23081D4428428A73002DA592 /* TitlesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4328428A73002DA592 /* TitlesMock.swift */; };
+		23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */; };
 		231C7F622820549F007D8CFF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F612820549F007D8CFF /* FirebaseAnalytics */; };
 		231C7F642820549F007D8CFF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F632820549F007D8CFF /* FirebaseAuth */; };
 		231C7F662820549F007D8CFF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F652820549F007D8CFF /* FirebaseCrashlytics */; };
@@ -136,6 +137,7 @@
 		23081D3C2842888C002DA592 /* PostsDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDataMock.swift; sourceTree = "<group>"; };
 		23081D4128428A32002DA592 /* PostsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphView.swift; sourceTree = "<group>"; };
 		23081D4328428A73002DA592 /* TitlesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesMock.swift; sourceTree = "<group>"; };
+		23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphViewPreview.swift; sourceTree = "<group>"; };
 		231C7F7528215830007D8CFF /* SignInWithGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleHelper.swift; sourceTree = "<group>"; };
 		231C7F7728217B18007D8CFF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+OAuth.swift"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */,
+				23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */,
 			);
 			path = Previews;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				23630973281FF0F700F3F905 /* SetProfileViewModel.swift in Sources */,
 				23081D4428428A73002DA592 /* TitlesMock.swift in Sources */,
 				239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */,
+				23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */,
 				23CD4CC428259598001A7DB4 /* ProfileFolowListView.swift in Sources */,
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
 				231C7F7C28217E06007D8CFF /* CryptUtil.swift in Sources */,
