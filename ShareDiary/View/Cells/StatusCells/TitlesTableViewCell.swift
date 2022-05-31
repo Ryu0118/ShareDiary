@@ -68,6 +68,7 @@ class TitlesTableViewCell: UITableViewCell, InputAppliable {
     }
 
     private func setupViews() {
+        isUserInteractionEnabled = true
         addSubview(vstack)
         vstack.addArrangedSubviews([titleLabel, stackView])
 
@@ -155,13 +156,13 @@ class TitleCard: UIView, InputAppliable {
                     return R.image.silverMedal()?.resize(scale: 0.5)
                 }
             }()
-            let aspect = imageView.image?.size.height ?? 0 / (imageView.image?.size.width ?? 1)
+            let aspect = (imageView.image?.size.height ?? 0) / (imageView.image?.size.width ?? 1)
             imageView.contentMode = .scaleAspectFill
             imageView.sizeToFit()
 
             imageView.snp.makeConstraints {
-                $0.width.equalTo(60)
-                $0.height.equalTo(60 * aspect)
+                $0.width.lessThanOrEqualTo(60)
+                $0.height.lessThanOrEqualTo(60 * aspect)
             }
             titleLabel.snp.makeConstraints {
                 $0.centerX.equalTo(imageView)

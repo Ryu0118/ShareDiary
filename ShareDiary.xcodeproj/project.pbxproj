@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		23081D2D28411BB3002DA592 /* TitlesTableViewCellPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */; };
 		23081D302841379C002DA592 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D2F2841379C002DA592 /* StatusViewModel.swift */; };
-		23081D33284140A1002DA592 /* StatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D32284140A1002DA592 /* StatusHeaderView.swift */; };
+		23081D3528414261002DA592 /* StatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D3428414261002DA592 /* StatusHeaderView.swift */; };
+		23081D3B28427AC4002DA592 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 23081D3A28427AC4002DA592 /* Charts */; };
+		23081D3D2842888C002DA592 /* PostsDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D3C2842888C002DA592 /* PostsDataMock.swift */; };
+		23081D4228428A32002DA592 /* PostsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4128428A32002DA592 /* PostsGraphView.swift */; };
+		23081D4428428A73002DA592 /* TitlesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4328428A73002DA592 /* TitlesMock.swift */; };
 		231C7F622820549F007D8CFF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F612820549F007D8CFF /* FirebaseAnalytics */; };
 		231C7F642820549F007D8CFF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F632820549F007D8CFF /* FirebaseAuth */; };
 		231C7F662820549F007D8CFF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F652820549F007D8CFF /* FirebaseCrashlytics */; };
@@ -128,7 +132,10 @@
 /* Begin PBXFileReference section */
 		23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesTableViewCellPreview.swift; sourceTree = "<group>"; };
 		23081D2F2841379C002DA592 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
-		23081D32284140A1002DA592 /* StatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHeaderView.swift; sourceTree = "<group>"; };
+		23081D3428414261002DA592 /* StatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHeaderView.swift; sourceTree = "<group>"; };
+		23081D3C2842888C002DA592 /* PostsDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDataMock.swift; sourceTree = "<group>"; };
+		23081D4128428A32002DA592 /* PostsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphView.swift; sourceTree = "<group>"; };
+		23081D4328428A73002DA592 /* TitlesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesMock.swift; sourceTree = "<group>"; };
 		231C7F7528215830007D8CFF /* SignInWithGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleHelper.swift; sourceTree = "<group>"; };
 		231C7F7728217B18007D8CFF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+OAuth.swift"; sourceTree = "<group>"; };
@@ -220,6 +227,7 @@
 				236308ED281BE36100F3F905 /* Differentiator in Frameworks */,
 				231C7F732821564F007D8CFF /* GoogleSignIn in Frameworks */,
 				236308E4281BDEF600F3F905 /* RxSwift in Frameworks */,
+				23081D3B28427AC4002DA592 /* Charts in Frameworks */,
 				236308E2281BDEF600F3F905 /* RxRelay in Frameworks */,
 				231C7F6C2820549F007D8CFF /* FirebaseFirestore in Frameworks */,
 				236308EF281BE36100F3F905 /* RxDataSources in Frameworks */,
@@ -277,9 +285,17 @@
 		23081D3128414094002DA592 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				23081D32284140A1002DA592 /* StatusHeaderView.swift */,
+				23081D3428414261002DA592 /* StatusHeaderView.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		23081D3E284289E4002DA592 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23081D4128428A32002DA592 /* PostsGraphView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		231C7F7428215815007D8CFF /* SignInHelper */ = {
@@ -296,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				233B4DE6282A531800274482 /* UserInfoMock.swift */,
+				23081D3C2842888C002DA592 /* PostsDataMock.swift */,
+				23081D4328428A73002DA592 /* TitlesMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -563,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				23081D2928411B8C002DA592 /* Previews */,
+				23081D3E284289E4002DA592 /* Views */,
 				23EB28F4283F3C9F00602C29 /* TitlesTableViewCell.swift */,
 				23EB28F6283F3D6B00602C29 /* PostsGraphTableViewCell.swift */,
 				23EB28F8283F3DBB00602C29 /* EmotionsTableViewCell.swift */,
@@ -610,6 +629,7 @@
 				231C7F722821564F007D8CFF /* GoogleSignIn */,
 				23C7DE062822635300EB1A32 /* SDWebImage */,
 				239DFE7D283D44AB009BFF49 /* Parchment */,
+				23081D3A28427AC4002DA592 /* Charts */,
 			);
 			productName = ShareDiary;
 			productReference = 23630893281BCF7C00F3F905 /* ShareDiary.app */;
@@ -701,6 +721,7 @@
 				231C7F712821564F007D8CFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				23C7DE052822635300EB1A32 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				239DFE7C283D44AA009BFF49 /* XCRemoteSwiftPackageReference "Parchment" */,
+				23081D3928427AC3002DA592 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 23630894281BCF7C00F3F905 /* Products */;
 			projectDirPath = "";
@@ -800,6 +821,7 @@
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
 				23630973281FF0F700F3F905 /* SetProfileViewModel.swift in Sources */,
+				23081D4428428A73002DA592 /* TitlesMock.swift in Sources */,
 				239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */,
 				23CD4CC428259598001A7DB4 /* ProfileFolowListView.swift in Sources */,
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
@@ -810,6 +832,7 @@
 				23CD4CBC28258D66001A7DB4 /* ProfileUserInfoViewPreview.swift in Sources */,
 				23C7DE0E2822890900EB1A32 /* ProfileUserInfoViewController.swift in Sources */,
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
+				23081D3D2842888C002DA592 /* PostsDataMock.swift in Sources */,
 				231C7F7828217B18007D8CFF /* Login.swift in Sources */,
 				239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */,
 				2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */,
@@ -818,7 +841,7 @@
 				23630899281BCF7C00F3F905 /* SceneDelegate.swift in Sources */,
 				2363093E281D387300F3F905 /* WorldLifeLabel.swift in Sources */,
 				23EB28F7283F3D6B00602C29 /* PostsGraphTableViewCell.swift in Sources */,
-				23081D33284140A1002DA592 /* StatusHeaderView.swift in Sources */,
+				23081D3528414261002DA592 /* StatusHeaderView.swift in Sources */,
 				23630935281C687C00F3F905 /* ProfileViewController.swift in Sources */,
 				23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */,
 				23630966281E998200F3F905 /* StorageUtil.swift in Sources */,
@@ -837,6 +860,7 @@
 				2363093C281D331F00F3F905 /* InputTextField.swift in Sources */,
 				23C7DE10282289D400EB1A32 /* ProfileFollowListViewController.swift in Sources */,
 				23C7DE1A28228DD900EB1A32 /* ProfileFollowEditButton.swift in Sources */,
+				23081D4228428A32002DA592 /* PostsGraphView.swift in Sources */,
 				2363095D281E759E00F3F905 /* Save.swift in Sources */,
 				23C7DE252823BB8A00EB1A32 /* InputAppliable.swift in Sources */,
 				231C7F7628215830007D8CFF /* SignInWithGoogleHelper.swift in Sources */,
@@ -1195,6 +1219,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		23081D3928427AC3002DA592 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		231C7F602820549F007D8CFF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1286,6 +1318,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		23081D3A28427AC4002DA592 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23081D3928427AC3002DA592 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		231C7F612820549F007D8CFF /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 231C7F602820549F007D8CFF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

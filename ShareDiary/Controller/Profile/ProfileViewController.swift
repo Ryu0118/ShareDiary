@@ -102,12 +102,16 @@ class ProfileViewController: UIViewController {
 
     let userInfo: UserInfo
     private let disposeBag = DisposeBag()
+    private var goingUp = false
+    private var childScrollingDownDueToParent = false
+    private var previousOffset = CGFloat(0)
+    private var previousDelta = CGFloat(0)
 
     init(userInfo: UserInfo) {
         self.userInfo = userInfo
         super.init(nibName: nil, bundle: nil)
 
-        statusViewController?.setScrollEnabled(false)
+        // statusViewController?.setScrollEnabled(false)
     }
 
     required init?(coder: NSCoder) {
@@ -125,7 +129,6 @@ class ProfileViewController: UIViewController {
     // MARK: Views setup
 
     private func setupViews() {
-        statusViewController?.delegate = self
         view.addSubviews([guideStackView, scrollView, headerView])
         headerView.addSubview(titleLabel)
         scrollView.addSubviews([mainStackView])
@@ -190,35 +193,105 @@ class ProfileViewController: UIViewController {
 }
 
 // MARK: Methods
-extension ProfileViewController: UIScrollViewDelegate {
+extension ProfileViewController {
 
     private func bind() {
 
-        scrollView.rx.didScroll
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe {[weak self] _ in
-                guard let self = self else { return }
-                if self.scrollView.contentOffset.y + self.scrollView.frame.size.height >= self.scrollView.contentSize.height && self.scrollView.isDragging {
-                    self.scrollView.contentOffset.y = self.scrollView.contentSize.height - self.scrollView.frame.size.height
-                    self.statusViewController?.setScrollEnabled(true)
-                } else {
-                    self.statusViewController?.setScrollEnabled(false)
-                }
-            }
-            .disposed(by: disposeBag)
+        //        scrollView.rx.didScroll
+        //            .observe(on: MainScheduler.asyncInstance)
+        //            .subscribe {[weak self] _ in
+        //                guard let self = self else { return }
+        //                if self.scrollView.contentOffset.y + self.scrollView.frame.size.height >= self.scrollView.contentSize.height && self.scrollView.isDragging {
+        //                    self.scrollView.contentOffset.y = self.scrollView.contentSize.height - self.scrollView.frame.size.height
+        //                    self.statusViewController?.setScrollEnabled(true)
+        //                } else {
+        //                    self.statusViewController?.setScrollEnabled(false)
+        //                }
+        //            }
+        //            .disposed(by: disposeBag)
+        //
+        scrollView.delegate = self
+        statusViewController?.tableView.delegate = self
 
     }
 
 }
 
-extension ProfileViewController: StatusViewControllerDelegate {
+extension ProfileViewController: UITableViewDelegate {
 
-    func statusViewController(_ viewController: UIViewController, didExcessScrollRange heightTranslation: CGFloat) {
-        //        if scrollView.contentOffset.y > 0 {
-        //            scrollView.contentOffset.y -= heightTranslation
-        //        } else {
-        //            scrollView.contentOffset.y = 0
-        //        }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // determining whether scrollview is scrolling up or down
+        goingUp = scrollView.panGestureRecognizer.translation(in: scrollView).y < 0
+
+        // maximum contentOffset y that parent scrollView can have
+        let parentScrollView = self.scrollView
+        let childScrollView = self.statusViewController?.tableView ?? UITableView()
+        let parentViewMaxContentYOffset = parentScrollView.contentSize.height - parentScrollView.frame.height
+
+        // if scrollView is going upwards
+        if goingUp {
+            // if scrollView is a child scrollView
+            print("goingUp")
+
+            if scrollView == childScrollView {
+                // print("scrollView is tableView")
+                // if parent scroll view isn't scrolled maximum (i.e. menu isn't sticked on top yet)
+                if parentScrollView.contentOffset.y < parentViewMaxContentYOffset && !childScrollingDownDueToParent {
+                    print("scrollViewのcontentOffsetがMaxContentOffSet以下かつchildScrollingDownDueToParentがfalse")
+                    // change parent scrollView contentOffset y which is equal to minimum between maximum y offset that parent scrollView can have and sum of parentScrollView's content's y offset and child's y content offset. Because, we don't want parent scrollView go above sticked menu.
+                    // Scroll parent scrollview upwards as much as child scrollView is scrolled
+                    // Sometimes parent scrollView goes in the middle of screen and stucks there so max is used.
+                    parentScrollView.contentOffset.y = max(min(parentScrollView.contentOffset.y + childScrollView.contentOffset.y, parentViewMaxContentYOffset), 0)
+
+                    // change child scrollView's content's y offset to 0 because we are scrolling parent scrollView instead with same content offset change.
+                    childScrollView.contentOffset.y = 0
+                }
+            }
+        }
+        // Scrollview is going downwards
+        else {
+            // print("goingDownGrade")
+            if scrollView == childScrollView {
+                // print("スクロールビューがtableViewならば")
+                // when child view scrolls down. if childScrollView is scrolled to y offset 0 (child scrollView is completely scrolled down) then scroll parent scrollview instead
+                // if childScrollView's content's y offset is less than 0 and parent's content's y offset is greater than 0
+                if childScrollView.contentOffset.y < 0 && parentScrollView.contentOffset.y > 0 {
+                    print("tableViewのcontentOffsetYが0以下かつscrollViewのcontentOffsetYが0以上")
+                    // set parent scrollView's content's y offset to be the maximum between 0 and difference of parentScrollView's content's y offset and absolute value of childScrollView's content's y offset
+                    // we don't want parent to scroll more that 0 i.e. more downwards so we use max of 0.
+                    let offsetY = parentScrollView.contentOffset.y - abs(childScrollView.contentOffset.y)
+                    print(offsetY, parentScrollView.contentOffset.y, childScrollView.contentOffset.y, parentViewMaxContentYOffset, previousOffset)
+                    let diff = parentScrollView.contentOffset.y - previousOffset
+                    previousOffset = parentScrollView.contentOffset.y
+
+                    parentScrollView.contentOffset.y = max(offsetY, 0)
+                    //                    if parentScrollView.contentOffset.y == parentViewMaxContentYOffset {
+                    //                        parentScrollView.contentOffset.y = max(offsetY, 0)
+                    //                    } else {
+                    //                        print(diff)
+                    //                        parentScrollView.contentOffset.y -= max(diff, 0)
+                    //                    }
+                }
+            }
+
+            // if downward scrolling view is parent scrollView
+            if scrollView == parentScrollView {
+                // print("スクロールビューがparentScrollViewならば")
+                // if child scrollView's content's y offset is greater than 0. i.e. child is scrolled up and content is hiding up
+                // and parent scrollView's content's y offset is less than parentView's maximum y offset
+                // i.e. if child view's content is hiding up and parent scrollView is scrolled down than we need to scroll content of childScrollView first
+                if childScrollView.contentOffset.y > 0 && parentScrollView.contentOffset.y < parentViewMaxContentYOffset {
+                    print("tableViewのcontentOffsetYが0以上かつscrollViewのcontentOffsetYがscrollViewのcontentOffsetMaxならば")
+                    // set if scrolling is due to parent scrolled
+                    childScrollingDownDueToParent = true
+                    // assign the scrolled offset of parent to child not exceding the offset 0 for child scroll view
+                    childScrollView.contentOffset.y = max(childScrollView.contentOffset.y - (parentViewMaxContentYOffset - parentScrollView.contentOffset.y), 0)
+                    // stick parent view to top coz it's scrolled offset is assigned to child
+                    parentScrollView.contentOffset.y = parentViewMaxContentYOffset
+                    childScrollingDownDueToParent = false
+                }
+            }
+        }
     }
 
 }

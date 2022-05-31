@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Charts
 
-class PostsGraphTableViewCell: UITableViewCell {
+class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
+
+    enum Input {
+        case setPostsData(postsData: [PostsData])
+    }
 
     static let identifier = "PostsGraphTableViewCell"
 
@@ -18,6 +23,17 @@ class PostsGraphTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func apply(input: Input) {
+        switch input {
+        case .setPostsData(let postsData):
+            break
+        }
+    }
+
+    private func setupCharts() {
+
     }
 
 }

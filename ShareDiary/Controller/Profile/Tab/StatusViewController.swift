@@ -12,7 +12,6 @@ import SnapKit
 import RxDataSources
 
 protocol StatusViewControllerDelegate: AnyObject {
-    func statusViewController(_ viewController: UIViewController, didExcessScrollRange heightTranslation: CGFloat)
 }
 
 enum StatusSection {
@@ -35,8 +34,9 @@ class StatusViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = StatusViewModel()
     private var scrollFlag = false
+    private var isScrollEnabled = false
 
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = Theme.Color.Dynamic.appBackgroundColor
         tableView.register(TitlesTableViewCell.self, forCellReuseIdentifier: TitlesTableViewCell.identifier)
@@ -62,21 +62,19 @@ class StatusViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupViews()
         setupConstraints()
         bind()
     }
 
     func setScrollEnabled(_ isEnabled: Bool) {
-        print(isEnabled)
-        if !scrollFlag {
-            tableView.isScrollEnabled = isEnabled
-        }
+        tableView.isScrollEnabled = isEnabled
     }
 
     private func setupViews() {
         view.addSubview(tableView)
+        tableView.isUserInteractionEnabled = true
     }
 
     private func setupConstraints() {
@@ -87,61 +85,14 @@ class StatusViewController: UIViewController {
 
     private func bind() {
 
-        var previousTranslation = CGFloat(0)
-
-        tableView.panGestureRecognizer.rx.event
-            .observe(on: MainScheduler.asyncInstance)
-            .withUnretained(self)
-            .subscribe(onNext: { strong, gesture in
-                switch gesture.state {
-                case .began, .changed:
-                    if strong.tableView.contentOffset.y <= 0 || strong.scrollFlag {
-                        let translateY = gesture.translation(in: strong.tableView).y
-
-                        print(translateY - previousTranslation, previousTranslation)
-                        strong.delegate?.statusViewController(strong, didExcessScrollRange: translateY - previousTranslation)
-                        previousTranslation = translateY
-
-                        strong.scrollFlag = true
-                    }
-                case .ended, .cancelled:
-                    previousTranslation = 0
-                    if strong.tableView.contentOffset.y <= 0 {
-                        strong.scrollFlag = false
-                        strong.setScrollEnabled(false)
-                    }
-                default:
-                    previousTranslation = 0
-                    if strong.tableView.contentOffset.y <= 0 {
-                        strong.setScrollEnabled(false)
-                    }
-                }
-
-            })
-            .disposed(by: disposeBag)
-
-        tableView.rx.didScroll
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe { [weak self] _ in
-                guard let self = self else { return }
-                if self.tableView.contentOffset.y <= 0 {
-                    self.tableView.contentOffset.y = 0
-                    // self.setScrollEnabled(false)
-
-                } else {
-                    // self.setScrollEnabled(true)
-                }
-            }
-            .disposed(by: disposeBag)
-
         viewModel.outputs.titles
             .asDriver()
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-        tableView.rx
-            .setDelegate(self)
-            .disposed(by: disposeBag)
+
+        //        tableView.rx
+        //            .setDelegate(self)
+        //            .disposed(by: disposeBag)
 
     }
 
@@ -176,15 +127,14 @@ extension StatusViewController {
 }
 
 extension StatusViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let header = StatusHeaderView()
             return header
-        }
-        else {
+        } else {
             return UIView()
         }
     }
-    
+
 }
