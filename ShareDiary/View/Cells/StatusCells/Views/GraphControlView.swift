@@ -23,7 +23,9 @@ class GraphControlView: UIView, InputAppliable {
     var currentIndex = 0
     var currentYear: String? {
         didSet {
-            yearLabel.text = currentYear
+            if let currentYear = currentYear {
+                yearLabel.text = currentYear + NSLocalizedString("年", comment: "")
+            }
         }
     }
     let yearLabel: LayoutableLabel = {
