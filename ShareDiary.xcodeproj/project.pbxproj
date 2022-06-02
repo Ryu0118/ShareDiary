@@ -15,6 +15,11 @@
 		23081D4228428A32002DA592 /* PostsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4128428A32002DA592 /* PostsGraphView.swift */; };
 		23081D4428428A73002DA592 /* TitlesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4328428A73002DA592 /* TitlesMock.swift */; };
 		23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */; };
+		23081D4A2848C654002DA592 /* GraphControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D492848C654002DA592 /* GraphControlView.swift */; };
+		23081D4E2848C698002DA592 /* GraphControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4D2848C698002DA592 /* GraphControlViewModel.swift */; };
+		23081D522848C8B0002DA592 /* LayoutableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D512848C8B0002DA592 /* LayoutableView.swift */; };
+		23081D542848D5A7002DA592 /* GraphControlViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */; };
+		23081D582848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D572848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift */; };
 		231C7F622820549F007D8CFF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F612820549F007D8CFF /* FirebaseAnalytics */; };
 		231C7F642820549F007D8CFF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F632820549F007D8CFF /* FirebaseAuth */; };
 		231C7F662820549F007D8CFF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 231C7F652820549F007D8CFF /* FirebaseCrashlytics */; };
@@ -138,6 +143,11 @@
 		23081D4128428A32002DA592 /* PostsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphView.swift; sourceTree = "<group>"; };
 		23081D4328428A73002DA592 /* TitlesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesMock.swift; sourceTree = "<group>"; };
 		23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphViewPreview.swift; sourceTree = "<group>"; };
+		23081D492848C654002DA592 /* GraphControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlView.swift; sourceTree = "<group>"; };
+		23081D4D2848C698002DA592 /* GraphControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlViewModel.swift; sourceTree = "<group>"; };
+		23081D512848C8B0002DA592 /* LayoutableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutableView.swift; sourceTree = "<group>"; };
+		23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlViewPreview.swift; sourceTree = "<group>"; };
+		23081D572848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphTableViewCellPreview.swift; sourceTree = "<group>"; };
 		231C7F7528215830007D8CFF /* SignInWithGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleHelper.swift; sourceTree = "<group>"; };
 		231C7F7728217B18007D8CFF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+OAuth.swift"; sourceTree = "<group>"; };
@@ -273,6 +283,8 @@
 			children = (
 				23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */,
 				23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */,
+				23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */,
+				23081D572848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift */,
 			);
 			path = Previews;
 			sourceTree = "<group>";
@@ -281,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				23081D2F2841379C002DA592 /* StatusViewModel.swift */,
+				23081D4D2848C698002DA592 /* GraphControlViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -297,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				23081D4128428A32002DA592 /* PostsGraphView.swift */,
+				23081D492848C654002DA592 /* GraphControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -437,6 +451,7 @@
 				23630969281EE26C00F3F905 /* InputTextView.swift */,
 				2363096B281F09DF00F3F905 /* EditImageView.swift */,
 				2359A8502823CCDA001037D0 /* InteractiveImageView.swift */,
+				23081D512848C8B0002DA592 /* LayoutableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -811,6 +826,7 @@
 			files = (
 				23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */,
 				239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */,
+				23081D582848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift in Sources */,
 				23630964281E996500F3F905 /* DatabaseUtil.swift in Sources */,
 				23630968281EC74600F3F905 /* SetProfileViewController.swift in Sources */,
 				2359A8532823CFB9001037D0 /* ProfileUserInfoView.swift in Sources */,
@@ -824,6 +840,7 @@
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
 				23630973281FF0F700F3F905 /* SetProfileViewModel.swift in Sources */,
+				23081D522848C8B0002DA592 /* LayoutableView.swift in Sources */,
 				23081D4428428A73002DA592 /* TitlesMock.swift in Sources */,
 				239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */,
 				23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */,
@@ -838,6 +855,7 @@
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
 				23081D3D2842888C002DA592 /* PostsDataMock.swift in Sources */,
 				231C7F7828217B18007D8CFF /* Login.swift in Sources */,
+				23081D4E2848C698002DA592 /* GraphControlViewModel.swift in Sources */,
 				239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */,
 				2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */,
 				23630897281BCF7C00F3F905 /* AppDelegate.swift in Sources */,
@@ -858,6 +876,7 @@
 				239DFE85283D45CD009BFF49 /* GoodViewController.swift in Sources */,
 				23630933281C685500F3F905 /* HomeViewController.swift in Sources */,
 				2363094D281D902200F3F905 /* OAuthButton.swift in Sources */,
+				23081D4A2848C654002DA592 /* GraphControlView.swift in Sources */,
 				23C7DE0C282288C800EB1A32 /* ProfileHeaderViewController.swift in Sources */,
 				236309752820447E00F3F905 /* UserInfo.swift in Sources */,
 				23C7DE1228228A2E00EB1A32 /* ProfileFollowEditViewController.swift in Sources */,
@@ -879,6 +898,7 @@
 				23C7DE1C2822971D00EB1A32 /* HighlightButton.swift in Sources */,
 				23EB28ED283F1CC900602C29 /* Titles.swift in Sources */,
 				23630962281E91CF00F3F905 /* Authorization.swift in Sources */,
+				23081D542848D5A7002DA592 /* GraphControlViewPreview.swift in Sources */,
 				233B4DE7282A531800274482 /* UserInfoMock.swift in Sources */,
 				236309792820450600F3F905 /* AuthType.swift in Sources */,
 				2363093A281D2C3800F3F905 /* Theme.swift in Sources */,

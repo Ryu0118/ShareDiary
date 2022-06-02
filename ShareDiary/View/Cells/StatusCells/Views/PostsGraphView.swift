@@ -40,7 +40,6 @@ class PostsGraphView: UIView, InputAppliable {
         switch input {
         case .setPostsData(let postsData):
             self.postsData = postsData
-            break
         }
     }
 
@@ -59,8 +58,10 @@ class PostsGraphView: UIView, InputAppliable {
         barChartView.data = createBarChartData(postsData: postsData)
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.xAxis.labelPosition = .bottom
+        barChartView.xAxis.drawAxisLineEnabled = false
         barChartView.rightAxis.enabled = false
         barChartView.leftAxis.drawGridLinesEnabled = false
+        barChartView.leftAxis.drawZeroLineEnabled = true
         barChartView.legend.enabled = false
         barChartView.pinchZoomEnabled = false
         barChartView.doubleTapToZoomEnabled = false

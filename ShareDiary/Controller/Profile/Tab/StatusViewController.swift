@@ -22,7 +22,7 @@ enum StatusSection {
 
 enum StatusItem {
     case title(title: Title)
-    case postsGraph(postsData: PostsData)
+    case postsGraph(postsData: [PostsData])
     case emotions(emotionsData: EmotionsData)
 }
 
@@ -37,7 +37,7 @@ class StatusViewController: UIViewController {
     private var isScrollEnabled = false
 
     let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = Theme.Color.Dynamic.appBackgroundColor
         tableView.register(TitlesTableViewCell.self, forCellReuseIdentifier: TitlesTableViewCell.identifier)
         tableView.register(PostsGraphTableViewCell.self, forCellReuseIdentifier: PostsGraphTableViewCell.identifier)
@@ -46,7 +46,16 @@ class StatusViewController: UIViewController {
         return tableView
     }()
 
-    private lazy var dataSource = RxTableViewSectionedReloadDataSource<StatusSectionModel>(configureCell: configureCell)
+    private let headerTitles = [
+        NSLocalizedString("称号", comment: ""),
+        NSLocalizedString("投稿数", comment: "")
+    ]
+
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<StatusSectionModel>(configureCell: configureCell, titleForHeaderInSection: titleForHeader)
+
+    private lazy var titleForHeader: RxTableViewSectionedReloadDataSource<StatusSectionModel>.TitleForHeaderInSection = { _, section -> String? in
+        return self.headerTitles[section]
+    }
 
     private lazy var configureCell: RxTableViewSectionedReloadDataSource<StatusSectionModel>.ConfigureCell = {[weak self] _, _, indexPath, item in
         guard let self = self else { return UITableViewCell() }
@@ -85,14 +94,10 @@ class StatusViewController: UIViewController {
 
     private func bind() {
 
-        viewModel.outputs.titles
+        viewModel.outputs.statuses
             .asDriver()
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-
-        //        tableView.rx
-        //            .setDelegate(self)
-        //            .disposed(by: disposeBag)
 
     }
 
@@ -103,14 +108,16 @@ extension StatusViewController {
     private func titlesCell(indexPath: IndexPath, title: Title) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TitlesTableViewCell.identifier, for: indexPath) as? TitlesTableViewCell {
             cell.apply(input: .setTitle(title: title))
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
     }
 
-    private func postsGraphCell(indexPath: IndexPath, postsData: PostsData) -> UITableViewCell {
+    private func postsGraphCell(indexPath: IndexPath, postsData: [PostsData]) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PostsGraphTableViewCell.identifier, for: indexPath) as? PostsGraphTableViewCell {
-
+            cell.apply(input: .setPostsData(postsData: postsData))
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()

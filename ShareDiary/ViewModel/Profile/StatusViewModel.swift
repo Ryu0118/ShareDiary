@@ -13,7 +13,7 @@ protocol StatusViewModelInputs: AnyObject {
 }
 
 protocol StatusViewModelOutputs: AnyObject {
-    var titles: BehaviorRelay<[StatusSectionModel]> { get }
+    var statuses: BehaviorRelay<[StatusSectionModel]> { get }
 }
 
 protocol StatusViewModelType: AnyObject {
@@ -27,22 +27,25 @@ class StatusViewModel: StatusViewModelType, StatusViewModelInputs, StatusViewMod
     var outputs: StatusViewModelOutputs { self }
 
     // outputs
-    var titles = BehaviorRelay<[StatusSectionModel]>(value: [])
+    var statuses = BehaviorRelay<[StatusSectionModel]>(value: [])
 
     private let disposeBag = DisposeBag()
 
     init() {
         // mock
-        Observable.of(
-            TitlesMock.createMock()
-        )
-        .map { titles -> [StatusSectionModel] in
-            let items = titles.map { StatusItem.title(title: $0) }
-            let section = [StatusSectionModel(model: .titles, items: items)]
-            return section
-        }
-        .bind(to: titles)
-        .disposed(by: disposeBag)
+        let mock = Observable.of(TitlesMock.createMock())
+        let postsData = Observable.of(PostsDataMock.createMock())
+
+        Observable.combineLatest(mock, postsData)
+            .map { titles, postsData -> [StatusSectionModel] in
+                let titleItems = titles.map { StatusItem.title(title: $0) }
+                let postsItems = [StatusItem.postsGraph(postsData: postsData)]
+                let section = [StatusSectionModel(model: .titles, items: titleItems), StatusSectionModel(model: .postsGraph, items: postsItems)]
+                return section
+            }
+            .bind(to: statuses)
+            .disposed(by: disposeBag)
+
     }
 
 }
