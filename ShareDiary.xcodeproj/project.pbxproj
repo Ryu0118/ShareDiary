@@ -98,6 +98,7 @@
 		239DFE85283D45CD009BFF49 /* GoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE84283D45CD009BFF49 /* GoodViewController.swift */; };
 		239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE86283D4815009BFF49 /* Array+safe.swift */; };
 		239DFE89283DB256009BFF49 /* Navigationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE88283DB256009BFF49 /* Navigationable.swift */; };
+		239F06E5284B37FC000D89F5 /* GraphHighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F06E4284B37FC000D89F5 /* GraphHighlightView.swift */; };
 		23C7DE072822635300EB1A32 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 23C7DE062822635300EB1A32 /* SDWebImage */; };
 		23C7DE0C282288C800EB1A32 /* ProfileHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7DE0B282288C800EB1A32 /* ProfileHeaderViewController.swift */; };
 		23C7DE0E2822890900EB1A32 /* ProfileUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7DE0D2822890900EB1A32 /* ProfileUserInfoViewController.swift */; };
@@ -210,6 +211,7 @@
 		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
 		239DFE86283D4815009BFF49 /* Array+safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+safe.swift"; sourceTree = "<group>"; };
 		239DFE88283DB256009BFF49 /* Navigationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigationable.swift; sourceTree = "<group>"; };
+		239F06E4284B37FC000D89F5 /* GraphHighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphHighlightView.swift; sourceTree = "<group>"; };
 		23C7DE0B282288C800EB1A32 /* ProfileHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewController.swift; sourceTree = "<group>"; };
 		23C7DE0D2822890900EB1A32 /* ProfileUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoViewController.swift; sourceTree = "<group>"; };
 		23C7DE0F282289D400EB1A32 /* ProfileFollowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowListViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				23081D4128428A32002DA592 /* PostsGraphView.swift */,
 				23081D492848C654002DA592 /* GraphControlView.swift */,
+				239F06E4284B37FC000D89F5 /* GraphHighlightView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
 				231C7F7C28217E06007D8CFF /* CryptUtil.swift in Sources */,
 				2359A85D2823DB37001037D0 /* SignInWithTwitterHelper.swift in Sources */,
+				239F06E5284B37FC000D89F5 /* GraphHighlightView.swift in Sources */,
 				2363089B281BCF7C00F3F905 /* MainViewController.swift in Sources */,
 				23630937281D2BDF00F3F905 /* UIColor+extensions.swift in Sources */,
 				23CD4CBC28258D66001A7DB4 /* ProfileUserInfoViewPreview.swift in Sources */,

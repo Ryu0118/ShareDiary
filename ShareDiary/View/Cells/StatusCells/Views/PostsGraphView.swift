@@ -22,6 +22,7 @@ class PostsGraphView: UIView, InputAppliable {
     var postsData = PostsData(year: 0, data: []) {
         didSet {
             barChartView.data = createBarChartData(postsData: postsData)
+            barChartView.highlightValue(Highlight(x: 0, y: Double(postsData.data[0]), dataSetIndex: 0), callDelegate: true)
         }
     }
 
@@ -84,12 +85,21 @@ class PostsGraphView: UIView, InputAppliable {
 }
 
 class PostsGraphIAxisValueFormatter: NSObject, IAxisValueFormatter {
-    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         Months.getMonths()[Int(value)]
     }
 }
 
-private class Months {
+class Months {
+
+    static func getMonthString(month: Int) -> String? {
+        let months = getMonths()
+        if let month = months[safe: month - 1] {
+            return month
+        } else {
+            return nil
+        }
+    }
 
     static func getMonths() -> [String] {
         [
