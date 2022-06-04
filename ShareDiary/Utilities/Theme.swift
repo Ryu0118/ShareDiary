@@ -18,13 +18,15 @@ struct Theme {
             static var appTextColorInvert: UIColor = .dynamicColor(light: .white, dark: .black)
             static var appBackgroundColor: UIColor = .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black)
             static var textGray: UIColor = .dynamicColor(light: .rgba(red: 142, green: 142, blue: 159, alpha: 1), dark: .lightGray)
-
+            static var appThemeColor: UIColor = .dynamicColor(light: UIColor(hex: "CCDECE"), dark: .rgba(red: 74, green: 164, blue: 156, alpha: 1))
         }
+
         static var appThemeColor: UIColor = .rgba(red: 141, green: 164, blue: 165, alpha: 1)
         static var appThemeDeepColor: UIColor = .rgba(red: 74, green: 164, blue: 156, alpha: 1)
         static var appBackgroundColor: UIColor = .rgba(red: 248, green: 247, blue: 252, alpha: 1)
         static var textGray: UIColor = .rgba(red: 142, green: 142, blue: 159, alpha: 1)
         static var appThemeLightColor = UIColor(hex: "CCDECE")
+
     }
 
     enum FontSize: CGFloat {
@@ -69,18 +71,9 @@ struct Theme {
             .boldSystemFont(ofSize: size)
         }
 
-    }
+        func changeTheme(with color: UIColor) {
 
-    enum Theme {
-
-    }
-
-    func changeTheme(with theme: Theme) {
+        }
 
     }
-
-    func changeTheme(with color: UIColor) {
-
-    }
-
 }

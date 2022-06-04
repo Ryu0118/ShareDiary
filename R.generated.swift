@@ -155,16 +155,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 19 images.
+  /// This `R.image` struct is generated, and contains static references to 25 images.
   struct image {
     /// Image `LaunchImage`.
     static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
     /// Image `apple`.
     static let apple = Rswift.ImageResource(bundle: R.hostingBundle, name: "apple")
+    /// Image `arrow-left`.
+    static let arrowLeft = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow-left")
+    /// Image `arrow-right`.
+    static let arrowRight = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow-right")
     /// Image `atmark`.
     static let atmark = Rswift.ImageResource(bundle: R.hostingBundle, name: "atmark")
+    /// Image `bronzeMedal`.
+    static let bronzeMedal = Rswift.ImageResource(bundle: R.hostingBundle, name: "bronzeMedal")
     /// Image `diary`.
     static let diary = Rswift.ImageResource(bundle: R.hostingBundle, name: "diary")
+    /// Image `goldMedal`.
+    static let goldMedal = Rswift.ImageResource(bundle: R.hostingBundle, name: "goldMedal")
     /// Image `google`.
     static let google = Rswift.ImageResource(bundle: R.hostingBundle, name: "google")
     /// Image `heart_selected`.
@@ -185,10 +193,14 @@ struct R: Rswift.Validatable {
     static let search_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "search_selected")
     /// Image `search`.
     static let search = Rswift.ImageResource(bundle: R.hostingBundle, name: "search")
+    /// Image `secretMedal`.
+    static let secretMedal = Rswift.ImageResource(bundle: R.hostingBundle, name: "secretMedal")
     /// Image `settings_selected`.
     static let settings_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings_selected")
     /// Image `settings`.
     static let settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "settings")
+    /// Image `silverMedal`.
+    static let silverMedal = Rswift.ImageResource(bundle: R.hostingBundle, name: "silverMedal")
     /// Image `twitter`.
     static let twitter = Rswift.ImageResource(bundle: R.hostingBundle, name: "twitter")
     /// Image `user_selected`.
@@ -211,6 +223,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "arrow-left", bundle: ..., traitCollection: ...)`
+    static func arrowLeft(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrowLeft, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "arrow-right", bundle: ..., traitCollection: ...)`
+    static func arrowRight(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrowRight, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "atmark", bundle: ..., traitCollection: ...)`
     static func atmark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.atmark, compatibleWith: traitCollection)
@@ -218,9 +244,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "bronzeMedal", bundle: ..., traitCollection: ...)`
+    static func bronzeMedal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.bronzeMedal, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "diary", bundle: ..., traitCollection: ...)`
     static func diary(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.diary, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "goldMedal", bundle: ..., traitCollection: ...)`
+    static func goldMedal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.goldMedal, compatibleWith: traitCollection)
     }
     #endif
 
@@ -295,6 +335,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "secretMedal", bundle: ..., traitCollection: ...)`
+    static func secretMedal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.secretMedal, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "settings", bundle: ..., traitCollection: ...)`
     static func settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.settings, compatibleWith: traitCollection)
@@ -305,6 +352,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "settings_selected", bundle: ..., traitCollection: ...)`
     static func settings_selected(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.settings_selected, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "silverMedal", bundle: ..., traitCollection: ...)`
+    static func silverMedal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.silverMedal, compatibleWith: traitCollection)
     }
     #endif
 
