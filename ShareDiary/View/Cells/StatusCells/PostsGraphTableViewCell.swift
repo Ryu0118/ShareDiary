@@ -22,11 +22,13 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
             postsControlView.apply(input: .setAllowedYears(years: postsData.map { "\($0.year)" }))
         }
     }
-    var postsControlView = GraphControlView()
-    var postsGraphView = PostsGraphView()
+
+    private var postsControlView = GraphControlView()
+    private var graphHighlightView = GraphHighlightView()
+    private var postsGraphView = PostsGraphView()
 
     lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [postsControlView, postsGraphView])
+        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
@@ -61,6 +63,8 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
     private func setupViews() {
         contentView.addSubview(stackView)
 
+        postsGraphView.barChartView.delegate = self
+
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(ConstraintInsets(top: 8, left: 8, bottom: 8, right: 8))
         }
@@ -73,6 +77,11 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
         postsControlView.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalTo(35)
+        }
+
+        graphHighlightView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(37)
         }
 
     }
@@ -89,6 +98,18 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
             }
             .disposed(by: disposeBag)
 
+    }
+
+}
+
+extension PostsGraphTableViewCell: ChartViewDelegate {
+
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let index = Int(entry.x)
+        let postsCount = Int(entry.y)
+
+        print(index, postsCount)
+        graphHighlightView.apply(input: .setMonthPostsCount(month: index + 1, postsCount: postsCount))
     }
 
 }
