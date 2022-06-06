@@ -22,7 +22,6 @@ class ProfileFollowListViewController: UIViewController {
     }
 
     override func loadView() {
-        super.loadView()
         self.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
