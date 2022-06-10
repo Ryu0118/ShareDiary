@@ -19,20 +19,30 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
 
     var postsData = [PostsData]() {
         didSet {
+            guard let presentYearData = postsData.sorted(by: { $0.year > $1.year }).first else { return }
             postsControlView.apply(input: .setAllowedYears(years: postsData.map { "\($0.year)" }))
+            graphHighlightView.apply(input: .setYearPostsCount(year: presentYearData.year, postsCount: presentYearData.postsCount))
         }
     }
 
     private var postsControlView = GraphControlView()
     private var graphHighlightView = GraphHighlightView()
     private var postsGraphView = PostsGraphView()
+    private var circleProgressView: SRCircleProgress = {
+        let progressView = SRCircleProgress(frame: .zero)
+        progressView.circleBackgroundColor = Theme.Color.progressBackgroundColor
+        progressView.progressColor = Theme.Color.appThemeColor
+        progressView.progressLineWidth = 6
+        progressView.backgroundLineWidth = progressView.progressLineWidth
+        return progressView
+    }()
 
     lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView])
+        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView, circleProgressView])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
-        // stack.isUserInteractionEnabled = false
+        stack.spacing = 8
         return stack
     }()
 
@@ -71,7 +81,7 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
 
         postsGraphView.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalTo(200)
+            $0.height.greaterThanOrEqualTo(200)
         }
 
         postsControlView.snp.makeConstraints {
@@ -84,19 +94,29 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
             $0.height.equalTo(37)
         }
 
+        circleProgressView.snp.makeConstraints {
+            $0.width.height.equalTo(130)
+        }
+
+        circleProgressView.setProgress(0.5, animated: true)
+
     }
 
     private func bind() {
 
-        Observable.merge(postsControlView.viewModel.outputs.backButtonDidPressed.asObservable(), postsControlView.viewModel.outputs.forwardButtonDidPressed.asObservable())
-            .asDriver(onErrorJustReturn: 0)
-            .drive { [weak self] currentIndex in
-                guard let self = self else { return }
-                if let postsData = self.postsData[safe: currentIndex] {
-                    self.postsGraphView.apply(input: .setPostsData(postsData: postsData))
-                }
+        Observable.merge(
+            postsControlView.viewModel.outputs.backButtonDidPressed.asObservable(),
+            postsControlView.viewModel.outputs.forwardButtonDidPressed.asObservable()
+        )
+        .asDriver(onErrorJustReturn: 0)
+        .drive { [weak self] currentIndex in
+            guard let self = self else { return }
+            if let postsData = self.postsData[safe: currentIndex] {
+                self.postsGraphView.apply(input: .setPostsData(postsData: postsData))
+                self.graphHighlightView.apply(input: .setYearPostsCount(year: postsData.year, postsCount: postsData.postsCount))
             }
-            .disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
 
     }
 

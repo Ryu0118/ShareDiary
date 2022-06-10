@@ -27,7 +27,7 @@ class GraphControlView: UIView, InputAppliable {
             }
         }
     }
-    
+
     let yearLabel: LayoutableLabel = {
         let label = LayoutableLabel()
         label.backgroundColor = Theme.Color.appThemeColor
@@ -39,7 +39,7 @@ class GraphControlView: UIView, InputAppliable {
         }
         return label
     }()
-    
+
     var backButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(R.image.arrowLeft()?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -49,7 +49,7 @@ class GraphControlView: UIView, InputAppliable {
         button.isUserInteractionEnabled = true
         return button
     }()
-    
+
     var forwardButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(R.image.arrowRight()?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -59,7 +59,7 @@ class GraphControlView: UIView, InputAppliable {
         button.isUserInteractionEnabled = true
         return button
     }()
-    
+
     lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [backButton, yearLabel, forwardButton])
         stack.axis = .horizontal

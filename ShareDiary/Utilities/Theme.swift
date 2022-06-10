@@ -26,6 +26,7 @@ struct Theme {
         static var appBackgroundColor: UIColor = .rgba(red: 248, green: 247, blue: 252, alpha: 1)
         static var textGray: UIColor = .rgba(red: 142, green: 142, blue: 159, alpha: 1)
         static var appThemeLightColor = UIColor(hex: "CCDECE")
+        static var progressBackgroundColor = UIColor.rgba(red: 241, green: 250, blue: 254, alpha: 1)
 
     }
 

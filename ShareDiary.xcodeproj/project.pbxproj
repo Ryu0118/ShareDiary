@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230318B92853ABF000CBA8DF /* SRCircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230318B82853ABF000CBA8DF /* SRCircleProgress.swift */; };
 		23081D2D28411BB3002DA592 /* TitlesTableViewCellPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */; };
 		23081D302841379C002DA592 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D2F2841379C002DA592 /* StatusViewModel.swift */; };
 		23081D3528414261002DA592 /* StatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D3428414261002DA592 /* StatusHeaderView.swift */; };
@@ -137,6 +138,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		230318B82853ABF000CBA8DF /* SRCircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCircleProgress.swift; sourceTree = "<group>"; };
 		23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesTableViewCellPreview.swift; sourceTree = "<group>"; };
 		23081D2F2841379C002DA592 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		23081D3428414261002DA592 /* StatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHeaderView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				2363096B281F09DF00F3F905 /* EditImageView.swift */,
 				2359A8502823CCDA001037D0 /* InteractiveImageView.swift */,
 				23081D512848C8B0002DA592 /* LayoutableView.swift */,
+				230318B82853ABF000CBA8DF /* SRCircleProgress.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				23081D2D28411BB3002DA592 /* TitlesTableViewCellPreview.swift in Sources */,
 				2363095F281E80C900F3F905 /* Persisted.swift in Sources */,
 				23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */,
+				230318B92853ABF000CBA8DF /* SRCircleProgress.swift in Sources */,
 				233B4DEB282A698200274482 /* ProfileEditViewController.swift in Sources */,
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
 				2363092B281C600300F3F905 /* UIImage+extensions.swift in Sources */,
