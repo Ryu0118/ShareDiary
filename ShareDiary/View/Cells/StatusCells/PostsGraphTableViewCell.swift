@@ -20,25 +20,22 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
     var postsData = [PostsData]() {
         didSet {
             guard let presentYearData = postsData.sorted(by: { $0.year > $1.year }).first else { return }
+
             postsControlView.apply(input: .setAllowedYears(years: postsData.map { "\($0.year)" }))
             graphHighlightView.apply(input: .setYearPostsCount(year: presentYearData.year, postsCount: presentYearData.postsCount))
+            yearStatusView.apply(inputs: [
+                .setPostsData(year: presentYearData.year, postsCount: presentYearData.postsCount)
+            ])
         }
     }
 
     private var postsControlView = GraphControlView()
     private var graphHighlightView = GraphHighlightView()
     private var postsGraphView = PostsGraphView()
-    private var circleProgressView: SRCircleProgress = {
-        let progressView = SRCircleProgress(frame: .zero)
-        progressView.circleBackgroundColor = Theme.Color.progressBackgroundColor
-        progressView.progressColor = Theme.Color.appThemeColor
-        progressView.progressLineWidth = 6
-        progressView.backgroundLineWidth = progressView.progressLineWidth
-        return progressView
-    }()
+    private var yearStatusView = YearStatusView()
 
     lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView, circleProgressView])
+        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView, yearStatusView])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
@@ -94,11 +91,10 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
             $0.height.equalTo(37)
         }
 
-        circleProgressView.snp.makeConstraints {
-            $0.width.height.equalTo(130)
+        yearStatusView.snp.makeConstraints {
+            $0.height.equalTo(140)
+            $0.width.equalToSuperview()
         }
-
-        circleProgressView.setProgress(0.5, animated: true)
 
     }
 
@@ -114,6 +110,9 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
             if let postsData = self.postsData[safe: currentIndex] {
                 self.postsGraphView.apply(input: .setPostsData(postsData: postsData))
                 self.graphHighlightView.apply(input: .setYearPostsCount(year: postsData.year, postsCount: postsData.postsCount))
+                self.yearStatusView.apply(inputs: [
+                    .setPostsData(year: postsData.year, postsCount: postsData.postsCount)
+                ])
             }
         }
         .disposed(by: disposeBag)
@@ -128,7 +127,6 @@ extension PostsGraphTableViewCell: ChartViewDelegate {
         let index = Int(entry.x)
         let postsCount = Int(entry.y)
 
-        print(index, postsCount)
         graphHighlightView.apply(input: .setMonthPostsCount(month: index + 1, postsCount: postsCount))
     }
 

@@ -231,13 +231,13 @@ extension ProfileViewController: UITableViewDelegate {
         // if scrollView is going upwards
         if goingUp {
             // if scrollView is a child scrollView
-            print("goingUp")
+            // print("goingUp")
 
             if scrollView == childScrollView {
                 // print("scrollView is tableView")
                 // if parent scroll view isn't scrolled maximum (i.e. menu isn't sticked on top yet)
                 if parentScrollView.contentOffset.y < parentViewMaxContentYOffset && !childScrollingDownDueToParent {
-                    print("scrollViewのcontentOffsetがMaxContentOffSet以下かつchildScrollingDownDueToParentがfalse")
+                    // print("scrollViewのcontentOffsetがMaxContentOffSet以下かつchildScrollingDownDueToParentがfalse")
                     // change parent scrollView contentOffset y which is equal to minimum between maximum y offset that parent scrollView can have and sum of parentScrollView's content's y offset and child's y content offset. Because, we don't want parent scrollView go above sticked menu.
                     // Scroll parent scrollview upwards as much as child scrollView is scrolled
                     // Sometimes parent scrollView goes in the middle of screen and stucks there so max is used.
@@ -260,7 +260,7 @@ extension ProfileViewController: UITableViewDelegate {
                     // set parent scrollView's content's y offset to be the maximum between 0 and difference of parentScrollView's content's y offset and absolute value of childScrollView's content's y offset
                     // we don't want parent to scroll more that 0 i.e. more downwards so we use max of 0.
                     let offsetY = parentScrollView.contentOffset.y - abs(childScrollView.contentOffset.y)
-                    print(offsetY, parentScrollView.contentOffset.y, childScrollView.contentOffset.y, parentViewMaxContentYOffset, previousOffset)
+                    // print(offsetY, parentScrollView.contentOffset.y, childScrollView.contentOffset.y, parentViewMaxContentYOffset, previousOffset)
                     let diff = parentScrollView.contentOffset.y - previousOffset
                     previousOffset = parentScrollView.contentOffset.y
 
@@ -281,7 +281,7 @@ extension ProfileViewController: UITableViewDelegate {
                 // and parent scrollView's content's y offset is less than parentView's maximum y offset
                 // i.e. if child view's content is hiding up and parent scrollView is scrolled down than we need to scroll content of childScrollView first
                 if childScrollView.contentOffset.y > 0 && parentScrollView.contentOffset.y < parentViewMaxContentYOffset {
-                    print("tableViewのcontentOffsetYが0以上かつscrollViewのcontentOffsetYがscrollViewのcontentOffsetMaxならば")
+                    // print("tableViewのcontentOffsetYが0以上かつscrollViewのcontentOffsetYがscrollViewのcontentOffsetMaxならば")
                     // set if scrolling is due to parent scrolled
                     childScrollingDownDueToParent = true
                     // assign the scrolled offset of parent to child not exceding the offset 0 for child scroll view

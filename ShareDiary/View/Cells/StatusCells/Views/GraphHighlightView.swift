@@ -32,15 +32,6 @@ class GraphHighlightView: UIView, InputAppliable {
 
     lazy var yearStatus: (year: Int, postsCount: Int) = (year: year, postsCount: yearPostsCount) {
         didSet {
-            //            let grayString = NSAttributedString(string: "\(year)年の投稿数: ", attributes: grayAttribute)
-            //            let boldString = NSAttributedString(string: yearStatus.postsCount.toString(), attributes: boldAttribute)
-            //
-            //            let mutableString = NSMutableAttributedString()
-            //            mutableString.append(grayString)
-            //            mutableString.append(boldString)
-            //
-            //            yearStatusLabel.attributedText = mutableString
-            //            yearStatusLabel.textAlignment = .center
             guard let monthString = Months.getMonthString(month: monthStatus.month) else { return }
             let grayString = NSAttributedString(string: year.toString() + "年" + monthString + "の投稿数: ", attributes: grayAttribute)
             let boldString = NSAttributedString(string: monthPostsCount.toString(), attributes: boldAttribute)
