@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import SRCircleProgress
 
 class YearStatusView: UIView, InputAppliable {
 
@@ -27,7 +28,7 @@ class YearStatusView: UIView, InputAppliable {
                 let firstDate = Calendar(identifier: .gregorian)
                     .date(from: DateComponents(year: postsData.year, month: 1, day: 1 )) ?? Date()
                 let elapsed = Date().difference(firstDate) + 1
-                let progress = CGFloat(postsData.postsCount) / CGFloat(elapsed)
+                let progress = Float(postsData.postsCount) / Float(elapsed)
 
                 entireView.apply(input: .setTitle("\(postsData.year)年の経過日数"))
                 entireView.apply(input: .setStatus(elapsed))
@@ -40,7 +41,7 @@ class YearStatusView: UIView, InputAppliable {
                 let lastDate = Calendar(identifier: .gregorian)
                     .date(from: DateComponents(year: postsData.year, month: 12, day: 31)) ?? Date()
                 let elapsed = firstDate.difference(lastDate) + 1
-                let progress = CGFloat(postsData.postsCount) / CGFloat(elapsed)
+                let progress = Float(postsData.postsCount) / Float(elapsed)
 
                 entireView.apply(input: .setTitle("\(postsData.year)年の日数"))
                 entireView.apply(input: .setStatus(elapsed))
@@ -89,11 +90,12 @@ class YearStatusView: UIView, InputAppliable {
 
     private lazy var circleProgressView: SRCircleProgress = {
         let progressView = SRCircleProgress(frame: .zero)
-        progressView.circleBackgroundColor = Theme.Color.progressBackgroundColor
-        progressView.progressColor = Theme.Color.appThemeDeepColor
+        progressView.backgroundLineColor = Theme.Color.progressBackgroundColor
+        progressView.progressLineColor = Theme.Color.appThemeDeepColor
         progressView.progressLineWidth = 6
-        progressView.animationDuration = 0.3
         progressView.backgroundLineWidth = progressView.progressLineWidth
+        progressView.animationDuration = 0.3
+        progressView.progressAngle = .lowerLeftToLowerRight(offset: 0)
         return progressView
     }()
 

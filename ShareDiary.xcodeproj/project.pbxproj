@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		230318B92853ABF000CBA8DF /* SRCircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230318B82853ABF000CBA8DF /* SRCircleProgress.swift */; };
 		230318BB2853D08100CBA8DF /* YearStatusView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 230318BA2853D08000CBA8DF /* YearStatusView .swift */; };
 		230318BD2854C35500CBA8DF /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230318BC2854C35500CBA8DF /* StatusView.swift */; };
 		230318BF2854C75600CBA8DF /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230318BE2854C75600CBA8DF /* Date+extensions.swift */; };
@@ -36,7 +35,6 @@
 		231C7F7628215830007D8CFF /* SignInWithGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C7F7528215830007D8CFF /* SignInWithGoogleHelper.swift */; };
 		231C7F7828217B18007D8CFF /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C7F7728217B18007D8CFF /* Login.swift */; };
 		231C7F7A28217C02007D8CFF /* LoginViewController+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */; };
-		231C7F7C28217E06007D8CFF /* CryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C7F7B28217E06007D8CFF /* CryptUtil.swift */; };
 		233B4DE7282A531800274482 /* UserInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B4DE6282A531800274482 /* UserInfoMock.swift */; };
 		233B4DEB282A698200274482 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B4DEA282A698100274482 /* ProfileEditViewController.swift */; };
 		2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8502823CCDA001037D0 /* InteractiveImageView.swift */; };
@@ -96,6 +94,8 @@
 		236309752820447E00F3F905 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309742820447D00F3F905 /* UserInfo.swift */; };
 		23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630976282044AA00F3F905 /* AuthorizationInfo.swift */; };
 		236309792820450600F3F905 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309782820450600F3F905 /* AuthType.swift */; };
+		2389422B28662C2B00B9A5BF /* ImpressionLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389422A28662C2B00B9A5BF /* ImpressionLevel.swift */; };
+		239565782854F97F0027F45A /* SRCircleProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 239565772854F97F0027F45A /* SRCircleProgress */; };
 		239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 239DFE7D283D44AB009BFF49 /* Parchment */; };
 		239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE80283D4567009BFF49 /* StatusViewController.swift */; };
 		239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */; };
@@ -115,6 +115,7 @@
 		23C7DE252823BB8A00EB1A32 /* InputAppliable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7DE242823BB8A00EB1A32 /* InputAppliable.swift */; };
 		23CD4CBC28258D66001A7DB4 /* ProfileUserInfoViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CD4CBB28258D66001A7DB4 /* ProfileUserInfoViewPreview.swift */; };
 		23CD4CC428259598001A7DB4 /* ProfileFolowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CD4CC328259598001A7DB4 /* ProfileFolowListView.swift */; };
+		23D1A7C428660B9500FC59E0 /* ImpressionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1A7C328660B9500FC59E0 /* ImpressionView.swift */; };
 		23EB28ED283F1CC900602C29 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EB28EC283F1CC900602C29 /* Titles.swift */; };
 		23EB28EF283F1CDE00602C29 /* PostsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EB28EE283F1CDE00602C29 /* PostsData.swift */; };
 		23EB28F1283F1CED00602C29 /* EmotionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EB28F0283F1CED00602C29 /* EmotionsData.swift */; };
@@ -141,10 +142,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		230318B82853ABF000CBA8DF /* SRCircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCircleProgress.swift; sourceTree = "<group>"; };
 		230318BA2853D08000CBA8DF /* YearStatusView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YearStatusView .swift"; sourceTree = "<group>"; };
 		230318BC2854C35500CBA8DF /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		230318BE2854C75600CBA8DF /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
+		230318C02854F79900CBA8DF /* SRCircleProgress */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SRCircleProgress; path = ../SRCircleProgress; sourceTree = "<group>"; };
 		23081D2C28411BB3002DA592 /* TitlesTableViewCellPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesTableViewCellPreview.swift; sourceTree = "<group>"; };
 		23081D2F2841379C002DA592 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		23081D3428414261002DA592 /* StatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHeaderView.swift; sourceTree = "<group>"; };
@@ -160,7 +161,6 @@
 		231C7F7528215830007D8CFF /* SignInWithGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleHelper.swift; sourceTree = "<group>"; };
 		231C7F7728217B18007D8CFF /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+OAuth.swift"; sourceTree = "<group>"; };
-		231C7F7B28217E06007D8CFF /* CryptUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptUtil.swift; sourceTree = "<group>"; };
 		233B4DE6282A531800274482 /* UserInfoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoMock.swift; sourceTree = "<group>"; };
 		233B4DEA282A698100274482 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2359A8502823CCDA001037D0 /* InteractiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveImageView.swift; sourceTree = "<group>"; };
@@ -214,6 +214,7 @@
 		236309742820447D00F3F905 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		23630976282044AA00F3F905 /* AuthorizationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInfo.swift; sourceTree = "<group>"; };
 		236309782820450600F3F905 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
+		2389422A28662C2B00B9A5BF /* ImpressionLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpressionLevel.swift; sourceTree = "<group>"; };
 		239DFE80283D4567009BFF49 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryViewController.swift; sourceTree = "<group>"; };
 		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 		23CD4CBB28258D66001A7DB4 /* ProfileUserInfoViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoViewPreview.swift; sourceTree = "<group>"; };
 		23CD4CC328259598001A7DB4 /* ProfileFolowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFolowListView.swift; sourceTree = "<group>"; };
 		23CD4CC7282598D4001A7DB4 /* ProfileFollowEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowEditButton.swift; sourceTree = "<group>"; };
+		23D1A7C328660B9500FC59E0 /* ImpressionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpressionView.swift; sourceTree = "<group>"; };
 		23EB28EC283F1CC900602C29 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		23EB28EE283F1CDE00602C29 /* PostsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsData.swift; sourceTree = "<group>"; };
 		23EB28F0283F1CED00602C29 /* EmotionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionsData.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */,
 				231C7F642820549F007D8CFF /* FirebaseAuth in Frameworks */,
 				231C7F6E2820549F007D8CFF /* FirebaseMessaging in Frameworks */,
+				239565782854F97F0027F45A /* SRCircleProgress in Frameworks */,
 				23630971281FE33600F3F905 /* TOCropViewController in Frameworks */,
 				231C7F702820549F007D8CFF /* FirebaseStorage in Frameworks */,
 				231C7F662820549F007D8CFF /* FirebaseCrashlytics in Frameworks */,
@@ -323,6 +326,7 @@
 				23081D492848C654002DA592 /* GraphControlView.swift */,
 				239F06E4284B37FC000D89F5 /* GraphHighlightView.swift */,
 				230318BA2853D08000CBA8DF /* YearStatusView .swift */,
+				23D1A7C328660B9500FC59E0 /* ImpressionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,6 +433,7 @@
 		23630911281C020600F3F905 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2389422928662C1900B9A5BF /* Profile */,
 				23EB28EB283F1CB500602C29 /* Status */,
 				236309742820447D00F3F905 /* UserInfo.swift */,
 				236309782820450600F3F905 /* AuthType.swift */,
@@ -464,7 +469,6 @@
 				2363096B281F09DF00F3F905 /* EditImageView.swift */,
 				2359A8502823CCDA001037D0 /* InteractiveImageView.swift */,
 				23081D512848C8B0002DA592 /* LayoutableView.swift */,
-				230318B82853ABF000CBA8DF /* SRCircleProgress.swift */,
 				230318BC2854C35500CBA8DF /* StatusView.swift */,
 			);
 			path = View;
@@ -492,7 +496,6 @@
 				2363095C281E759E00F3F905 /* Save.swift */,
 				2363095E281E80C900F3F905 /* Persisted.swift */,
 				231C7F7728217B18007D8CFF /* Login.swift */,
-				231C7F7B28217E06007D8CFF /* CryptUtil.swift */,
 				23C7DE242823BB8A00EB1A32 /* InputAppliable.swift */,
 				239DFE88283DB256009BFF49 /* Navigationable.swift */,
 			);
@@ -529,6 +532,14 @@
 				23630965281E998100F3F905 /* StorageUtil.swift */,
 			);
 			path = FirebaseUtils;
+			sourceTree = "<group>";
+		};
+		2389422928662C1900B9A5BF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2389422A28662C2B00B9A5BF /* ImpressionLevel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		239DFE7F283D4547009BFF49 /* Tab */ = {
@@ -578,6 +589,7 @@
 		23C7DE1F2822A00C00EB1A32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				230318C02854F79900CBA8DF /* SRCircleProgress */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -663,6 +675,7 @@
 				23C7DE062822635300EB1A32 /* SDWebImage */,
 				239DFE7D283D44AB009BFF49 /* Parchment */,
 				23081D3A28427AC4002DA592 /* Charts */,
+				239565772854F97F0027F45A /* SRCircleProgress */,
 			);
 			productName = ShareDiary;
 			productReference = 23630893281BCF7C00F3F905 /* ShareDiary.app */;
@@ -851,7 +864,6 @@
 				23081D2D28411BB3002DA592 /* TitlesTableViewCellPreview.swift in Sources */,
 				2363095F281E80C900F3F905 /* Persisted.swift in Sources */,
 				23630915281C3BCC00F3F905 /* LoginViewController.swift in Sources */,
-				230318B92853ABF000CBA8DF /* SRCircleProgress.swift in Sources */,
 				233B4DEB282A698200274482 /* ProfileEditViewController.swift in Sources */,
 				230318BB2853D08100CBA8DF /* YearStatusView .swift in Sources */,
 				23630944281D44AE00F3F905 /* Makefile in Sources */,
@@ -863,7 +875,6 @@
 				23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */,
 				23CD4CC428259598001A7DB4 /* ProfileFolowListView.swift in Sources */,
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
-				231C7F7C28217E06007D8CFF /* CryptUtil.swift in Sources */,
 				2359A85D2823DB37001037D0 /* SignInWithTwitterHelper.swift in Sources */,
 				239F06E5284B37FC000D89F5 /* GraphHighlightView.swift in Sources */,
 				2363089B281BCF7C00F3F905 /* MainViewController.swift in Sources */,
@@ -906,8 +917,10 @@
 				2363095D281E759E00F3F905 /* Save.swift in Sources */,
 				23C7DE252823BB8A00EB1A32 /* InputAppliable.swift in Sources */,
 				231C7F7628215830007D8CFF /* SignInWithGoogleHelper.swift in Sources */,
+				2389422B28662C2B00B9A5BF /* ImpressionLevel.swift in Sources */,
 				2363094A281D581F00F3F905 /* UIStackView+extensions.swift in Sources */,
 				2363096A281EE26C00F3F905 /* InputTextView.swift in Sources */,
+				23D1A7C428660B9500FC59E0 /* ImpressionView.swift in Sources */,
 				2363091D281C3C2A00F3F905 /* RegistrationViewModel.swift in Sources */,
 				239DFE89283DB256009BFF49 /* Navigationable.swift in Sources */,
 				23EB28F1283F1CED00602C29 /* EmotionsData.swift in Sources */,
@@ -1466,6 +1479,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2363096D281FE33500F3F905 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
 			productName = TOCropViewController;
+		};
+		239565772854F97F0027F45A /* SRCircleProgress */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SRCircleProgress;
 		};
 		239DFE7D283D44AB009BFF49 /* Parchment */ = {
 			isa = XCSwiftPackageProductDependency;
