@@ -40,7 +40,13 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
-        stack.spacing = 8
+        stack.arrangedSubviews.forEach { view in
+            if let _ = view as? YearStatusView {
+                stack.setCustomSpacing(16, after: view)
+            } else {
+                stack.setCustomSpacing(8, after: view)
+            }
+        }
         return stack
     }()
 
@@ -62,8 +68,9 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
         switch input {
         case .setPostsData(let postsData):
             self.postsData = postsData
-            if let data = postsData[safe: 0] {
+            if let data = postsData[safe: 0] {// get posts Data of latest year
                 postsGraphView.apply(input: .setPostsData(postsData: data))
+                impressionView.apply(input: .setLevels(levels: data.impressionLevels))
             }
         }
     }
@@ -77,7 +84,7 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
     private func setupConstraints() {
 
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(ConstraintInsets(top: 8, left: 8, bottom: 8, right: 8))
+            $0.edges.equalToSuperview().inset(ConstraintInsets(top: 8, left: 8, bottom: 16, right: 8))
         }
 
         postsGraphView.snp.makeConstraints {

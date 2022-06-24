@@ -10,6 +10,7 @@ import Foundation
 struct PostsData {
     let year: Int
     let data: [Int]
+    let impressionLevels: [ImpressionLevel]
     var postsCount: Int {
         data.reduce(0) { $0 + $1 }
     }

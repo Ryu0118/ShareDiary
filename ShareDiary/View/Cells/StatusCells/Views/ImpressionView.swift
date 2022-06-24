@@ -46,7 +46,7 @@ class ImpressionView: UIView, InputAppliable {
 
     private func setupView() {
         addSubview(stackView)
-        for i in 1...7 {
+        for i in (1...7).reversed() {
             let impression = Impression()
             let placeholder = ImpressionLevel(level: i, postsCount: 0)
             impression.tag = i
@@ -54,7 +54,7 @@ class ImpressionView: UIView, InputAppliable {
             stackView.addArrangedSubview(impression)
         }
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(ConstraintInsets(top: 0, left: 0, bottom: 5, right: 0))
         }
     }
 
@@ -65,7 +65,7 @@ class ImpressionView: UIView, InputAppliable {
     func apply(input: Input) {
         switch input {
         case .setLevels(let levels):
-            self.levels = levels.sorted(by: { $0.level < $1.level })
+            self.levels = levels.sorted(by: { $0.level > $1.level })
         }
     }
 
@@ -82,10 +82,10 @@ private class Impression: HighlightButton {
         super.init(frame: .zero)
         setup()
     }
-    
+
     private func setup() {
         textLabel.font = .systemFont(ofSize: 35)
-        detailTextLabel.font = Theme.Font.getAppFont(size: 18)
+        detailTextLabel.font = Theme.Font.getAppFont(size: 16.5)
     }
 
     func setLevel(level: ImpressionLevel) {
