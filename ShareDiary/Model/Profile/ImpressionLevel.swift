@@ -11,9 +11,9 @@ struct ImpressionLevel {
     let level: Int
     let postsCount: Int
     var emoji: String {
-        return emojies[level - 1]
+        emojies[level - 1]
     }
-    
+
     private let emojies = [
         "😰",
         "😭",
@@ -21,6 +21,6 @@ struct ImpressionLevel {
         "😶",
         "😀",
         "😄",
-        "😆",
+        "😆"
     ]
 }

@@ -33,9 +33,10 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
     private var graphHighlightView = GraphHighlightView()
     private var postsGraphView = PostsGraphView()
     private var yearStatusView = YearStatusView()
+    private var impressionView = ImpressionView()
 
     lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView, yearStatusView])
+        let stack = UIStackView(arrangedSubviews: [postsControlView, graphHighlightView, postsGraphView, yearStatusView, impressionView])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
@@ -69,8 +70,11 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
 
     private func setupViews() {
         contentView.addSubview(stackView)
-
         postsGraphView.barChartView.delegate = self
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
 
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(ConstraintInsets(top: 8, left: 8, bottom: 8, right: 8))
@@ -94,6 +98,11 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
         yearStatusView.snp.makeConstraints {
             $0.height.equalTo(140)
             $0.width.equalToSuperview()
+        }
+
+        impressionView.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalToSuperview().multipliedBy(0.9)
         }
 
     }

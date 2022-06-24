@@ -95,6 +95,7 @@
 		23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23630976282044AA00F3F905 /* AuthorizationInfo.swift */; };
 		236309792820450600F3F905 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236309782820450600F3F905 /* AuthType.swift */; };
 		2389422B28662C2B00B9A5BF /* ImpressionLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389422A28662C2B00B9A5BF /* ImpressionLevel.swift */; };
+		2389422D28662D5600B9A5BF /* CryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389422C28662D5600B9A5BF /* CryptUtil.swift */; };
 		239565782854F97F0027F45A /* SRCircleProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 239565772854F97F0027F45A /* SRCircleProgress */; };
 		239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 239DFE7D283D44AB009BFF49 /* Parchment */; };
 		239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE80283D4567009BFF49 /* StatusViewController.swift */; };
@@ -215,6 +216,7 @@
 		23630976282044AA00F3F905 /* AuthorizationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInfo.swift; sourceTree = "<group>"; };
 		236309782820450600F3F905 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
 		2389422A28662C2B00B9A5BF /* ImpressionLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpressionLevel.swift; sourceTree = "<group>"; };
+		2389422C28662D5600B9A5BF /* CryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptUtil.swift; sourceTree = "<group>"; };
 		239DFE80283D4567009BFF49 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryViewController.swift; sourceTree = "<group>"; };
 		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				2363095E281E80C900F3F905 /* Persisted.swift */,
 				231C7F7728217B18007D8CFF /* Login.swift */,
 				23C7DE242823BB8A00EB1A32 /* InputAppliable.swift */,
+				2389422C28662D5600B9A5BF /* CryptUtil.swift */,
 				239DFE88283DB256009BFF49 /* Navigationable.swift */,
 			);
 			path = Utilities;
@@ -892,6 +895,7 @@
 				23630899281BCF7C00F3F905 /* SceneDelegate.swift in Sources */,
 				2363093E281D387300F3F905 /* WorldLifeLabel.swift in Sources */,
 				23EB28F7283F3D6B00602C29 /* PostsGraphTableViewCell.swift in Sources */,
+				2389422D28662D5600B9A5BF /* CryptUtil.swift in Sources */,
 				23081D3528414261002DA592 /* StatusHeaderView.swift in Sources */,
 				23630935281C687C00F3F905 /* ProfileViewController.swift in Sources */,
 				23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */,
