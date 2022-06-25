@@ -19,7 +19,7 @@
 		23081D4428428A73002DA592 /* TitlesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4328428A73002DA592 /* TitlesMock.swift */; };
 		23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */; };
 		23081D4A2848C654002DA592 /* YearControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D492848C654002DA592 /* YearControlView.swift */; };
-		23081D4E2848C698002DA592 /* GraphControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4D2848C698002DA592 /* GraphControlViewModel.swift */; };
+		23081D4E2848C698002DA592 /* YearControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4D2848C698002DA592 /* YearControlViewModel.swift */; };
 		23081D522848C8B0002DA592 /* LayoutableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D512848C8B0002DA592 /* LayoutableView.swift */; };
 		23081D542848D5A7002DA592 /* GraphControlViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */; };
 		23081D582848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D572848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift */; };
@@ -158,7 +158,7 @@
 		23081D4328428A73002DA592 /* TitlesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesMock.swift; sourceTree = "<group>"; };
 		23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphViewPreview.swift; sourceTree = "<group>"; };
 		23081D492848C654002DA592 /* YearControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearControlView.swift; sourceTree = "<group>"; };
-		23081D4D2848C698002DA592 /* GraphControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlViewModel.swift; sourceTree = "<group>"; };
+		23081D4D2848C698002DA592 /* YearControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearControlViewModel.swift; sourceTree = "<group>"; };
 		23081D512848C8B0002DA592 /* LayoutableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutableView.swift; sourceTree = "<group>"; };
 		23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlViewPreview.swift; sourceTree = "<group>"; };
 		23081D572848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphTableViewCellPreview.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				23081D2F2841379C002DA592 /* StatusViewModel.swift */,
-				23081D4D2848C698002DA592 /* GraphControlViewModel.swift */,
+				23081D4D2848C698002DA592 /* YearControlViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -913,7 +913,7 @@
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
 				23081D3D2842888C002DA592 /* PostsDataMock.swift in Sources */,
 				231C7F7828217B18007D8CFF /* Login.swift in Sources */,
-				23081D4E2848C698002DA592 /* GraphControlViewModel.swift in Sources */,
+				23081D4E2848C698002DA592 /* YearControlViewModel.swift in Sources */,
 				239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */,
 				2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */,
 				23630897281BCF7C00F3F905 /* AppDelegate.swift in Sources */,

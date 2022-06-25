@@ -13,7 +13,7 @@ import RxCocoa
 class YearControlView: UIView, InputAppliable {
 
     private let disposeBag = DisposeBag()
-    let viewModel = GraphControlViewModel()
+    let viewModel = YearControlViewModel()
     var years = [String]() {
         didSet {
             self.updateButton()

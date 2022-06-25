@@ -15,7 +15,7 @@ struct Post {
     let date: Date
     let goodCount: Int
     let message: String
-    let impressionLevel: Int//1...7
+    let impressionLevel: Int// 1...7
     let comment: [String]
     let imageURLs: [URL]
 }
