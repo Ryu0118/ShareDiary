@@ -29,7 +29,7 @@ class PostsGraphTableViewCell: UITableViewCell, InputAppliable {
         }
     }
 
-    private var postsControlView = GraphControlView()
+    private var postsControlView = YearControlView()
     private var graphHighlightView = GraphHighlightView()
     private var postsGraphView = PostsGraphView()
     private var yearStatusView = YearStatusView()

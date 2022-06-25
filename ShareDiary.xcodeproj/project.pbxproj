@@ -18,7 +18,7 @@
 		23081D4228428A32002DA592 /* PostsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4128428A32002DA592 /* PostsGraphView.swift */; };
 		23081D4428428A73002DA592 /* TitlesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4328428A73002DA592 /* TitlesMock.swift */; };
 		23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */; };
-		23081D4A2848C654002DA592 /* GraphControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D492848C654002DA592 /* GraphControlView.swift */; };
+		23081D4A2848C654002DA592 /* YearControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D492848C654002DA592 /* YearControlView.swift */; };
 		23081D4E2848C698002DA592 /* GraphControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D4D2848C698002DA592 /* GraphControlViewModel.swift */; };
 		23081D522848C8B0002DA592 /* LayoutableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D512848C8B0002DA592 /* LayoutableView.swift */; };
 		23081D542848D5A7002DA592 /* GraphControlViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */; };
@@ -156,7 +156,7 @@
 		23081D4128428A32002DA592 /* PostsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphView.swift; sourceTree = "<group>"; };
 		23081D4328428A73002DA592 /* TitlesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesMock.swift; sourceTree = "<group>"; };
 		23081D4528460B4F002DA592 /* PostsGraphViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsGraphViewPreview.swift; sourceTree = "<group>"; };
-		23081D492848C654002DA592 /* GraphControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlView.swift; sourceTree = "<group>"; };
+		23081D492848C654002DA592 /* YearControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearControlView.swift; sourceTree = "<group>"; };
 		23081D4D2848C698002DA592 /* GraphControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlViewModel.swift; sourceTree = "<group>"; };
 		23081D512848C8B0002DA592 /* LayoutableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutableView.swift; sourceTree = "<group>"; };
 		23081D532848D5A7002DA592 /* GraphControlViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphControlViewPreview.swift; sourceTree = "<group>"; };
@@ -329,7 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				23081D4128428A32002DA592 /* PostsGraphView.swift */,
-				23081D492848C654002DA592 /* GraphControlView.swift */,
+				23081D492848C654002DA592 /* YearControlView.swift */,
 				239F06E4284B37FC000D89F5 /* GraphHighlightView.swift */,
 				230318BA2853D08000CBA8DF /* YearStatusView .swift */,
 				23D1A7C328660B9500FC59E0 /* ImpressionView.swift */,
@@ -933,7 +933,7 @@
 				239DFE85283D45CD009BFF49 /* GoodViewController.swift in Sources */,
 				23630933281C685500F3F905 /* HomeViewController.swift in Sources */,
 				2363094D281D902200F3F905 /* OAuthButton.swift in Sources */,
-				23081D4A2848C654002DA592 /* GraphControlView.swift in Sources */,
+				23081D4A2848C654002DA592 /* YearControlView.swift in Sources */,
 				23C7DE0C282288C800EB1A32 /* ProfileHeaderViewController.swift in Sources */,
 				236309752820447E00F3F905 /* UserInfo.swift in Sources */,
 				23C7DE1228228A2E00EB1A32 /* ProfileFollowEditViewController.swift in Sources */,

@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class GraphControlView: UIView, InputAppliable {
+class YearControlView: UIView, InputAppliable {
 
     private let disposeBag = DisposeBag()
     let viewModel = GraphControlViewModel()
