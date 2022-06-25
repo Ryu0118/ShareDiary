@@ -34,6 +34,16 @@ class MonthCollectionViewController: UIViewController {
         return collectionView
     }()
 
+    private let yearControlView = YearControlView()
+
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [yearControlView, collectionView])
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        return stack
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,11 +63,23 @@ class MonthCollectionViewController: UIViewController {
     }
 
     private func setupCollectionView() {
-        view.addSubview(collectionView)
+        view.addSubview(stackView)
         view.backgroundColor = .clear
-        collectionView.snp.makeConstraints {
+
+        stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+
+        collectionView.snp.makeConstraints {
+            $0.height.equalTo(55)
+            $0.width.equalToSuperview()
+        }
+
+        yearControlView.snp.makeConstraints {
+            $0.height.equalTo(40)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+        }
+
     }
 
 }
@@ -100,7 +122,7 @@ extension MonthCollectionViewController: UICollectionViewDelegate, UICollectionV
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 50, height: collectionView.frame.size.height)
+        CGSize(width: 50, height: 55)
     }
 
 }

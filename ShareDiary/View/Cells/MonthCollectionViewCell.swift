@@ -50,7 +50,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
 
         setupView()
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor

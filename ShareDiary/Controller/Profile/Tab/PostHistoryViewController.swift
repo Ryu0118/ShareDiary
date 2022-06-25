@@ -39,7 +39,7 @@ class PostHistoryViewController: UIViewController {
 
         monthCollectionViewController.view.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14)
-            $0.height.equalTo(55)
+            $0.height.equalTo(100)
             $0.width.equalToSuperview()
         }
     }

@@ -98,6 +98,7 @@
 		2389422D28662D5600B9A5BF /* CryptUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389422C28662D5600B9A5BF /* CryptUtil.swift */; };
 		2389423028663F4100B9A5BF /* MonthCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */; };
 		23894235286718EB00B9A5BF /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23894234286718EB00B9A5BF /* MonthCollectionViewCell.swift */; };
+		238942392867854C00B9A5BF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238942382867854B00B9A5BF /* Post.swift */; };
 		239565782854F97F0027F45A /* SRCircleProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 239565772854F97F0027F45A /* SRCircleProgress */; };
 		239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 239DFE7D283D44AB009BFF49 /* Parchment */; };
 		239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE80283D4567009BFF49 /* StatusViewController.swift */; };
@@ -221,6 +222,7 @@
 		2389422C28662D5600B9A5BF /* CryptUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptUtil.swift; sourceTree = "<group>"; };
 		2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewController.swift; sourceTree = "<group>"; };
 		23894234286718EB00B9A5BF /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
+		238942382867854B00B9A5BF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		239DFE80283D4567009BFF49 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryViewController.swift; sourceTree = "<group>"; };
 		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
@@ -389,7 +391,6 @@
 				23630929281C5F9300F3F905 /* Extensions */,
 				23630912281C020C00F3F905 /* ViewModel */,
 				23630911281C020600F3F905 /* Model */,
-				236308C7281BD54800F3F905 /* Other */,
 				23630913281C021900F3F905 /* View */,
 				236308C6281BD52E00F3F905 /* Controller */,
 				23630923281C48FA00F3F905 /* GoogleService-Info.plist */,
@@ -440,11 +441,12 @@
 		23630911281C020600F3F905 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2389422928662C1900B9A5BF /* Profile */,
-				23EB28EB283F1CB500602C29 /* Status */,
 				236309742820447D00F3F905 /* UserInfo.swift */,
 				236309782820450600F3F905 /* AuthType.swift */,
 				23630976282044AA00F3F905 /* AuthorizationInfo.swift */,
+				2389422928662C1900B9A5BF /* Profile */,
+				23EB28EB283F1CB500602C29 /* Status */,
+				236308C7281BD54800F3F905 /* Other */,
 				231C7F7428215815007D8CFF /* SignInHelper */,
 				23630960281E919F00F3F905 /* FirebaseUtils */,
 			);
@@ -631,6 +633,7 @@
 		23EB28EB283F1CB500602C29 /* Status */ = {
 			isa = PBXGroup;
 			children = (
+				238942382867854B00B9A5BF /* Post.swift */,
 				23EB28EC283F1CC900602C29 /* Titles.swift */,
 				23EB28EE283F1CDE00602C29 /* PostsData.swift */,
 				23EB28F0283F1CED00602C29 /* EmotionsData.swift */,
@@ -944,6 +947,7 @@
 				23081D4228428A32002DA592 /* PostsGraphView.swift in Sources */,
 				2363095D281E759E00F3F905 /* Save.swift in Sources */,
 				23C7DE252823BB8A00EB1A32 /* InputAppliable.swift in Sources */,
+				238942392867854C00B9A5BF /* Post.swift in Sources */,
 				231C7F7628215830007D8CFF /* SignInWithGoogleHelper.swift in Sources */,
 				2389422B28662C2B00B9A5BF /* ImpressionLevel.swift in Sources */,
 				2363094A281D581F00F3F905 /* UIStackView+extensions.swift in Sources */,
