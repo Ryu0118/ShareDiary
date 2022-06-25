@@ -50,6 +50,11 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
 
         setupView()
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,7 +77,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
         case .setSelected(let selected):
             backgroundColor = selected ? Theme.Color.Dynamic.appThemeColor : Theme.Color.Dynamic.appTextColorInvert
             monthLabel.textColor = selected ? UIColor.white : Theme.Color.Dynamic.appTextColor
-            gatuLabel.textColor = selected ? UIColor.white : Theme.Color.Dynamic.appTextColor
+            gatuLabel.textColor = selected ? UIColor.white : Theme.Color.Dynamic.textGray
         }
     }
 
