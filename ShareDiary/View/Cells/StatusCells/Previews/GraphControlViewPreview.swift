@@ -10,18 +10,18 @@ import SwiftUI
 struct GraphControlViewPreview: PreviewProvider {
 
     struct Wrapper: UIViewRepresentable {
-        typealias UIViewType = GraphControlView
+        typealias UIViewType = YearControlView
 
-        let inputs: [GraphControlView.Input]
-        init(inputs: [GraphControlView.Input]) {
+        let inputs: [YearControlView.Input]
+        init(inputs: [YearControlView.Input]) {
             self.inputs = inputs
         }
-        func makeUIView(context: UIViewRepresentableContext<Wrapper>) -> GraphControlView {
-            let view = GraphControlView()
+        func makeUIView(context: UIViewRepresentableContext<Wrapper>) -> YearControlView {
+            let view = YearControlView()
             view.apply(inputs: inputs)
             return view
         }
-        func updateUIView(_ uiView: GraphControlView, context: UIViewRepresentableContext<Wrapper>) {
+        func updateUIView(_ uiView: YearControlView, context: UIViewRepresentableContext<Wrapper>) {
             uiView.apply(inputs: inputs)
         }
     }

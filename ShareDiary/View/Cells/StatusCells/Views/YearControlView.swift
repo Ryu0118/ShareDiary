@@ -10,10 +10,9 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class GraphControlView: UIView, InputAppliable {
+class YearControlView: UIView, InputAppliable {
 
     private let disposeBag = DisposeBag()
-
     let viewModel = GraphControlViewModel()
     var years = [String]() {
         didSet {
@@ -28,10 +27,11 @@ class GraphControlView: UIView, InputAppliable {
             }
         }
     }
+
     let yearLabel: LayoutableLabel = {
         let label = LayoutableLabel()
         label.backgroundColor = Theme.Color.appThemeColor
-        label.textColor = Theme.Color.Dynamic.appTextColorInvert
+        label.textColor = .white
         label.textAlignment = .center
         label.clipsToBounds = true
         label.layoutBlock = {
@@ -39,6 +39,7 @@ class GraphControlView: UIView, InputAppliable {
         }
         return label
     }()
+
     var backButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(R.image.arrowLeft()?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -48,6 +49,7 @@ class GraphControlView: UIView, InputAppliable {
         button.isUserInteractionEnabled = true
         return button
     }()
+
     var forwardButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(R.image.arrowRight()?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -57,6 +59,7 @@ class GraphControlView: UIView, InputAppliable {
         button.isUserInteractionEnabled = true
         return button
     }()
+
     lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [backButton, yearLabel, forwardButton])
         stack.axis = .horizontal

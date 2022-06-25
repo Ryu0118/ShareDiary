@@ -61,6 +61,7 @@ class RegistrationViewModel: RegistrationViewModelInputs, RegistrationViewModelO
 
         isValidPassword = passwordSubject
             .map { Regex.isValidPassword($0) ? "" : "8文字以上24文字以内の英数字で入力してください" }
+            .share(replay: 1, scope: .whileConnected)
 
         shouldLogin = Observable.combineLatest(isValidEmail, isValidPassword) {email, password -> [String] in
             var response = [String]()

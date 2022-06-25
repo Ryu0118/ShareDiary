@@ -12,28 +12,29 @@ class GraphHighlightView: UIView, InputAppliable {
 
     enum Input {
         case setMonthPostsCount(month: Int, postsCount: Int)
+        case setYearPostsCount(year: Int, postsCount: Int)
     }
 
-    var postsCount: Int = 0
-    var month: Int = 0
+    var monthPostsCount = 0
+    var yearPostsCount = 0
+    var month = 0
+    var year = 0
 
-    lazy var monthStatus: (month: Int, postsCount: Int) = (month: month, postsCount: postsCount) {
+    let grayAttribute: [NSAttributedString.Key: Any] = [
+        .font: Theme.Font.getAppFont(size: 22),
+        .foregroundColor: Theme.Color.Dynamic.textGray
+    ]
+    let boldAttribute: [NSAttributedString.Key: Any] = [
+        .font: Theme.Font.getAppBoldFont(size: 22),
+        .foregroundColor: Theme.Color.Dynamic.appTextColor,
+        .baselineOffset: 0
+    ]
+
+    lazy var yearStatus: (year: Int, postsCount: Int) = (year: year, postsCount: yearPostsCount) {
         didSet {
-            print(monthStatus.month, monthStatus.postsCount)
             guard let monthString = Months.getMonthString(month: monthStatus.month) else { return }
-
-            let grayAttribute: [NSAttributedString.Key: Any] = [
-                .font: Theme.Font.getAppFont(size: 16),
-                .foregroundColor: Theme.Color.Dynamic.textGray
-            ]
-            let boldAttribute: [NSAttributedString.Key: Any] = [
-                .font: Theme.Font.getAppBoldFont(size: 25),
-                .foregroundColor: Theme.Color.Dynamic.appTextColor,
-                .baselineOffset: -3
-            ]
-
-            let grayString = NSAttributedString(string: monthString + "の投稿数: ", attributes: grayAttribute)
-            let boldString = NSAttributedString(string: postsCount.toString(), attributes: boldAttribute)
+            let grayString = NSAttributedString(string: year.toString() + "年" + monthString + "の投稿数: ", attributes: grayAttribute)
+            let boldString = NSAttributedString(string: monthPostsCount.toString(), attributes: boldAttribute)
 
             let mutableString = NSMutableAttributedString()
             mutableString.append(grayString)
@@ -44,9 +45,40 @@ class GraphHighlightView: UIView, InputAppliable {
         }
     }
 
+    lazy var monthStatus: (month: Int, postsCount: Int) = (month: month, postsCount: monthPostsCount) {
+        didSet {
+            guard let monthString = Months.getMonthString(month: monthStatus.month) else { return }
+            let grayString = NSAttributedString(string: year.toString() + "年" + monthString + "の投稿数: ", attributes: grayAttribute)
+            let boldString = NSAttributedString(string: monthPostsCount.toString(), attributes: boldAttribute)
+
+            let mutableString = NSMutableAttributedString()
+            mutableString.append(grayString)
+            mutableString.append(boldString)
+
+            monthStatusLabel.attributedText = mutableString
+            monthStatusLabel.textAlignment = .center
+        }
+    }
+
+    lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [monthStatusLabel])
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 25
+        return stack
+    }()
+
     lazy var monthStatusLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.textAlignment = .left
+        label.textAlignment = .center
+        label.sizeToFit()
+        label.numberOfLines = 1
+        return label
+    }()
+
+    lazy var yearStatusLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textAlignment = .center
         label.sizeToFit()
         label.numberOfLines = 1
         return label
@@ -67,15 +99,18 @@ class GraphHighlightView: UIView, InputAppliable {
         switch input {
         case .setMonthPostsCount(let month, let postsCount):
             self.month = month
-            self.postsCount = postsCount
+            self.monthPostsCount = postsCount
             self.monthStatus = (month: month, postsCount: postsCount)
+        case .setYearPostsCount(let year, let postsCount):
+            self.yearPostsCount = postsCount
+            self.year = year
+            self.yearStatus = (year: year, postsCount: yearPostsCount)
         }
     }
 
     private func setupViews() {
-        addSubview(monthStatusLabel)
-
-        monthStatusLabel.snp.makeConstraints {
+        addSubview(stackView)
+        stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }

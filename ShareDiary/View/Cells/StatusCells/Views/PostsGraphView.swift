@@ -19,7 +19,7 @@ class PostsGraphView: UIView, InputAppliable {
 
     var barChartView = BarChartView(frame: .zero)
 
-    var postsData = PostsData(year: 0, data: []) {
+    var postsData = PostsData(year: 0, data: [], impressionLevels: []) {
         didSet {
             barChartView.data = createBarChartData(postsData: postsData)
             barChartView.highlightValue(Highlight(x: 0, y: Double(postsData.data[0]), dataSetIndex: 0), callDelegate: true)

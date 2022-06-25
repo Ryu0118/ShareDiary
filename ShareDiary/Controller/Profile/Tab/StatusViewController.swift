@@ -88,7 +88,7 @@ class StatusViewController: UIViewController {
 
     private func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.bottom.left.right.equalToSuperview()
+            $0.top.left.right.bottom.equalToSuperview()
         }
     }
 
