@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
         pagingVC.selectedBackgroundColor = .clear
         pagingVC.indicatorColor = Theme.Color.appThemeDeepColor
         pagingVC.textColor = .black
+        pagingVC.textColor = Theme.Color.Dynamic.appTextColor
         pagingVC.selectedTextColor = Theme.Color.appThemeDeepColor// blue white
         pagingVC.menuBackgroundColor = Theme.Color.Dynamic.appTextColorInvert
         pagingVC.borderColor = .clear
@@ -147,11 +148,11 @@ class ProfileViewController: UIViewController {
     private func setupConstraints() {
 
         guideStackView.snp.makeConstraints {
-            $0.top.bottom.left.right.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         scrollView.snp.makeConstraints {
-            $0.left.top.bottom.right.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         tabController.pageViewController.view.snp.makeConstraints {

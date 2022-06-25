@@ -25,7 +25,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupTab()
-        view.backgroundColor = Theme.Color.appThemeLightColor
+        view.backgroundColor = Theme.Color.Dynamic.appThemeColor
     }
 
     func setupTab() {
@@ -34,7 +34,7 @@ class MainViewController: UITabBarController {
         let profileVC = ProfileViewController(userInfo: UserInfoMock.createMock())
         profileVC.tabBarItem = UITabBarItem(title: NSLocalizedString("プロフィール", comment: ""), image: R.image.user()?.iconSize, tag: 0)
         UITabBar.appearance().tintColor = Theme.Color.appThemeDeepColor
-        UITabBar.appearance().backgroundColor = Theme.Color.appBackgroundColor
+        UITabBar.appearance().backgroundColor = Theme.Color.Dynamic.appCellColor
 
         viewControllers = [homeVC, profileVC]
     }

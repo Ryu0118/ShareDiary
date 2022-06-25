@@ -31,7 +31,7 @@ class GraphControlView: UIView, InputAppliable {
     let yearLabel: LayoutableLabel = {
         let label = LayoutableLabel()
         label.backgroundColor = Theme.Color.appThemeColor
-        label.textColor = Theme.Color.Dynamic.appTextColorInvert
+        label.textColor = .white
         label.textAlignment = .center
         label.clipsToBounds = true
         label.layoutBlock = {

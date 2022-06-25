@@ -17,4 +17,8 @@ extension Date {
         Calendar.current.component(.year, from: self)
     }
 
+    func getMonth() -> Int {
+        Calendar.current.component(.month, from: self)
+    }
+
 }
