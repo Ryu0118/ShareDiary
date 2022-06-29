@@ -34,7 +34,7 @@ class PostHistoryViewController: UIViewController {
         collectionView.addSubview(monthCollectionViewController.view)
         monthCollectionViewController.didMove(toParent: self)
     }
-    
+
     private func setConstraints() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()

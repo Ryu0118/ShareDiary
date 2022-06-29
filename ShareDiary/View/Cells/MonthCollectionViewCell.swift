@@ -62,7 +62,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
 
     private func setupView() {
         layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor
-        layer.cornerRadius = 15
+        layer.cornerRadius = 20
         layer.borderWidth = 2
         addSubview(stackView)
         stackView.snp.makeConstraints {

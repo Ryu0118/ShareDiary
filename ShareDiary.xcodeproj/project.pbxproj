@@ -99,6 +99,8 @@
 		2389423028663F4100B9A5BF /* MonthCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */; };
 		23894235286718EB00B9A5BF /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23894234286718EB00B9A5BF /* MonthCollectionViewCell.swift */; };
 		238942392867854C00B9A5BF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238942382867854B00B9A5BF /* Post.swift */; };
+		2389423B2869DCB300B9A5BF /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389423A2869DCB300B9A5BF /* PostCell.swift */; };
+		2389423E286CFE3D00B9A5BF /* PersistedColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389423D286CFE3D00B9A5BF /* PersistedColor.swift */; };
 		239565782854F97F0027F45A /* SRCircleProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 239565772854F97F0027F45A /* SRCircleProgress */; };
 		239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 239DFE7D283D44AB009BFF49 /* Parchment */; };
 		239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE80283D4567009BFF49 /* StatusViewController.swift */; };
@@ -223,6 +225,8 @@
 		2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewController.swift; sourceTree = "<group>"; };
 		23894234286718EB00B9A5BF /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		238942382867854B00B9A5BF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		2389423A2869DCB300B9A5BF /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		2389423D286CFE3D00B9A5BF /* PersistedColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedColor.swift; sourceTree = "<group>"; };
 		239DFE80283D4567009BFF49 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryViewController.swift; sourceTree = "<group>"; };
 		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
@@ -508,6 +512,7 @@
 				23C7DE242823BB8A00EB1A32 /* InputAppliable.swift */,
 				2389422C28662D5600B9A5BF /* CryptUtil.swift */,
 				239DFE88283DB256009BFF49 /* Navigationable.swift */,
+				2389423D286CFE3D00B9A5BF /* PersistedColor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -565,6 +570,14 @@
 				2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		2389423C2869DF0C00B9A5BF /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				2389423A2869DCB300B9A5BF /* PostCell.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		239DFE7F283D4547009BFF49 /* Tab */ = {
@@ -644,6 +657,7 @@
 		23EB28F2283F3C7F00602C29 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2389423C2869DF0C00B9A5BF /* Post */,
 				23894234286718EB00B9A5BF /* MonthCollectionViewCell.swift */,
 				23EB28F3283F3C8400602C29 /* StatusCells */,
 			);
@@ -912,6 +926,7 @@
 				23C7DE0E2822890900EB1A32 /* ProfileUserInfoViewController.swift in Sources */,
 				23630928281C5F6400F3F905 /* R.generated.swift in Sources */,
 				23081D3D2842888C002DA592 /* PostsDataMock.swift in Sources */,
+				2389423B2869DCB300B9A5BF /* PostCell.swift in Sources */,
 				231C7F7828217B18007D8CFF /* Login.swift in Sources */,
 				23081D4E2848C698002DA592 /* YearControlViewModel.swift in Sources */,
 				239DFE87283D4815009BFF49 /* Array+safe.swift in Sources */,
@@ -924,6 +939,7 @@
 				2389422D28662D5600B9A5BF /* CryptUtil.swift in Sources */,
 				23081D3528414261002DA592 /* StatusHeaderView.swift in Sources */,
 				23630935281C687C00F3F905 /* ProfileViewController.swift in Sources */,
+				2389423E286CFE3D00B9A5BF /* PersistedColor.swift in Sources */,
 				23630917281C3BFD00F3F905 /* RegistrationViewController.swift in Sources */,
 				23630966281E998200F3F905 /* StorageUtil.swift in Sources */,
 				231C7F7A28217C02007D8CFF /* LoginViewController+OAuth.swift in Sources */,
