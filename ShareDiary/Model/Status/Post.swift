@@ -13,18 +13,20 @@ struct Post {
     let userName: String
     let firebaseUserName: String
     let date: Date
-    let goodCount: Int
     let message: String
     let impressionLevel: Int// 1...7
     let comment: [String]
     let imageURLs: [URL]
+    
+    var impresionString: String {
+        return [
+            "😰",
+            "😭",
+            "😞",
+            "😶",
+            "😀",
+            "😄",
+            "😆"
+        ][impressionLevel - 1]
+    }
 }
-/*
- "😰",
- "😭",
- "😞",
- "😶",
- "😀",
- "😄",
- "😆"
- */

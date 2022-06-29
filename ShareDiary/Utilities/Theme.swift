@@ -9,7 +9,7 @@ import UIKit
 import Rswift
 
 class UserSettings {
-    let shared = UserSettings()
+    static let shared = UserSettings()
     private init() {}
     
     @PersistedColor("dynamicTextColor", dafaultColor: .dynamicColor(light: .black, dark: .white))
