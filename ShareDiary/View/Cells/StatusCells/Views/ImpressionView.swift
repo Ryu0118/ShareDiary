@@ -47,7 +47,7 @@ class ImpressionView: UIView, InputAppliable {
     private func setupView() {
         addSubview(stackView)
         for i in (1...7).reversed() {
-            let impression = Impression()
+            let impression = ImpressionDataView()
             let placeholder = ImpressionLevel(level: i, postsCount: 0)
             impression.tag = i
             impression.setLevel(level: placeholder)
@@ -58,8 +58,8 @@ class ImpressionView: UIView, InputAppliable {
         }
     }
 
-    private func getImpressionView(level: ImpressionLevel) -> Impression? {
-        stackView.arrangedSubviews.first { $0.tag == level.level } as? Impression
+    private func getImpressionView(level: ImpressionLevel) -> ImpressionDataView? {
+        stackView.arrangedSubviews.first { $0.tag == level.level } as? ImpressionDataView
     }
 
     func apply(input: Input) {
@@ -71,7 +71,7 @@ class ImpressionView: UIView, InputAppliable {
 
 }
 
-private class Impression: HighlightButton {
+private class ImpressionDataView: HighlightButton {
 
     init(level: ImpressionLevel) {
         super.init(title: level.emoji, subTitle: "\(level.postsCount)")

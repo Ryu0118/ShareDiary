@@ -25,6 +25,7 @@ class PostHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setConstraints()
     }
 
     private func setupView() {
@@ -32,14 +33,16 @@ class PostHistoryViewController: UIViewController {
         self.addChild(monthCollectionViewController)
         collectionView.addSubview(monthCollectionViewController.view)
         monthCollectionViewController.didMove(toParent: self)
+    }
 
+    private func setConstraints() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
 
         monthCollectionViewController.view.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(14)
-            $0.height.equalTo(55)
+            $0.top.equalToSuperview().offset(8)
+            $0.height.equalTo(110)
             $0.width.equalToSuperview()
         }
     }

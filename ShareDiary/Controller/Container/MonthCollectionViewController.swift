@@ -12,13 +12,17 @@ import SnapKit
 
 class MonthCollectionViewController: UIViewController {
 
+    private let disposeBag = DisposeBag()
+
     private var months: [Int] = {
         let current = Date()
         let currentMonth = current.getMonth()
         return [Int](1...currentMonth)
     }() {
         didSet {
-            collectionView.reloadData()
+            collectionView.performBatchUpdates {
+                collectionView.reloadData()
+            }
         }
     }
 
@@ -26,18 +30,32 @@ class MonthCollectionViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.contentInset.left = 14
+        collectionView.contentInset.left = 20
+        collectionView.contentInset.right = 20
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MonthCollectionViewCell.self, forCellWithReuseIdentifier: MonthCollectionViewCell.identifier)
         return collectionView
     }()
 
+    private let yearControlView = YearControlView()
+
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [yearControlView, collectionView])
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        return stack
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCollectionView()
+        bind()
+        yearControlView.apply(input: .setAllowedYears(years: ["2022", "2021", "2020"]))
     }
 
     func setYear(year: Int) {
@@ -52,12 +70,46 @@ class MonthCollectionViewController: UIViewController {
         }
     }
 
+    private func bind() {
+        yearControlView
+            .viewModel
+            .outputs
+            .forwardButtonDidPressed
+            .drive {[weak self] _ in
+                guard let self = self else { return }
+                self.setYear(year: 2021)
+            }
+            .disposed(by: disposeBag)
+
+        yearControlView
+            .viewModel
+            .outputs
+            .backButtonDidPressed
+            .drive {[weak self] _ in
+                guard let self = self else { return }
+                self.setYear(year: 2020)
+            }
+            .disposed(by: disposeBag)
+    }
+
     private func setupCollectionView() {
-        view.addSubview(collectionView)
+        view.addSubview(stackView)
         view.backgroundColor = .clear
-        collectionView.snp.makeConstraints {
+
+        stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+
+        collectionView.snp.makeConstraints {
+            $0.height.equalTo(60)
+            $0.width.equalToSuperview()
+        }
+
+        yearControlView.snp.makeConstraints {
+            $0.height.equalTo(40)
+            $0.width.equalToSuperview().multipliedBy(0.9)
+        }
+
     }
 
 }
@@ -100,7 +152,7 @@ extension MonthCollectionViewController: UICollectionViewDelegate, UICollectionV
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 50, height: collectionView.frame.size.height)
+        CGSize(width: 50, height: 60)
     }
 
 }

@@ -50,7 +50,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
 
         setupView()
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor
@@ -62,7 +62,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
 
     private func setupView() {
         layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor
-        layer.cornerRadius = 15
+        layer.cornerRadius = 20
         layer.borderWidth = 2
         addSubview(stackView)
         stackView.snp.makeConstraints {

@@ -23,7 +23,7 @@ protocol GraphControlViewModelType: AnyObject {
     var outputs: GraphControlViewModelOutputs { get }
 }
 
-class GraphControlViewModel: GraphControlViewModelType, GraphControlViewModelInputs, GraphControlViewModelOutputs {
+class YearControlViewModel: GraphControlViewModelType, GraphControlViewModelInputs, GraphControlViewModelOutputs {
 
     var inputs: GraphControlViewModelInputs { self }
     var outputs: GraphControlViewModelOutputs { self }

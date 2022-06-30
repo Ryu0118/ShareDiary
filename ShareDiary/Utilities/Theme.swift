@@ -8,6 +8,44 @@
 import UIKit
 import Rswift
 
+class UserSettings {
+    static let shared = UserSettings()
+    private init() {}
+    
+    @PersistedColor("dynamicTextColor", dafaultColor: .dynamicColor(light: .black, dark: .white))
+    var dynamicTextColor: UIColor
+    
+    @PersistedColor("dynamicTextColorInvert", dafaultColor: .dynamicColor(light: .white, dark: .black))
+    var dynamicTextColorInvert: UIColor
+    
+    @PersistedColor("dynamicBackgroundColor", dafaultColor: .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black))
+    var dynamicBackgroundColor: UIColor
+    
+    @PersistedColor("dynamicTextGray", dafaultColor: .dynamicColor(light: .rgba(red: 142, green: 142, blue: 159, alpha: 1), dark: .lightGray))
+    var dynamicTextGray: UIColor
+    
+    @PersistedColor("dynamicThemeColor", dafaultColor: .dynamicColor(light: UIColor(hex: "CCDECE"), dark: .rgba(red: 74, green: 164, blue: 156, alpha: 1)))
+    var dynamicThemeColor: UIColor
+    
+    @PersistedColor("dynamicCellColor", dafaultColor: .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .rgba(red: 18, green: 18, blue: 18, alpha: 1)))
+    var dynamicCellColor: UIColor
+    
+    @PersistedColor("themeColor", dafaultColor: .rgba(red: 141, green: 164, blue: 165, alpha: 1))
+    var themeColor: UIColor
+    
+    @PersistedColor("backgroundColor", dafaultColor: .rgba(red: 248, green: 247, blue: 252, alpha: 1))
+    var backgroundColor: UIColor
+    
+    @PersistedColor("textGray", dafaultColor: .rgba(red: 142, green: 142, blue: 159, alpha: 1))
+    var textGray: UIColor
+    
+    @PersistedColor("themeLightColor", dafaultColor: UIColor(hex: "CCDECE"))
+    var themeLightColor: UIColor
+    
+    @PersistedColor("progressBackgroundColor", dafaultColor: .rgba(red: 241, green: 250, blue: 254, alpha: 1))
+    var progressBackgroundColor: UIColor
+}
+
 struct Theme {
 
     // static let shared = ThemeManager()
