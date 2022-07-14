@@ -11,9 +11,11 @@ import SnapKit
 class HighlightButton: InteractiveButton {
 
     // MARK: Stored Property
+    private let settings = UserSettings.shared
+
     lazy var textLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 16)
-        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.textColor = settings.dynamicTextColor
         label.textAlignment = .center
         label.isUserInteractionEnabled = false
         return label
@@ -21,7 +23,7 @@ class HighlightButton: InteractiveButton {
 
     lazy var detailTextLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 12)
-        label.textColor = Theme.Color.Dynamic.textGray
+        label.textColor = settings.dynamicTextGray
         label.textAlignment = .center
         label.isUserInteractionEnabled = false
         return label

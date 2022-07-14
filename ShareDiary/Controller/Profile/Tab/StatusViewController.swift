@@ -38,7 +38,7 @@ class StatusViewController: UIViewController {
 
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = Theme.Color.Dynamic.appBackgroundColor
+        tableView.backgroundColor = UserSettings.shared.dynamicBackgroundColor
         tableView.register(TitlesTableViewCell.self, forCellReuseIdentifier: TitlesTableViewCell.identifier)
         tableView.register(PostsGraphTableViewCell.self, forCellReuseIdentifier: PostsGraphTableViewCell.identifier)
         tableView.register(EmotionsTableViewCell.self, forCellReuseIdentifier: EmotionsTableViewCell.identifier)

@@ -17,17 +17,19 @@ class StatusView: UIView, InputAppliable {
         case setStatus(Int)
     }
 
-    private var titleLabel: WorldLifeLabel = {
+    private let settings = UserSettings.shared
+
+    private lazy var titleLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(frame: .zero)
         label.font = Theme.Font.getAppFont(size: 13)
-        label.textColor = Theme.Color.Dynamic.textGray
+        label.textColor = settings.dynamicTextGray
         return label
     }()
 
-    private var statusLabel: WorldLifeLabel = {
+    private lazy var statusLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(frame: .zero)
         label.font = Theme.Font.getAppBoldFont(size: 25)
-        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.textColor = settings.dynamicTextColor
         return label
     }()
 
@@ -55,7 +57,7 @@ class StatusView: UIView, InputAppliable {
 
     private func setupViews() {
         self.layer.cornerRadius = 13
-        self.backgroundColor = Theme.Color.Dynamic.appBackgroundColor
+        self.backgroundColor = settings.dynamicBackgroundColor
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()

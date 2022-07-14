@@ -13,9 +13,9 @@ struct PersistedColor {
     let forKey: String
     let userDefaults = UserDefaults.standard
 
-    init(_ forKey: String, dafaultColor: UIColor) {
+    init(_ forKey: String, defaultColor: UIColor) {
         self.forKey = forKey
-        if let data = colorToData(color: dafaultColor) {
+        if let data = colorToData(color: defaultColor) {
             userDefaults.register(defaults: [forKey: data])
         } else {
             fatalError("cannot convert color to data")

@@ -15,7 +15,7 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
     enum Input {
         case setImageURLs(urls: [URL])
     }
-    
+
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -25,10 +25,10 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
 
     var imageURLs: [URL]! {
         didSet {
-            //TODO: imageの数に合わせてcollectionViewのinsetを変化させる
+            // TODO: imageの数に合わせてcollectionViewのinsetを変化させる
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -40,7 +40,7 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
             self.imageURLs = urls
         }
     }
-    
+
     private func setupViews() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {

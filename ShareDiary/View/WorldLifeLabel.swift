@@ -12,7 +12,7 @@ class WorldLifeLabel: UILabel {
     init(size: CGFloat) {
         super.init(frame: .zero)
         self.font = Theme.Font.getAppFont(size: size)
-        self.textColor = Theme.Color.Dynamic.appTextColor
+        self.textColor = UserSettings.shared.dynamicTextColor
         setup()
     }
 

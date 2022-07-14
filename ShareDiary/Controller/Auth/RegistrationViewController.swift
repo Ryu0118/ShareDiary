@@ -19,6 +19,7 @@ class RegistrationViewController: UIViewController {
     let disposeBag = DisposeBag()
 
     private let viewModel = RegistrationViewModel()
+    private let settings = UserSettings.shared
 
     // Required for apple authentication
     var currentNonce: String?
@@ -51,10 +52,10 @@ class RegistrationViewController: UIViewController {
         return label
     }()
 
-    private let descriptionLabel: WorldLifeLabel = {
+    private lazy var descriptionLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 15)
         label.text = NSLocalizedString("ようこそ! WorldLifeへ\nサインアップして日々の出来事を日記に記そう", comment: "")
-        label.textColor = Theme.Color.textGray
+        label.textColor = settings.textGray
         return label
     }()
 
@@ -73,20 +74,20 @@ class RegistrationViewController: UIViewController {
         return field
     }()
 
-    private let signUpButton: InteractiveButton = {
+    private lazy var signUpButton: InteractiveButton = {
         let button = InteractiveButton(frame: .zero)
         button.setTitle(NSLocalizedString("新規登録", comment: ""), for: .normal)
-        button.backgroundColor = Theme.Color.appThemeColor
+        button.backgroundColor = settings.themeColor
         button.layoutBlock = {
             button.layer.cornerRadius = button.frame.height / 2
         }
         return button
     }()
 
-    private let orLabel: WorldLifeLabel = {
+    private lazy var orLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 14)
         label.text = NSLocalizedString("または", comment: "")
-        label.textColor = Theme.Color.textGray
+        label.textColor = settings.textGray
         label.textAlignment = .center
         return label
     }()
@@ -109,10 +110,10 @@ class RegistrationViewController: UIViewController {
         return button
     }()
 
-    private let noAccountLabel: WorldLifeLabel = {
+    private lazy var noAccountLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 14)
         label.text = NSLocalizedString("アカウントをお持ちの方はこちら", comment: "")
-        label.textColor = Theme.Color.textGray
+        label.textColor = settings.textGray
         label.numberOfLines = 1
         return label
     }()
@@ -127,7 +128,7 @@ class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Theme.Color.appBackgroundColor
+        view.backgroundColor = settings.backgroundColor
         setupView()
         bind()
         // If a login flow using OAuth is interrupted in the middle of a login flow, the user must sign out to avoid problems.

@@ -9,11 +9,13 @@ import FirebaseAuth
 
 class MainViewController: UITabBarController {
 
-    private let stackView: UIStackView = {
+    private let settings = UserSettings.shared
+
+    private lazy var stackView: UIStackView = {
         let statusBarView = UIView()
         let bottomToolBarView = UIView()
-        statusBarView.backgroundColor = Theme.Color.Dynamic.appThemeColor
-        bottomToolBarView.backgroundColor = Theme.Color.Dynamic.appBackgroundColor
+        statusBarView.backgroundColor = settings.dynamicThemeColor
+        bottomToolBarView.backgroundColor = settings.dynamicBackgroundColor
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.alignment = .center
         stackView.distribution = .fill
@@ -25,7 +27,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupTab()
-        view.backgroundColor = Theme.Color.Dynamic.appThemeColor
+        view.backgroundColor = settings.dynamicThemeColor
     }
 
     func setupTab() {
@@ -33,8 +35,8 @@ class MainViewController: UITabBarController {
         homeVC.tabBarItem = UITabBarItem(title: NSLocalizedString("ホーム", comment: ""), image: R.image.home()?.iconSize, tag: 0)
         let profileVC = ProfileViewController(userInfo: UserInfoMock.createMock())
         profileVC.tabBarItem = UITabBarItem(title: NSLocalizedString("プロフィール", comment: ""), image: R.image.user()?.iconSize, tag: 0)
-        UITabBar.appearance().tintColor = Theme.Color.appThemeDeepColor
-        UITabBar.appearance().backgroundColor = Theme.Color.Dynamic.appCellColor
+        UITabBar.appearance().tintColor = settings.themeColor
+        UITabBar.appearance().backgroundColor = settings.dynamicCellColor
 
         viewControllers = [homeVC, profileVC]
     }

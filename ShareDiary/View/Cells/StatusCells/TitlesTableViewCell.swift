@@ -26,6 +26,8 @@ class TitlesTableViewCell: UITableViewCell, InputAppliable {
         case setTitle(title: Title)
     }
 
+    private let settings = UserSettings.shared
+
     private var titleLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 16)
@@ -120,6 +122,7 @@ class TitleCard: UIView, InputAppliable {
     }
 
     private var imageView = UIImageView(frame: .zero)
+    private let settings = UserSettings.shared
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -174,8 +177,8 @@ class TitleCard: UIView, InputAppliable {
         case .setIsAchieved(let isAchieved):
             if !isAchieved {
                 imageView.image = R.image.secretMedal()?.withRenderingMode(.alwaysTemplate)
-                imageView.tintColor = Theme.Color.Dynamic.textGray
-                titleLabel.textColor = Theme.Color.Dynamic.textGray
+                imageView.tintColor = settings.dynamicTextGray
+                titleLabel.textColor = settings.dynamicTextGray
             }
         }
     }

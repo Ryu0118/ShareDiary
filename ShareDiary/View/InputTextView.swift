@@ -62,7 +62,7 @@ class InputTextView: UITextView {
         self.rx.didBeginEditing
             .asDriver()
             .drive {[weak self]_ in
-                self?.layer.borderColor = Theme.Color.appThemeDeepColor.cgColor
+                self?.layer.borderColor = UserSettings.shared.themeDeepColor.cgColor
                 self?.layer.borderWidth = 2
             }
             .disposed(by: disposeBag)

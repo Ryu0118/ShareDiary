@@ -19,6 +19,8 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
         case setSelected(selected: Bool)
     }
 
+    private let settings = UserSettings.shared
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [monthLabel, gatuLabel])
         stack.alignment = .center
@@ -28,19 +30,19 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
         return stack
     }()
 
-    private let monthLabel: WorldLifeLabel = {
+    private lazy var monthLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(frame: .zero)
         label.font = Theme.Font.getAppBoldFont(size: 18)
         label.textAlignment = .center
-        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.textColor = settings.dynamicTextColor
         return label
     }()
 
-    private let gatuLabel: WorldLifeLabel = {
+    private lazy var gatuLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(frame: .zero)
         label.font = Theme.Font.getAppFont(size: 14)
         label.textAlignment = .center
-        label.textColor = Theme.Color.Dynamic.textGray
+        label.textColor = settings.dynamicTextGray
         label.text = "月"
         return label
     }()
@@ -53,7 +55,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor
+        layer.borderColor = settings.dynamicThemeColor.cgColor
     }
 
     required init?(coder: NSCoder) {
@@ -61,7 +63,7 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
     }
 
     private func setupView() {
-        layer.borderColor = Theme.Color.Dynamic.appThemeColor.cgColor
+        layer.borderColor = settings.dynamicThemeColor.cgColor
         layer.cornerRadius = 20
         layer.borderWidth = 2
         addSubview(stackView)
@@ -75,9 +77,9 @@ class MonthCollectionViewCell: UICollectionViewCell, InputAppliable {
         case .setMonth(let month):
             monthLabel.text = "\(month)"
         case .setSelected(let selected):
-            backgroundColor = selected ? Theme.Color.Dynamic.appThemeColor : Theme.Color.Dynamic.appTextColorInvert
-            monthLabel.textColor = selected ? UIColor.white : Theme.Color.Dynamic.appTextColor
-            gatuLabel.textColor = selected ? UIColor.white : Theme.Color.Dynamic.textGray
+            backgroundColor = selected ? settings.dynamicThemeColor : settings.dynamicTextColorInvert
+            monthLabel.textColor = selected ? UIColor.white : settings.dynamicTextColor
+            gatuLabel.textColor = selected ? UIColor.white : settings.dynamicTextGray
         }
     }
 

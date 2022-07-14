@@ -28,9 +28,11 @@ class YearControlView: UIView, InputAppliable {
         }
     }
 
-    let yearLabel: LayoutableLabel = {
+    private let settings = UserSettings.shared
+
+    lazy var yearLabel: LayoutableLabel = {
         let label = LayoutableLabel()
-        label.backgroundColor = Theme.Color.appThemeColor
+        label.backgroundColor = settings.themeColor
         label.textColor = .white
         label.textAlignment = .center
         label.clipsToBounds = true
@@ -40,22 +42,22 @@ class YearControlView: UIView, InputAppliable {
         return label
     }()
 
-    var backButton: UIButton = {
+    lazy var backButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(R.image.arrowLeft()?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.isEnabled = false
-        button.tintColor = Theme.Color.appThemeColor
+        button.tintColor = settings.themeColor
         button.isUserInteractionEnabled = true
         return button
     }()
 
-    var forwardButton: UIButton = {
+    lazy var forwardButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setImage(R.image.arrowRight()?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.isEnabled = false
-        button.tintColor = Theme.Color.appThemeColor
+        button.tintColor = settings.themeColor
         button.isUserInteractionEnabled = true
         return button
     }()

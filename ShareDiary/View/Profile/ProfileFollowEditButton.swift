@@ -14,6 +14,8 @@ class ProfileFollowEditButton: InteractiveButton, InputAppliable {
         case setProfileStyle(ProfileHeaderViewController.ProfileStyle)
     }
 
+    private var settings = UserSettings.shared
+
     var style: ProfileHeaderViewController.ProfileStyle
     var buttonTitle: String {
         switch style {
@@ -27,9 +29,9 @@ class ProfileFollowEditButton: InteractiveButton, InputAppliable {
     var buttonBackgroundColor: UIColor {
         switch style {
         case .otherProfile:
-            return Theme.Color.appThemeColor
+            return settings.themeColor
         case .myProfile:
-            return Theme.Color.Dynamic.appTextColorInvert
+            return settings.dynamicTextColorInvert
         }
     }
 
@@ -38,7 +40,7 @@ class ProfileFollowEditButton: InteractiveButton, InputAppliable {
         case .otherProfile:
             return .white
         case .myProfile:
-            return Theme.Color.Dynamic.appTextColor
+            return settings.dynamicTextColor
         }
     }
 
@@ -83,7 +85,7 @@ extension ProfileFollowEditButton {
         self.setTitleColor(buttonColor, for: .normal)
         if style == .myProfile {
             self.layer.borderWidth = 1
-            self.layer.borderColor = Theme.Color.textGray.cgColor
+            self.layer.borderColor = settings.textGray.cgColor
         } else {
             self.layer.borderWidth = 0
             self.layer.borderColor = UIColor.clear.cgColor
