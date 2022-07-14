@@ -11,63 +11,45 @@ import Rswift
 class UserSettings {
     static let shared = UserSettings()
     private init() {}
-    
-    @PersistedColor("dynamicTextColor", dafaultColor: .dynamicColor(light: .black, dark: .white))
+
+    @PersistedColor("dynamicTextColor", defaultColor: .dynamicColor(light: .black, dark: .white))
     var dynamicTextColor: UIColor
-    
-    @PersistedColor("dynamicTextColorInvert", dafaultColor: .dynamicColor(light: .white, dark: .black))
+
+    @PersistedColor("dynamicTextColorInvert", defaultColor: .dynamicColor(light: .white, dark: .black))
     var dynamicTextColorInvert: UIColor
-    
-    @PersistedColor("dynamicBackgroundColor", dafaultColor: .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black))
+
+    @PersistedColor("dynamicBackgroundColor", defaultColor: .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black))
     var dynamicBackgroundColor: UIColor
-    
-    @PersistedColor("dynamicTextGray", dafaultColor: .dynamicColor(light: .rgba(red: 142, green: 142, blue: 159, alpha: 1), dark: .lightGray))
+
+    @PersistedColor("dynamicTextGray", defaultColor: .dynamicColor(light: .rgba(red: 142, green: 142, blue: 159, alpha: 1), dark: .lightGray))
     var dynamicTextGray: UIColor
-    
-    @PersistedColor("dynamicThemeColor", dafaultColor: .dynamicColor(light: UIColor(hex: "CCDECE"), dark: .rgba(red: 74, green: 164, blue: 156, alpha: 1)))
+
+    @PersistedColor("dynamicThemeColor", defaultColor: .dynamicColor(light: UIColor(hex: "CCDECE"), dark: .rgba(red: 74, green: 164, blue: 156, alpha: 1)))
     var dynamicThemeColor: UIColor
-    
-    @PersistedColor("dynamicCellColor", dafaultColor: .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .rgba(red: 18, green: 18, blue: 18, alpha: 1)))
+
+    @PersistedColor("dynamicCellColor", defaultColor: .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .rgba(red: 18, green: 18, blue: 18, alpha: 1)))
     var dynamicCellColor: UIColor
-    
-    @PersistedColor("themeColor", dafaultColor: .rgba(red: 141, green: 164, blue: 165, alpha: 1))
+
+    @PersistedColor("themeColor", defaultColor: .rgba(red: 141, green: 164, blue: 165, alpha: 1))
     var themeColor: UIColor
-    
-    @PersistedColor("backgroundColor", dafaultColor: .rgba(red: 248, green: 247, blue: 252, alpha: 1))
+
+    @PersistedColor("backgroundColor", defaultColor: .rgba(red: 248, green: 247, blue: 252, alpha: 1))
     var backgroundColor: UIColor
-    
-    @PersistedColor("textGray", dafaultColor: .rgba(red: 142, green: 142, blue: 159, alpha: 1))
+
+    @PersistedColor("themeDeepColor", defaultColor: .rgba(red: 74, green: 164, blue: 156, alpha: 1))
+    var themeDeepColor: UIColor
+
+    @PersistedColor("textGray", defaultColor: .rgba(red: 142, green: 142, blue: 159, alpha: 1))
     var textGray: UIColor
-    
-    @PersistedColor("themeLightColor", dafaultColor: UIColor(hex: "CCDECE"))
+
+    @PersistedColor("themeLightColor", defaultColor: UIColor(hex: "CCDECE"))
     var themeLightColor: UIColor
-    
-    @PersistedColor("progressBackgroundColor", dafaultColor: .rgba(red: 241, green: 250, blue: 254, alpha: 1))
+
+    @PersistedColor("progressBackgroundColor", defaultColor: .rgba(red: 241, green: 250, blue: 254, alpha: 1))
     var progressBackgroundColor: UIColor
 }
 
 struct Theme {
-
-    // static let shared = ThemeManager()
-
-    struct Color {
-        struct Dynamic {
-            static var appTextColor: UIColor = .dynamicColor(light: .black, dark: .white)
-            static var appTextColorInvert: UIColor = .dynamicColor(light: .white, dark: .black)
-            static var appBackgroundColor: UIColor = .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black)
-            static var textGray: UIColor = .dynamicColor(light: .rgba(red: 142, green: 142, blue: 159, alpha: 1), dark: .lightGray)
-            static var appThemeColor: UIColor = .dynamicColor(light: UIColor(hex: "CCDECE"), dark: .rgba(red: 74, green: 164, blue: 156, alpha: 1))
-            static var appCellColor: UIColor = .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .rgba(red: 18, green: 18, blue: 18, alpha: 1))
-        }
-
-        static var appThemeColor: UIColor = .rgba(red: 141, green: 164, blue: 165, alpha: 1)
-        static var appThemeDeepColor: UIColor = .rgba(red: 74, green: 164, blue: 156, alpha: 1)
-        static var appBackgroundColor: UIColor = .rgba(red: 248, green: 247, blue: 252, alpha: 1)
-        static var textGray: UIColor = .rgba(red: 142, green: 142, blue: 159, alpha: 1)
-        static var appThemeLightColor = UIColor(hex: "CCDECE")
-        static var progressBackgroundColor = UIColor.rgba(red: 241, green: 250, blue: 254, alpha: 1)
-
-    }
 
     enum FontSize: CGFloat {
         case heavy = 30

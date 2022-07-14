@@ -9,20 +9,19 @@ import UIKit
 
 @propertyWrapper
 struct PersistedColor {
-    
+
     let forKey: String
     let userDefaults = UserDefaults.standard
-    
-    init(_ forKey: String, dafaultColor: UIColor) {
+
+    init(_ forKey: String, defaultColor: UIColor) {
         self.forKey = forKey
-        if let data = colorToData(color: dafaultColor) {
+        if let data = colorToData(color: defaultColor) {
             userDefaults.register(defaults: [forKey: data])
-        }
-        else {
+        } else {
             fatalError("cannot convert color to data")
         }
     }
-    
+
     var wrappedValue: UIColor {
         get {
             var colorReturnded: UIColor?
@@ -42,7 +41,7 @@ struct PersistedColor {
             userDefaults.set(data, forKey: forKey)
         }
     }
-    
+
     private func colorToData(color: UIColor) -> Data? {
         var colorData: Data?
         do {

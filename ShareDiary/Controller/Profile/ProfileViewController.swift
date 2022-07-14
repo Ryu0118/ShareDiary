@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
         NSLocalizedString("投稿", comment: ""),
         NSLocalizedString("いいね", comment: "")
     ]
+    private let settings = UserSettings.shared
     private lazy var viewControllers: [UIViewController] = [
         StatusViewController(),
         PostHistoryViewController(),
@@ -28,11 +29,11 @@ class ProfileViewController: UIViewController {
     private lazy var tabController: PagingViewController = {
         let pagingVC = PagingViewController(viewControllers: viewControllers)
         pagingVC.selectedBackgroundColor = .clear
-        pagingVC.indicatorColor = Theme.Color.appThemeDeepColor
+        pagingVC.indicatorColor = settings.themeDeepColor
         pagingVC.textColor = .black
-        pagingVC.textColor = Theme.Color.Dynamic.appTextColor
-        pagingVC.selectedTextColor = Theme.Color.appThemeDeepColor// blue white
-        pagingVC.menuBackgroundColor = Theme.Color.Dynamic.appTextColorInvert
+        pagingVC.textColor = settings.dynamicTextColor
+        pagingVC.selectedTextColor = settings.themeDeepColor// blue white
+        pagingVC.menuBackgroundColor = settings.dynamicTextColorInvert
         pagingVC.borderColor = .clear
         pagingVC.delegate = self
         pagingVC.dataSource = self
@@ -89,14 +90,14 @@ class ProfileViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 16.5)
-        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.textColor = settings.dynamicTextColor
         label.text = userInfo.name
         return label
     }()
 
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let view = UIView()
-        view.backgroundColor = Theme.Color.Dynamic.appThemeColor
+        view.backgroundColor = settings.dynamicThemeColor
         view.clipsToBounds = true
         return view
     }()

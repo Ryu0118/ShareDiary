@@ -17,6 +17,8 @@ class YearStatusView: UIView, InputAppliable {
         case setPostsData(year: Int, postsCount: Int)
     }
 
+    private let settings = UserSettings.shared
+
     private var postsData: (year: Int, postsCount: Int)! {
         didSet {
             postsCountView.apply(inputs: [
@@ -90,8 +92,8 @@ class YearStatusView: UIView, InputAppliable {
 
     private lazy var circleProgressView: SRCircleProgress = {
         let progressView = SRCircleProgress(frame: .zero)
-        progressView.backgroundLineColor = Theme.Color.progressBackgroundColor
-        progressView.progressLineColor = Theme.Color.appThemeDeepColor
+        progressView.backgroundLineColor = settings.progressBackgroundColor
+        progressView.progressLineColor = settings.themeDeepColor
         progressView.progressLineWidth = 6
         progressView.backgroundLineWidth = progressView.progressLineWidth
         progressView.animationDuration = 0.3
@@ -99,11 +101,11 @@ class YearStatusView: UIView, InputAppliable {
         return progressView
     }()
 
-    private var achieveLabel: WorldLifeLabel = {
+    private lazy var achieveLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(frame: .zero)
         label.font = Theme.Font.getAppFont(size: 13)
         label.text = "投稿達成率"
-        label.textColor = Theme.Color.Dynamic.textGray
+        label.textColor = settings.dynamicTextGray
         return label
     }()
 

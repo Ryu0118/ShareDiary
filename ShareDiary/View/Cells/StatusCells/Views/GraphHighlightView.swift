@@ -20,13 +20,15 @@ class GraphHighlightView: UIView, InputAppliable {
     var month = 0
     var year = 0
 
-    let grayAttribute: [NSAttributedString.Key: Any] = [
+    private let settings = UserSettings.shared
+
+    lazy var grayAttribute: [NSAttributedString.Key: Any] = [
         .font: Theme.Font.getAppFont(size: 22),
-        .foregroundColor: Theme.Color.Dynamic.textGray
+        .foregroundColor: settings.dynamicTextGray
     ]
-    let boldAttribute: [NSAttributedString.Key: Any] = [
+    lazy var boldAttribute: [NSAttributedString.Key: Any] = [
         .font: Theme.Font.getAppBoldFont(size: 22),
-        .foregroundColor: Theme.Color.Dynamic.appTextColor,
+        .foregroundColor: settings.dynamicTextColor,
         .baselineOffset: 0
     ]
 

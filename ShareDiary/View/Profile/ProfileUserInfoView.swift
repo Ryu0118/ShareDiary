@@ -15,13 +15,14 @@ class ProfileUserInfoView: UIView, InputAppliable {
     }
 
     var profileStyle: ProfileHeaderViewController.ProfileStyle?
-
     let imageView = ProfileImageView()
+
+    private let settings = UserSettings.shared
 
     lazy var nameLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 16.5)
-        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.textColor = settings.dynamicTextColor
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.7
@@ -31,13 +32,13 @@ class ProfileUserInfoView: UIView, InputAppliable {
 
     private lazy var userNameLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 13)
-        label.textColor = Theme.Color.Dynamic.textGray
+        label.textColor = settings.dynamicTextGray
         return label
     }()
 
     private lazy var introductionLabel: WorldLifeLabel = {
         let label = WorldLifeLabel(size: 14)
-        label.textColor = Theme.Color.Dynamic.appTextColor
+        label.textColor = settings.dynamicTextColor
         label.sizeToFit()
         label.numberOfLines = 0
         return label

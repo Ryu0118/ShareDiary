@@ -35,7 +35,7 @@ class ProfileHeaderViewController: UIViewController {
     init(userInfo: UserInfo) {
         self.userInfo = userInfo
         super.init(nibName: nil, bundle: nil)
-        self.view.backgroundColor = Theme.Color.Dynamic.appTextColorInvert
+        self.view.backgroundColor = UserSettings.shared.dynamicTextColorInvert
     }
 
     required init?(coder: NSCoder) {

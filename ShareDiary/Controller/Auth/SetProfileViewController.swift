@@ -23,7 +23,7 @@ class SetProfileViewController: UIViewController, LoginComponents {
 
     private let imageSize: CGFloat = 150
     private let disposeBag = DisposeBag()
-
+    private let settings = UserSettings.shared
     private lazy var originHeight = self.view.frame.origin.y
 
     private let stackView: UIStackView = {
@@ -102,7 +102,7 @@ class SetProfileViewController: UIViewController, LoginComponents {
 
     private lazy var registerButton: InteractiveButton = {
         let button = InteractiveButton(frame: .zero)
-        button.backgroundColor = Theme.Color.appThemeColor
+        button.backgroundColor = settings.themeColor
         button.setTitle(NSLocalizedString("新規登録", comment: ""), for: .normal)
         button.layoutBlock = {[weak introduction] in
             button.layer.cornerRadius = button.frame.height / 2
@@ -123,7 +123,7 @@ class SetProfileViewController: UIViewController, LoginComponents {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Theme.Color.appBackgroundColor
+        view.backgroundColor = settings.backgroundColor
         setup()
         setDefaultValue()
         bind()
