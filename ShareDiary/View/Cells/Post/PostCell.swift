@@ -1,4 +1,4 @@
-// 
+//
 //  PostCell.swift
 //  ShareDiary
 //
@@ -11,20 +11,20 @@ import RxSwift
 import RxCocoa
 
 final class PostCell: UICollectionViewCell, InputAppliable {
-    
+
     /*
      PostCircleDateView, impressionLabel, titleLabel
      PostImageCollectionViewController
      PostMessageView
      PostStatusView
      */
-    
+
     var post: Post! {
         didSet {
             dateView.apply(input: .setDate(date: post.date))
         }
     }
-    
+
     private var core = UIView()
     private var dateView = PostCircleDateView(frame: .zero)
     private var impressionLabel: WorldLifeLabel = {
@@ -54,7 +54,7 @@ final class PostCell: UICollectionViewCell, InputAppliable {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -65,21 +65,21 @@ final class PostCell: UICollectionViewCell, InputAppliable {
             self.post = post
         }
     }
- 
+
 }
 
-fileprivate class PostCircleDateView: CircleView, InputAppliable {
-    
+private class PostCircleDateView: CircleView, InputAppliable {
+
     enum Input {
         case setDate(date: Date)
     }
-    
+
     var date: Date! {
         didSet {
             dateLabel.text = date.getDate().toString()
         }
     }
-    
+
     private var dateLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 16)
@@ -87,7 +87,7 @@ fileprivate class PostCircleDateView: CircleView, InputAppliable {
         label.textAlignment = .center
         return label
     }()
-    
+
     private var unitLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppFont(size: 13)
@@ -96,7 +96,7 @@ fileprivate class PostCircleDateView: CircleView, InputAppliable {
         label.textAlignment = .center
         return label
     }()
-    
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [dateLabel, unitLabel])
         stack.axis = .horizontal
@@ -105,28 +105,28 @@ fileprivate class PostCircleDateView: CircleView, InputAppliable {
         stack.spacing = 3
         return stack
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func apply(input: Input) {
         switch input {
         case .setDate(let date):
             self.date = date
         }
     }
-    
+
     private func setup() {
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
-    
+
 }

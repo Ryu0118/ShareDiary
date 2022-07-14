@@ -103,6 +103,7 @@
 		2389423E286CFE3D00B9A5BF /* PersistedColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389423D286CFE3D00B9A5BF /* PersistedColor.swift */; };
 		23894240286D044800B9A5BF /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389423F286D044800B9A5BF /* CircleView.swift */; };
 		23894243286D0C4600B9A5BF /* PostImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23894242286D0C4600B9A5BF /* PostImageCollectionViewController.swift */; };
+		2390038428809575008F2C10 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2390038328809575008F2C10 /* PostImageCell.swift */; };
 		239565782854F97F0027F45A /* SRCircleProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 239565772854F97F0027F45A /* SRCircleProgress */; };
 		239DFE7E283D44AB009BFF49 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 239DFE7D283D44AB009BFF49 /* Parchment */; };
 		239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239DFE80283D4567009BFF49 /* StatusViewController.swift */; };
@@ -231,6 +232,7 @@
 		2389423D286CFE3D00B9A5BF /* PersistedColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistedColor.swift; sourceTree = "<group>"; };
 		2389423F286D044800B9A5BF /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		23894242286D0C4600B9A5BF /* PostImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewController.swift; sourceTree = "<group>"; };
+		2390038328809575008F2C10 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		239DFE80283D4567009BFF49 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		239DFE82283D4596009BFF49 /* PostHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHistoryViewController.swift; sourceTree = "<group>"; };
 		239DFE84283D45CD009BFF49 /* GoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodViewController.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				2389423A2869DCB300B9A5BF /* PostCell.swift */,
+				2390038328809575008F2C10 /* PostImageCell.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23630977282044AA00F3F905 /* AuthorizationInfo.swift in Sources */,
+				2390038428809575008F2C10 /* PostImageCell.swift in Sources */,
 				239DFE81283D4567009BFF49 /* StatusViewController.swift in Sources */,
 				23081D582848E7BC002DA592 /* PostsGraphTableViewCellPreview.swift in Sources */,
 				23630964281E996500F3F905 /* DatabaseUtil.swift in Sources */,

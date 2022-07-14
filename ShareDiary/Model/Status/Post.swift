@@ -17,9 +17,9 @@ struct Post {
     let impressionLevel: Int// 1...7
     let comment: [String]
     let imageURLs: [URL]
-    
+
     var impresionString: String {
-        return [
+        [
             "😰",
             "😭",
             "😞",
