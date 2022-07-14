@@ -51,27 +51,6 @@ class UserSettings {
 
 struct Theme {
 
-    // static let shared = ThemeManager()
-
-    //    struct Color {
-    //        struct Dynamic {
-    //            static var appTextColor: UIColor = .dynamicColor(light: .black, dark: .white)
-    //            static var appTextColorInvert: UIColor = .dynamicColor(light: .white, dark: .black)
-    //            static var appBackgroundColor: UIColor = .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .black)
-    //            static var textGray: UIColor = .dynamicColor(light: .rgba(red: 142, green: 142, blue: 159, alpha: 1), dark: .lightGray)
-    //            static var appThemeColor: UIColor = .dynamicColor(light: UIColor(hex: "CCDECE"), dark: .rgba(red: 74, green: 164, blue: 156, alpha: 1))
-    //            static var appCellColor: UIColor = .dynamicColor(light: .rgba(red: 248, green: 247, blue: 252, alpha: 1), dark: .rgba(red: 18, green: 18, blue: 18, alpha: 1))
-    //        }
-    //
-    //        static var appThemeColor: UIColor = .rgba(red: 141, green: 164, blue: 165, alpha: 1)
-    //        static var appThemeDeepColor: UIColor = .rgba(red: 74, green: 164, blue: 156, alpha: 1)
-    //        static var appBackgroundColor: UIColor = .rgba(red: 248, green: 247, blue: 252, alpha: 1)
-    //        static var textGray: UIColor = .rgba(red: 142, green: 142, blue: 159, alpha: 1)
-    //        static var appThemeLightColor = UIColor(hex: "CCDECE")
-    //        static var progressBackgroundColor = UIColor.rgba(red: 241, green: 250, blue: 254, alpha: 1)
-    //
-    //    }
-
     enum FontSize: CGFloat {
         case heavy = 30
         case bold = 22
