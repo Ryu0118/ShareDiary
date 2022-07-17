@@ -33,11 +33,7 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
 
     var imageURLs: [URL]! {
         didSet {
-            zip(collectionView.visibleCells, imageURLs).forEach { cell, url in
-                guard let cell = cell as? PostImageCell else { return }
-                cell.apply(input: .setImageURL(url: url))
-            }
-
+            
             do {
                 collectionView.contentInset = try calculateCollectionViewInset()
             } catch {
@@ -79,7 +75,7 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
     }
 
     private func bind() {
-        
+
         collectionView.rx
             .itemSelected
             .withUnretained(self)
@@ -90,10 +86,10 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
             .asDriver(onErrorJustReturn: nil)
             .drive { uiImage in
                 guard let uiImage = uiImage else { return }
-                //TODO: 画像をタップした時に拡大表示する.
+                // TODO: 画像をタップした時に拡大表示する.
             }
             .disposed(by: disposeBag)
-        
+
     }
 
 }
