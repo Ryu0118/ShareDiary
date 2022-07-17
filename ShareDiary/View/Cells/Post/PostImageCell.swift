@@ -10,9 +10,7 @@ import SDWebImage
 import SnapKit
 import Rswift
 
-class PostImageCell: UICollectionViewCell, InputAppliable {
-
-    static let identifier = "PostImageCell"
+class PostImageCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
 
     enum Input {
         case setImageURL(url: URL)

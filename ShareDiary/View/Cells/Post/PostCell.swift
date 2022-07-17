@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class PostCell: UICollectionViewCell, InputAppliable {
+final class PostCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
 
     /*
      PostCircleDateView, impressionLabel, titleLabel

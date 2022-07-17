@@ -37,6 +37,7 @@
 		231C7F7A28217C02007D8CFF /* LoginViewController+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */; };
 		233B4DE7282A531800274482 /* UserInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B4DE6282A531800274482 /* UserInfoMock.swift */; };
 		233B4DEB282A698200274482 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B4DEA282A698100274482 /* ProfileEditViewController.swift */; };
+		233B720128841F3A00DDD6E3 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */; };
 		2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8502823CCDA001037D0 /* InteractiveImageView.swift */; };
 		2359A8532823CFB9001037D0 /* ProfileUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8522823CFB9001037D0 /* ProfileUserInfoView.swift */; };
 		2359A85B2823D215001037D0 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A85A2823D215001037D0 /* ProfileImageView.swift */; };
@@ -172,6 +173,7 @@
 		231C7F7928217C02007D8CFF /* LoginViewController+OAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+OAuth.swift"; sourceTree = "<group>"; };
 		233B4DE6282A531800274482 /* UserInfoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoMock.swift; sourceTree = "<group>"; };
 		233B4DEA282A698100274482 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		2359A8502823CCDA001037D0 /* InteractiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveImageView.swift; sourceTree = "<group>"; };
 		2359A8522823CFB9001037D0 /* ProfileUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoView.swift; sourceTree = "<group>"; };
 		2359A85A2823D215001037D0 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				2389422C28662D5600B9A5BF /* CryptUtil.swift */,
 				239DFE88283DB256009BFF49 /* Navigationable.swift */,
 				2389423D286CFE3D00B9A5BF /* PersistedColor.swift */,
+				233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -968,6 +971,7 @@
 				236309752820447E00F3F905 /* UserInfo.swift in Sources */,
 				23C7DE1228228A2E00EB1A32 /* ProfileFollowEditViewController.swift in Sources */,
 				2363093C281D331F00F3F905 /* InputTextField.swift in Sources */,
+				233B720128841F3A00DDD6E3 /* CellIdentifiable.swift in Sources */,
 				23C7DE10282289D400EB1A32 /* ProfileFollowListViewController.swift in Sources */,
 				2389423028663F4100B9A5BF /* MonthCollectionViewController.swift in Sources */,
 				23C7DE1A28228DD900EB1A32 /* ProfileFollowEditButton.swift in Sources */,

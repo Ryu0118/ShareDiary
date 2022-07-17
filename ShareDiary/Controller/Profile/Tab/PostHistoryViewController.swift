@@ -19,6 +19,7 @@ class PostHistoryViewController: UIViewController {
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UserSettings.shared.dynamicBackgroundColor
+        collectionView.register(PostCell.self, forCellWithReuseIdentifier: PostCell.identifier)
         return collectionView
     }()
 
