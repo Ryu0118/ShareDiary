@@ -34,7 +34,7 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
 
     var imageURLs: [URL]! {
         didSet {
-            
+
             do {
                 collectionView.contentInset = try calculateCollectionViewInset()
             } catch {

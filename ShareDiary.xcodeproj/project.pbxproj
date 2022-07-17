@@ -376,7 +376,6 @@
 			children = (
 				236308F4281BEF0D00F3F905 /* .swiftlint.yml */,
 				23630943281D44AE00F3F905 /* Makefile */,
-				236308C7281BD54800F3F905 /* Other */,
 				23630895281BCF7C00F3F905 /* ShareDiary */,
 				236308AC281BCF7F00F3F905 /* ShareDiaryTests */,
 				236308B6281BCF7F00F3F905 /* ShareDiaryUITests */,
@@ -400,6 +399,7 @@
 			children = (
 				23630925281C4A9B00F3F905 /* ShareDiary.entitlements */,
 				23630927281C5F6400F3F905 /* R.generated.swift */,
+				236308C7281BD54800F3F905 /* Other */,
 				23630938281D2C2400F3F905 /* Utilities */,
 				23630929281C5F9300F3F905 /* Extensions */,
 				23630912281C020C00F3F905 /* ViewModel */,
@@ -432,7 +432,7 @@
 		236308C6281BD52E00F3F905 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				23894231286646D300B9A5BF /* Container */,
+				23894231286646D300B9A5BF /* Containers */,
 				23C7DE0A282288A100EB1A32 /* Profile */,
 				23630950281DB12900F3F905 /* Auth */,
 				2363089A281BCF7C00F3F905 /* MainViewController.swift */,
@@ -574,13 +574,13 @@
 			path = Containers;
 			sourceTree = "<group>";
 		};
-		23894231286646D300B9A5BF /* Container */ = {
+		23894231286646D300B9A5BF /* Containers */ = {
 			isa = PBXGroup;
 			children = (
 				2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */,
 				23894242286D0C4600B9A5BF /* PostImageCollectionViewController.swift */,
 			);
-			path = Container;
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		2389423C2869DF0C00B9A5BF /* Post */ = {
