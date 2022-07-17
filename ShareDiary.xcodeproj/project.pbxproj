@@ -432,7 +432,7 @@
 		236308C6281BD52E00F3F905 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				23894231286646D300B9A5BF /* Container */,
+				23894231286646D300B9A5BF /* Containers */,
 				23C7DE0A282288A100EB1A32 /* Profile */,
 				23630950281DB12900F3F905 /* Auth */,
 				2363089A281BCF7C00F3F905 /* MainViewController.swift */,
@@ -574,13 +574,13 @@
 			path = Containers;
 			sourceTree = "<group>";
 		};
-		23894231286646D300B9A5BF /* Container */ = {
+		23894231286646D300B9A5BF /* Containers */ = {
 			isa = PBXGroup;
 			children = (
 				2389422F28663F4100B9A5BF /* MonthCollectionViewController.swift */,
 				23894242286D0C4600B9A5BF /* PostImageCollectionViewController.swift */,
 			);
-			path = Container;
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		2389423C2869DF0C00B9A5BF /* Post */ = {
