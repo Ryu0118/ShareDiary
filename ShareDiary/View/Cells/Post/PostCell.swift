@@ -22,28 +22,41 @@ final class PostCell: UICollectionViewCell, InputAppliable {
     var post: Post! {
         didSet {
             dateView.apply(input: .setDate(date: post.date))
+            postImageViewController.apply(input: .setImageURLs(urls: post.imageURLs))
+            impressionLabel.text = post.impressionString
         }
     }
 
-    private var core = UIView()
-    private var dateView = PostCircleDateView(frame: .zero)
-    private var impressionLabel: WorldLifeLabel = {
+    private let core = UIView()
+    private let dateView = PostCircleDateView(frame: .zero)
+    private let impressionLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 20)
         return label
     }()
-    private var titleLabel: WorldLifeLabel = {
+    private let titleLabel: WorldLifeLabel = {
         let label = WorldLifeLabel()
         label.font = Theme.Font.getAppBoldFont(size: 25)
         label.textColor = UserSettings.shared.dynamicTextColor
         return label
     }()
+    private let postImageViewController = PostImageCollectionViewController()
     private lazy var titleStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [impressionLabel, titleLabel])
         stack.axis = .horizontal
         stack.distribution = .fill
         stack.spacing = 6
         stack.alignment = .lastBaseline
+        return stack
+    }()
+    private lazy var stackView: UIStackView = {
+        let top = UIApplication.topViewController()
+        postImageViewController.didMove(toParent: top)
+        let stack = UIStackView(arrangedSubviews: [titleStackView, postImageViewController.view])
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        top?.addChild(postImageViewController)
         return stack
     }()
 
@@ -53,8 +66,10 @@ final class PostCell: UICollectionViewCell, InputAppliable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupViews()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -66,6 +81,17 @@ final class PostCell: UICollectionViewCell, InputAppliable {
         }
     }
 
+}
+
+extension PostCell {
+    
+    private func setupViews() {
+        addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(ConstraintInsets(top: 8, left: 8, bottom: 8, right: 8))
+        }
+    }
+    
 }
 
 private class PostCircleDateView: CircleView, InputAppliable {

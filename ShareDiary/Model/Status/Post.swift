@@ -18,7 +18,7 @@ struct Post {
     let comment: [String]
     let imageURLs: [URL]
 
-    var impresionString: String {
+    var impressionString: String {
         [
             "😰",
             "😭",

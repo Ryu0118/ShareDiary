@@ -1,8 +1,0 @@
-/* Bundle display name */
-"CFBundleDisplayName" = "WorldLife";
-/* Bundle name */
-"CFBundleName" = "ShareDiary";
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Need camera access for uploading Images";
-/* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "NeedLibrary access for uploading Images";
