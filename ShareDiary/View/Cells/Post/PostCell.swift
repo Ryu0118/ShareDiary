@@ -84,14 +84,14 @@ final class PostCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
 }
 
 extension PostCell {
-    
+
     private func setupViews() {
         addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(ConstraintInsets(top: 8, left: 8, bottom: 8, right: 8))
         }
     }
-    
+
 }
 
 private class PostCircleDateView: CircleView, InputAppliable {

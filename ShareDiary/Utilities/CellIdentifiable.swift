@@ -13,6 +13,6 @@ protocol CellIdentifiable {
 
 extension CellIdentifiable {
     static var identifier: String {
-        return String(describing: self.self)
+        String(describing: self.self)
     }
 }
