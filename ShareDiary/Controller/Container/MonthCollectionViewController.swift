@@ -59,9 +59,9 @@ class MonthCollectionViewController: UIViewController {
     }
 
     func setYear(year: Int) {
-        if Date().getYear() == year {
+        let current = Date()
+        if current.getYear() == year {
             self.months = {
-                let current = Date()
                 let currentMonth = current.getMonth()
                 return [Int](1...currentMonth)
             }()

@@ -374,6 +374,7 @@
 			children = (
 				236308F4281BEF0D00F3F905 /* .swiftlint.yml */,
 				23630943281D44AE00F3F905 /* Makefile */,
+				236308C7281BD54800F3F905 /* Other */,
 				23630895281BCF7C00F3F905 /* ShareDiary */,
 				236308AC281BCF7F00F3F905 /* ShareDiaryTests */,
 				236308B6281BCF7F00F3F905 /* ShareDiaryUITests */,
@@ -456,7 +457,6 @@
 				23630976282044AA00F3F905 /* AuthorizationInfo.swift */,
 				2389422928662C1900B9A5BF /* Profile */,
 				23EB28EB283F1CB500602C29 /* Status */,
-				236308C7281BD54800F3F905 /* Other */,
 				231C7F7428215815007D8CFF /* SignInHelper */,
 				23630960281E919F00F3F905 /* FirebaseUtils */,
 			);

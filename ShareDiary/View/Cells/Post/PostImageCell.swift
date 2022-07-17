@@ -8,8 +8,11 @@
 import UIKit
 import SDWebImage
 import SnapKit
+import Rswift
 
 class PostImageCell: UICollectionViewCell, InputAppliable {
+
+    static let identifier = "PostImageCell"
 
     enum Input {
         case setImageURL(url: URL)
@@ -26,7 +29,7 @@ class PostImageCell: UICollectionViewCell, InputAppliable {
         imageView.image
     }
 
-    private var imageView = UIImageView(frame: .zero)
+    private var imageView = UIImageView(image: R.image.noImage())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,6 +51,7 @@ class PostImageCell: UICollectionViewCell, InputAppliable {
         layer.cornerRadius = 15
         layer.masksToBounds = true
         addSubview(imageView)
+        imageView.contentMode = .scaleAspectFill
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
