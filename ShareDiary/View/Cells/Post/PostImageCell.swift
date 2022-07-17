@@ -12,6 +12,8 @@ import Rswift
 
 class PostImageCell: UICollectionViewCell, InputAppliable {
 
+    static let identifier = "PostImageCell"
+
     enum Input {
         case setImageURL(url: URL)
     }
