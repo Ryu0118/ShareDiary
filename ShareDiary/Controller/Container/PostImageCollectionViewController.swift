@@ -22,6 +22,7 @@ class PostImageCollectionViewController: UIViewController, InputAppliable {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(PostImageCell.self, forCellWithReuseIdentifier: PostImageCell.identifier)
         return collectionView
     }()
 
