@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 final class PostCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
 
@@ -41,6 +42,13 @@ final class PostCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
         return label
     }()
     private let postImageViewController = PostImageCollectionViewController()
+    private let messageView: WorldLifeLabel = {
+        let label = WorldLifeLabel()
+        label.sizeToFit()
+        label.numberOfLines = 0
+        label.font = Theme.Font.getAppFont(size: 16)
+        return label
+    }()
     private lazy var titleStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [impressionLabel, titleLabel])
         stack.axis = .horizontal
@@ -54,8 +62,9 @@ final class PostCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
         postImageViewController.didMove(toParent: top)
         let stack = UIStackView(arrangedSubviews: [titleStackView, postImageViewController.view])
         stack.axis = .vertical
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillProportionally
         stack.alignment = .center
+        stack.spacing = 8
         top?.addChild(postImageViewController)
         return stack
     }()
@@ -92,6 +101,46 @@ extension PostCell {
         }
     }
 
+}
+
+private class PostStatusView: InputAppliable {
+    
+    enum Input {
+        case setCommentCount(count: Int)
+        case setGoodCount(count: Int)
+    }
+    
+    var commentCount = 0 {
+        didSet {
+            
+        }
+    }
+    
+    var goodCount = 0 {
+        didSet {
+            
+        }
+    }
+    
+    var goodButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+        return button
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: <#T##[UIView]#>)
+    }()
+    
+    func apply(input: Input) {
+        switch input {
+        case .setCommentCount(let count):
+            commentCount = count
+        case .setGoodCount(let count):
+            goodCount = count
+        }
+    }
+    
 }
 
 private class PostCircleDateView: CircleView, InputAppliable {

@@ -12,7 +12,6 @@ class WorldLifeLabel: UILabel {
     init(size: CGFloat) {
         super.init(frame: .zero)
         self.font = Theme.Font.getAppFont(size: size)
-        self.textColor = UserSettings.shared.dynamicTextColor
         setup()
     }
 
@@ -36,6 +35,7 @@ class WorldLifeLabel: UILabel {
         self.lineBreakMode = .byTruncatingTail
         self.numberOfLines = 0
         self.sizeToFit()
+        self.textColor = UserSettings.shared.dynamicTextColor
     }
 
     required init?(coder: NSCoder) {

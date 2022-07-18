@@ -38,6 +38,8 @@
 		233B4DE7282A531800274482 /* UserInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B4DE6282A531800274482 /* UserInfoMock.swift */; };
 		233B4DEB282A698200274482 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B4DEA282A698100274482 /* ProfileEditViewController.swift */; };
 		233B720128841F3A00DDD6E3 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */; };
+		233B720428847E4700DDD6E3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 233B720328847E4700DDD6E3 /* Lottie */; };
+		233B72062884899900DDD6E3 /* heart-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 233B72052884899900DDD6E3 /* heart-animation.json */; };
 		2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8502823CCDA001037D0 /* InteractiveImageView.swift */; };
 		2359A8532823CFB9001037D0 /* ProfileUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8522823CFB9001037D0 /* ProfileUserInfoView.swift */; };
 		2359A85B2823D215001037D0 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A85A2823D215001037D0 /* ProfileImageView.swift */; };
@@ -174,6 +176,7 @@
 		233B4DE6282A531800274482 /* UserInfoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoMock.swift; sourceTree = "<group>"; };
 		233B4DEA282A698100274482 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
+		233B72052884899900DDD6E3 /* heart-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "heart-animation.json"; sourceTree = "<group>"; };
 		2359A8502823CCDA001037D0 /* InteractiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveImageView.swift; sourceTree = "<group>"; };
 		2359A8522823CFB9001037D0 /* ProfileUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoView.swift; sourceTree = "<group>"; };
 		2359A85A2823D215001037D0 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
@@ -289,6 +292,7 @@
 				231C7F682820549F007D8CFF /* FirebaseDatabase in Frameworks */,
 				23630931281C63DA00F3F905 /* Rswift in Frameworks */,
 				231C7F6A2820549F007D8CFF /* FirebaseDynamicLinks in Frameworks */,
+				233B720428847E4700DDD6E3 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +380,7 @@
 			children = (
 				236308F4281BEF0D00F3F905 /* .swiftlint.yml */,
 				23630943281D44AE00F3F905 /* Makefile */,
+				233B72052884899900DDD6E3 /* heart-animation.json */,
 				23630895281BCF7C00F3F905 /* ShareDiary */,
 				236308AC281BCF7F00F3F905 /* ShareDiaryTests */,
 				236308B6281BCF7F00F3F905 /* ShareDiaryUITests */,
@@ -730,6 +735,7 @@
 				239DFE7D283D44AB009BFF49 /* Parchment */,
 				23081D3A28427AC4002DA592 /* Charts */,
 				239565772854F97F0027F45A /* SRCircleProgress */,
+				233B720328847E4700DDD6E3 /* Lottie */,
 			);
 			productName = ShareDiary;
 			productReference = 23630893281BCF7C00F3F905 /* ShareDiary.app */;
@@ -822,6 +828,7 @@
 				23C7DE052822635300EB1A32 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				239DFE7C283D44AA009BFF49 /* XCRemoteSwiftPackageReference "Parchment" */,
 				23081D3928427AC3002DA592 /* XCRemoteSwiftPackageReference "Charts" */,
+				233B720228847E4600DDD6E3 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 23630894281BCF7C00F3F905 /* Products */;
 			projectDirPath = "";
@@ -840,6 +847,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				236308F5281BEF0D00F3F905 /* .swiftlint.yml in Resources */,
+				233B72062884899900DDD6E3 /* heart-animation.json in Resources */,
 				23630946281D4F5100F3F905 /* Assets.xcassets in Resources */,
 				23630924281C48FA00F3F905 /* GoogleService-Info.plist in Resources */,
 			);
@@ -1364,6 +1372,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		233B720228847E4600DDD6E3 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		236308DB281BDE8000F3F905 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1488,6 +1504,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 231C7F712821564F007D8CFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		233B720328847E4700DDD6E3 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 233B720228847E4600DDD6E3 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		236308DC281BDE8000F3F905 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

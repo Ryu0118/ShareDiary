@@ -6,17 +6,19 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 struct Post {
     let id: UUID
     let name: String
     let userName: String
-    let firebaseUserName: String
+    let firebaseUID: String
     let date: Date
     let message: String
     let impressionLevel: Int// 1...7
     let comment: [String]
     let imageURLs: [URL]
+    let goodUserNames: [String]
 
     var impressionString: String {
         [
@@ -28,5 +30,9 @@ struct Post {
             "😄",
             "😆"
         ][impressionLevel - 1]
+    }
+    
+    var isOwnPost: Bool {
+        Auth.auth().currentUser?.uid == firebaseUID
     }
 }
