@@ -40,6 +40,7 @@
 		233B720128841F3A00DDD6E3 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */; };
 		233B720428847E4700DDD6E3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 233B720328847E4700DDD6E3 /* Lottie */; };
 		233B72062884899900DDD6E3 /* heart-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 233B72052884899900DDD6E3 /* heart-animation.json */; };
+		233B72452887FC4900DDD6E3 /* LikeButtonPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B72442887FC4900DDD6E3 /* LikeButtonPreview.swift */; };
 		2359A8512823CCDA001037D0 /* InteractiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8502823CCDA001037D0 /* InteractiveImageView.swift */; };
 		2359A8532823CFB9001037D0 /* ProfileUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A8522823CFB9001037D0 /* ProfileUserInfoView.swift */; };
 		2359A85B2823D215001037D0 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2359A85A2823D215001037D0 /* ProfileImageView.swift */; };
@@ -177,6 +178,7 @@
 		233B4DEA282A698100274482 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		233B720028841F3A00DDD6E3 /* CellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
 		233B72052884899900DDD6E3 /* heart-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "heart-animation.json"; sourceTree = "<group>"; };
+		233B72442887FC4900DDD6E3 /* LikeButtonPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonPreview.swift; sourceTree = "<group>"; };
 		2359A8502823CCDA001037D0 /* InteractiveImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveImageView.swift; sourceTree = "<group>"; };
 		2359A8522823CFB9001037D0 /* ProfileUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInfoView.swift; sourceTree = "<group>"; };
 		2359A85A2823D215001037D0 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
@@ -375,6 +377,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		233B72432887FC2800DDD6E3 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				233B72442887FC4900DDD6E3 /* LikeButtonPreview.swift */,
+			);
+			path = Previews;
+			sourceTree = "<group>";
+		};
 		2363088A281BCF7C00F3F905 = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +495,7 @@
 		23630913281C021900F3F905 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				233B72432887FC2800DDD6E3 /* Previews */,
 				23081D3128414094002DA592 /* Headers */,
 				23EB28F2283F3C7F00602C29 /* Cells */,
 				23C7DE1428228BDE00EB1A32 /* Profile */,
@@ -937,6 +948,7 @@
 				23081D4428428A73002DA592 /* TitlesMock.swift in Sources */,
 				239DFE83283D4596009BFF49 /* PostHistoryViewController.swift in Sources */,
 				23081D4628460B4F002DA592 /* PostsGraphViewPreview.swift in Sources */,
+				233B72452887FC4900DDD6E3 /* LikeButtonPreview.swift in Sources */,
 				23CD4CC428259598001A7DB4 /* ProfileFolowListView.swift in Sources */,
 				23630954281DBEB600F3F905 /* String+extensions.swift in Sources */,
 				2359A85D2823DB37001037D0 /* SignInWithTwitterHelper.swift in Sources */,

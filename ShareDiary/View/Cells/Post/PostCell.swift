@@ -11,6 +11,77 @@ import RxSwift
 import RxCocoa
 import Lottie
 
+final class LikeButton: InteractiveButton {
+
+    private let disposeBag = DisposeBag()
+
+    var isLiked = false
+
+    var performanceLock = false {
+        didSet {
+            self.isUserInteractionEnabled = !performanceLock
+        }
+    }
+
+    var animationLock = false {
+        didSet {
+            heartAnimationView.animationSpeed = animationLock ? 10 : 2
+        }
+    }
+
+    private let heartAnimationView: AnimationView = {
+        let animation = AnimationView(name: "heart-animation")
+        animation.loopMode = .playOnce
+        animation.contentMode = .scaleAspectFit
+        animation.animationSpeed = 2
+        animation.play(toProgress: 0)
+        animation.isUserInteractionEnabled = false
+        return animation
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+        bind()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func bind() {
+
+        rx.controlEvent(.touchUpInside)
+            .asDriver()
+            .drive {[weak self] _ in
+                guard let self = self else { return }
+                defer { self.isLiked.toggle() }
+
+                if self.isLiked {
+                    self.animationLock = true
+                    self.heartAnimationView.play(toProgress: 0)
+                    self.animationLock = false
+                } else {
+                    self.performanceLock = true
+                    self.heartAnimationView.play {_ in
+                        self.performanceLock = false
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+
+    }
+
+    private func setupView() {
+        addSubview(heartAnimationView)
+
+        heartAnimationView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+
+}
+
 final class PostCell: UICollectionViewCell, InputAppliable, CellIdentifiable {
 
     /*
@@ -104,34 +175,34 @@ extension PostCell {
 }
 
 private class PostStatusView: InputAppliable {
-    
+
     enum Input {
         case setCommentCount(count: Int)
         case setGoodCount(count: Int)
     }
-    
+
     var commentCount = 0 {
         didSet {
-            
+
         }
     }
-    
+
     var goodCount = 0 {
         didSet {
-            
+
         }
     }
-    
-    var goodButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
-        return button
-    }()
-    
-    private lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: <#T##[UIView]#>)
-    }()
-    
+
+    //    var goodButton: UIButton = {
+    //        let button = UIButton(frame: .zero)
+    //        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+    //        return button
+    //    }()
+    //
+    //    private lazy var stackView: UIStackView = {
+    //        let stack = UIStackView(arrangedSubviews: <#T##[UIView]#>)
+    //    }()
+
     func apply(input: Input) {
         switch input {
         case .setCommentCount(let count):
@@ -140,7 +211,7 @@ private class PostStatusView: InputAppliable {
             goodCount = count
         }
     }
-    
+
 }
 
 private class PostCircleDateView: CircleView, InputAppliable {

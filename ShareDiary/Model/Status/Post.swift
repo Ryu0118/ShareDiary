@@ -31,7 +31,7 @@ struct Post {
             "😆"
         ][impressionLevel - 1]
     }
-    
+
     var isOwnPost: Bool {
         Auth.auth().currentUser?.uid == firebaseUID
     }
